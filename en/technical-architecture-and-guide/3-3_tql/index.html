@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Documentation for Hugo docDock</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.48" />
+<title>TQL :: Documentation for Hugo docDock</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/css/style-griddb.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<header id="header2">
+
+
+    
+    <div class="header-inner">
+
+        <div id="collapse-button" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+        
+        <div class="logo">
+            <a href="/en" title="GridDB Developers"><img src="https://griddb-pro.azureedge.net/en/wp-content/themes/juliet/images/Untitled10.png" alt="GridDB Developers" style="width:auto;height:25px;">
+    </a>
+        </div>
+        
+
+
+        
+        <nav id="nav" class="main-navigation" role="navigation" style="">
+            <div class="menu-topnav-container">
+                <ul id="menu-topnav" class="nav-menu">
+                    <li id="menu-item-581" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-581"><a href="/en/docs/documents/1-1_what-is-griddb.php">Docs</a></li>
+                    <li id="menu-item-681" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-681"><a href="/en/faq/">FAQ</a></li>
+                    <li id="menu-item-671" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-671"><a href="/en/community/">Community</a></li>
+                    <li id="menu-item-591" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-591"><a href="/en/forums/forum/top/">Forum</a></li>
+                    <li id="menu-item-291" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-291"><a href="/en/blog">Blog</a></li>
+
+                </ul>
+
+            </div>
+
+
+       <li style="list-style:none"><a href="https://griddb.net/en/downloads/"> <span class="download-button4" style="display:none"> DOWNLOAD</span></a></li>
+
+ 
+            
+            <a href="/en/downloads/"> <span id="download-button"> Download</span></a>
+            
+
+        </nav>
+        
+
+    </div>
+
+
+</header>
+
+
+    
+  </head>
+  <body data-url="/en/technical-architecture-and-guide/3-3_tql/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="/">Documentation for Hugo docDock</a>
+  
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/en" class="dd-item">
+          <a href="/en">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/en/introduction/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/introduction/"><b>1. </b>Introduction</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/introduction/1-1_what-is-griddb/" class="dd-item">
+        <div>
+          <a href="/en/introduction/1-1_what-is-griddb/">
+            What is GridDB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/introduction/1-2_griddb-edition/" class="dd-item">
+        <div>
+          <a href="/en/introduction/1-2_griddb-edition/">
+            GridDB Editions
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/getting-started/"><b>2. </b>Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/getting-started/2-1_system-requirements/" class="dd-item">
+        <div>
+          <a href="/en/getting-started/2-1_system-requirements/">
+            System Requirements
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/getting-started/2-2_installation/" class="dd-item">
+        <div>
+          <a href="/en/getting-started/2-2_installation/">
+            Installation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/getting-started/2-3_run-your-first-griddb-node-cluster/" class="dd-item">
+        <div>
+          <a href="/en/getting-started/2-3_run-your-first-griddb-node-cluster/">
+            Run your First GridDB Node/Cluster
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/getting-started/2-4_run-a-sample-java-client-app/" class="dd-item">
+        <div>
+          <a href="/en/getting-started/2-4_run-a-sample-java-client-app/">
+            Run a Sample Java Client App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/technical-architecture-and-guide/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/en/technical-architecture-and-guide/"><b>3. </b>Technical Architecture and Guide</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-1_griddb-technical-overview/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-1_griddb-technical-overview/">
+            GridDB Technical Overview
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-2_key-container-model/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-2_key-container-model/">
+            Key Container Model
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-3_tql/" class="dd-item active">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-3_tql/">
+            TQL
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-4_crud-operations/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-4_crud-operations/">
+            CRUD Operations
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-5_transactions-and-acid/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-5_transactions-and-acid/">
+            Transactions and ACID
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-6_indexes/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-6_indexes/">
+            Indexes
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-7_storage-architecture/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-7_storage-architecture/">
+            Storage Architecture
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-8_replication-distribution/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-8_replication-distribution/">
+            Replication &amp; Distribution
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-9_sharding/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-9_sharding/">
+            Sharding
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/data-modeling/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/data-modeling/"><b>4. </b>Data Modeling</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/data-modeling/4-1_data-modeling-basics/" class="dd-item">
+        <div>
+          <a href="/en/data-modeling/4-1_data-modeling-basics/">
+            Data Modeling Basics
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/data-modeling/4-2_data-modeling-using-griddb/" class="dd-item">
+        <div>
+          <a href="/en/data-modeling/4-2_data-modeling-using-griddb/">
+            Data Modeling Using GridDB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/data-modeling/4-3_modeling-relationships/" class="dd-item">
+        <div>
+          <a href="/en/data-modeling/4-3_modeling-relationships/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/data-modeling/4-4_possibilities-and-variations-of-data-models-in-griddb/" class="dd-item">
+        <div>
+          <a href="/en/data-modeling/4-4_possibilities-and-variations-of-data-models-in-griddb/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/sample-applications/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/en/sample-applications/basics/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-10_collection-delete/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-11_collection-modify/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-11_collection-modify/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-12_timeseries-register/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-12_timeseries-register/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-13_timeseries-retrieve/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-13_timeseries-retrieve/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-14_timeseries-delete/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-14_timeseries-delete/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-15_timeseries-modify/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-15_timeseries-modify/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-16_tql/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-16_tql/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-17_trigger-rest/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-17_trigger-rest/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-18_trigger-jms/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-18_trigger-jms/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-19_multiput/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-19_multiput/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-1_introduction/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-1_introduction/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-20_multiquery/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-20_multiquery/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-21_multiget/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-21_multiget/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-2_griddb-basics/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-2_griddb-basics/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-3_prepare-server/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-3_prepare-server/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-4_prepare-client/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-4_prepare-client/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-5_connection/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-5_connection/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-6_container-schema/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-6_container-schema/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-7_container-create-drop/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-7_container-create-drop/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-8_collection-register/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-8_collection-register/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-9_collection-retrieve/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-9_collection-retrieve/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/administration/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/administration/"><b>6. </b>Administration</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/administration/6-1_supported-os-platforms-and-system-requirements/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-1_supported-os-platforms-and-system-requirements/">
+            Supported OS, Platforms and System Requirements
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-2_sizing-and-scaling/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-2_sizing-and-scaling/">
+            Sizing and Scaling
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-3_installing/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-3_installing/">
+            Installing
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-4_upgrading-the-editions/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-4_upgrading-the-editions/">
+            Upgrading Editions
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-5_migration-from-other-databases/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-5_migration-from-other-databases/">
+            Migration from Other Databases
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-6_cluster-administration-operations/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-6_cluster-administration-operations/">
+            Cluster Administration &amp; Operations
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-7_monitoring-troubleshooting/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-7_monitoring-troubleshooting/">
+            Monitoring &amp; Troubleshooting
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-8_tuning/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-8_tuning/">
+            Tuning
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/drivers-and-integrators/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/drivers-and-integrators/"><b>7. </b>Drivers &amp; Integrators</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/drivers-and-integrators/7-1_jdbc-connector/" class="dd-item">
+        <div>
+          <a href="/en/drivers-and-integrators/7-1_jdbc-connector/">
+            JDBC Connector
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/drivers-and-integrators/7-2_odbc-connector/" class="dd-item">
+        <div>
+          <a href="/en/drivers-and-integrators/7-2_odbc-connector/">
+            ODBC Connector
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/drivers-and-integrators/7-3_hadoop-and-spark-connector/" class="dd-item">
+        <div>
+          <a href="/en/drivers-and-integrators/7-3_hadoop-and-spark-connector/">
+            Hadoop and Spark Connector
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/drivers-and-integrators/7-4_grafana-connector/" class="dd-item">
+        <div>
+          <a href="/en/drivers-and-integrators/7-4_grafana-connector/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+<select id="select-language" onchange="location = this.value;">
+	
+	
+	
+	  
+	  
+	    
+	      
+	        <option id="en" value="/en/technical-architecture-and-guide/3-3_tql/" selected>English</option>
+	      
+	    
+	  
+	    
+	  
+	
+</select>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/en/introduction/" >
+   Introduction</option>
+    <option value="/en/getting-started/" >
+   Getting Started</option>
+    <option value="/en/technical-architecture-and-guide/" >
+   Technical Architecture and Guide</option> 
+      <option value="/en/technical-architecture-and-guide/3-1_griddb-technical-overview/" >- GridDB Technical Overview</option>
+      <option value="/en/technical-architecture-and-guide/3-2_key-container-model/" >- Key Container Model</option>
+      <option value="/en/technical-architecture-and-guide/3-3_tql/"  selected>- TQL</option>
+      <option value="/en/technical-architecture-and-guide/3-4_crud-operations/" >- CRUD Operations</option>
+      <option value="/en/technical-architecture-and-guide/3-5_transactions-and-acid/" >- Transactions and ACID</option>
+      <option value="/en/technical-architecture-and-guide/3-6_indexes/" >- Indexes</option>
+      <option value="/en/technical-architecture-and-guide/3-7_storage-architecture/" >- Storage Architecture</option>
+      <option value="/en/technical-architecture-and-guide/3-8_replication-distribution/" >- Replication &amp; Distribution</option>
+      <option value="/en/technical-architecture-and-guide/3-9_sharding/" >- Sharding</option>
+  
+    <option value="/en/data-modeling/" >
+   Data Modeling</option>
+    <option value="/en/sample-applications/" >
+   Sample Application</option>
+    <option value="/en/administration/" >
+   Administration</option>
+    <option value="/en/drivers-and-integrators/" >
+   Drivers &amp; Integrators</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/\/en";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>TQL</h1>
+    
+    
+    
+    <p>TQL in NoSQL products and SQL-92 compliant SQL in NewSQL products are supported as database access languages.</p>
+
+<ul>
+<li><p>What is TQL?<br />
+A simplified version of SQL prepared for NoSQL products. The support range is limited to functions such as search, aggregation, etc., using a container as a unit. TQL is employed by using the client API (Java, C language) of NoSQL products.</p></li>
+
+<li><p>What is SQL?<br />
+SQL stands for &ldquo;Structured Query Language&rdquo;, and it has been the standard query language for RDMS systems for years. Standardization of the language specifications is carried out in ISO to support the interface for defining and performing data operations in conformance with SQL-92 in GridDB. SQL uses the ODBC/JDBC of the new SQL product.</p></li>
+</ul>
+
+<p>GridDB has a NoSQL interface to access containers and a NewSQL interface to access tables. The GridDB Standard Edition supports the NoSQL interface while the GridDB Advanced Edition supports both NoSQL and NewSQL interfaces. The range of access to tables and containers using these interfaces are shown below.</p>
+
+<ul>
+<li>The NoSQL interface provides access to containers but not tables.</li>
+<li>The NewSQL interface provides access to tables but not containers.</li>
+</ul>
+
+<p><strong>More Information on TQL</strong></p>
+
+<p>TQL supports a query corresponding to the SQL SELECT statement which is required to select data to be fetched, deleted or updated. It does not support management of data structure and transaction processing other than a selection query (such as manipulation of selected data).</p>
+
+<p>All queries are expressed by the syntax below:</p>
+
+<p>[EXPLAIN [ANALYZE]] SELECT (select expression) [FROM (Collection or TimeSeries name)]  [WHERE (conditional expression)] ORDER BY (Column name) [ASC|DESC] [, (Column name) [ASC|DESC]]* [LIMIT (number) [OFFSET (number)]]</p>
+
+<p>A SELECT statement is used to narrow down Rows in a Collection or TimeSeries specified in the FROM clause according to the conditional expression in the WHERE clause and process the result set according to the select expression specifing target Column(s), a calculation formula, etc.</p>
+
+<p>If a target Collection or TimeSeries is already specified, you need to omit the FROM clause or specify the same name as the target in the FROM clause. You should note that the FROM clause is case-insensitive. If the WHERE clause is omitted, all the Rows of a target Collection or TimeSeries are selected.</p>
+
+<p>You can place EXPLAIN or EXPLAIN ANALYZE before a SELECT statement to obtain execution plan information and analysis information on execution results in relation to the SELECT statement. See the later section for more information.</p>
+
+<p>Unlike SQL, you cannot extract only specific Column(s) except for aggregation operations. Additionally, clauses corresponding to the following are not available.</p>
+
+<ul>
+<li>GROUP BY</li>
+<li>HAVING</li>
+<li>DISTINCT</li>
+<li>FOR UPDATE ※can be carried out with the API</li>
+<li>JOIN</li>
+</ul>
+
+<p>ASCII characters in the keywords of the basic syntax and the names of functions, operators and enumeration constants described in the later sections can be written in lower case.</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/en/technical-architecture-and-guide/3-2_key-container-model/" title="Key Container Model"> <i class="fa fa-chevron-left"></i><label>Key Container Model</label></a>
+    <a class="nav nav-next" href="/en/technical-architecture-and-guide/3-4_crud-operations/" title="CRUD Operations" style="margin-right: 0px;"><label>CRUD Operations</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+  
+
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/technical%20architecture%20and%20guide/3-3_tql.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+<script src="/js/newitemstoggle.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
