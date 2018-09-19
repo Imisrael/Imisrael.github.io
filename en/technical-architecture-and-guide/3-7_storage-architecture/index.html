@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Documentation for Hugo docDock</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.48" />
+<title>Storage Architecture :: Documentation for Hugo docDock</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/css/style-griddb.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<header id="header2">
+
+
+    
+    <div class="header-inner">
+
+        <div id="collapse-button" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+        
+        <div class="logo">
+            <a href="/en" title="GridDB Developers"><img src="https://griddb-pro.azureedge.net/en/wp-content/themes/juliet/images/Untitled10.png" alt="GridDB Developers" style="width:auto;height:25px;">
+    </a>
+        </div>
+        
+
+
+        
+        <nav id="nav" class="main-navigation" role="navigation" style="">
+            <div class="menu-topnav-container">
+                <ul id="menu-topnav" class="nav-menu">
+                    <li id="menu-item-581" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-581"><a href="/en/docs/documents/1-1_what-is-griddb.php">Docs</a></li>
+                    <li id="menu-item-681" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-681"><a href="/en/faq/">FAQ</a></li>
+                    <li id="menu-item-671" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-671"><a href="/en/community/">Community</a></li>
+                    <li id="menu-item-591" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-591"><a href="/en/forums/forum/top/">Forum</a></li>
+                    <li id="menu-item-291" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-291"><a href="/en/blog">Blog</a></li>
+
+                </ul>
+
+            </div>
+
+
+       <li style="list-style:none"><a href="https://griddb.net/en/downloads/"> <span class="download-button4" style="display:none"> DOWNLOAD</span></a></li>
+
+ 
+            
+            <a href="/en/downloads/"> <span id="download-button"> Download</span></a>
+            
+
+        </nav>
+        
+
+    </div>
+
+
+</header>
+
+
+    
+  </head>
+  <body data-url="/en/technical-architecture-and-guide/3-7_storage-architecture/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="/">Documentation for Hugo docDock</a>
+  
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/en" class="dd-item">
+          <a href="/en">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/en/introduction/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/introduction/"><b>1. </b>Introduction</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/introduction/1-1_what-is-griddb/" class="dd-item">
+        <div>
+          <a href="/en/introduction/1-1_what-is-griddb/">
+            What is GridDB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/introduction/1-2_griddb-edition/" class="dd-item">
+        <div>
+          <a href="/en/introduction/1-2_griddb-edition/">
+            GridDB Editions
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/getting-started/"><b>2. </b>Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/getting-started/2-1_system-requirements/" class="dd-item">
+        <div>
+          <a href="/en/getting-started/2-1_system-requirements/">
+            System Requirements
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/getting-started/2-2_installation/" class="dd-item">
+        <div>
+          <a href="/en/getting-started/2-2_installation/">
+            Installation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/getting-started/2-3_run-your-first-griddb-node-cluster/" class="dd-item">
+        <div>
+          <a href="/en/getting-started/2-3_run-your-first-griddb-node-cluster/">
+            Run your First GridDB Node/Cluster
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/getting-started/2-4_run-a-sample-java-client-app/" class="dd-item">
+        <div>
+          <a href="/en/getting-started/2-4_run-a-sample-java-client-app/">
+            Run a Sample Java Client App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/technical-architecture-and-guide/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/en/technical-architecture-and-guide/"><b>3. </b>Technical Architecture and Guide</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-1_griddb-technical-overview/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-1_griddb-technical-overview/">
+            GridDB Technical Overview
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-2_key-container-model/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-2_key-container-model/">
+            Key Container Model
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-3_tql/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-3_tql/">
+            TQL
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-4_crud-operations/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-4_crud-operations/">
+            CRUD Operations
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-5_transactions-and-acid/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-5_transactions-and-acid/">
+            Transactions and ACID
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-6_indexes/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-6_indexes/">
+            Indexes
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-7_storage-architecture/" class="dd-item active">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-7_storage-architecture/">
+            Storage Architecture
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-8_replication-distribution/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-8_replication-distribution/">
+            Replication &amp; Distribution
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/technical-architecture-and-guide/3-9_sharding/" class="dd-item">
+        <div>
+          <a href="/en/technical-architecture-and-guide/3-9_sharding/">
+            Sharding
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/data-modeling/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/data-modeling/"><b>4. </b>Data Modeling</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/data-modeling/4-1_data-modeling-basics/" class="dd-item">
+        <div>
+          <a href="/en/data-modeling/4-1_data-modeling-basics/">
+            Data Modeling Basics
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/data-modeling/4-2_data-modeling-using-griddb/" class="dd-item">
+        <div>
+          <a href="/en/data-modeling/4-2_data-modeling-using-griddb/">
+            Data Modeling Using GridDB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/data-modeling/4-3_modeling-relationships/" class="dd-item">
+        <div>
+          <a href="/en/data-modeling/4-3_modeling-relationships/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/data-modeling/4-4_possibilities-and-variations-of-data-models-in-griddb/" class="dd-item">
+        <div>
+          <a href="/en/data-modeling/4-4_possibilities-and-variations-of-data-models-in-griddb/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/sample-applications/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/en/sample-applications/basics/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-10_collection-delete/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-11_collection-modify/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-11_collection-modify/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-12_timeseries-register/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-12_timeseries-register/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-13_timeseries-retrieve/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-13_timeseries-retrieve/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-14_timeseries-delete/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-14_timeseries-delete/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-15_timeseries-modify/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-15_timeseries-modify/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-16_tql/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-16_tql/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-17_trigger-rest/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-17_trigger-rest/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-18_trigger-jms/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-18_trigger-jms/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-19_multiput/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-19_multiput/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-1_introduction/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-1_introduction/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-20_multiquery/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-20_multiquery/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-21_multiget/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-21_multiget/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-2_griddb-basics/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-2_griddb-basics/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-3_prepare-server/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-3_prepare-server/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-4_prepare-client/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-4_prepare-client/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-5_connection/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-5_connection/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-6_container-schema/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-6_container-schema/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-7_container-create-drop/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-7_container-create-drop/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-8_collection-register/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-8_collection-register/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/sample-applications/basics/5-1-9_collection-retrieve/" class="dd-item">
+        <div>
+          <a href="/en/sample-applications/basics/5-1-9_collection-retrieve/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/administration/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/administration/"><b>6. </b>Administration</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/administration/6-1_supported-os-platforms-and-system-requirements/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-1_supported-os-platforms-and-system-requirements/">
+            Supported OS, Platforms and System Requirements
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-2_sizing-and-scaling/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-2_sizing-and-scaling/">
+            Sizing and Scaling
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-3_installing/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-3_installing/">
+            Installing
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-4_upgrading-the-editions/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-4_upgrading-the-editions/">
+            Upgrading Editions
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-5_migration-from-other-databases/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-5_migration-from-other-databases/">
+            Migration from Other Databases
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-6_cluster-administration-operations/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-6_cluster-administration-operations/">
+            Cluster Administration &amp; Operations
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-7_monitoring-troubleshooting/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-7_monitoring-troubleshooting/">
+            Monitoring &amp; Troubleshooting
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/administration/6-8_tuning/" class="dd-item">
+        <div>
+          <a href="/en/administration/6-8_tuning/">
+            Tuning
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/en/drivers-and-integrators/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/en/drivers-and-integrators/"><b>7. </b>Drivers &amp; Integrators</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/en/drivers-and-integrators/7-1_jdbc-connector/" class="dd-item">
+        <div>
+          <a href="/en/drivers-and-integrators/7-1_jdbc-connector/">
+            JDBC Connector
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/drivers-and-integrators/7-2_odbc-connector/" class="dd-item">
+        <div>
+          <a href="/en/drivers-and-integrators/7-2_odbc-connector/">
+            ODBC Connector
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/drivers-and-integrators/7-3_hadoop-and-spark-connector/" class="dd-item">
+        <div>
+          <a href="/en/drivers-and-integrators/7-3_hadoop-and-spark-connector/">
+            Hadoop and Spark Connector
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/en/drivers-and-integrators/7-4_grafana-connector/" class="dd-item">
+        <div>
+          <a href="/en/drivers-and-integrators/7-4_grafana-connector/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+<select id="select-language" onchange="location = this.value;">
+	
+	
+	
+	  
+	  
+	    
+	      
+	        <option id="en" value="/en/technical-architecture-and-guide/3-7_storage-architecture/" selected>English</option>
+	      
+	    
+	  
+	    
+	  
+	
+</select>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/en/introduction/" >
+   Introduction</option>
+    <option value="/en/getting-started/" >
+   Getting Started</option>
+    <option value="/en/technical-architecture-and-guide/" >
+   Technical Architecture and Guide</option> 
+      <option value="/en/technical-architecture-and-guide/3-1_griddb-technical-overview/" >- GridDB Technical Overview</option>
+      <option value="/en/technical-architecture-and-guide/3-2_key-container-model/" >- Key Container Model</option>
+      <option value="/en/technical-architecture-and-guide/3-3_tql/" >- TQL</option>
+      <option value="/en/technical-architecture-and-guide/3-4_crud-operations/" >- CRUD Operations</option>
+      <option value="/en/technical-architecture-and-guide/3-5_transactions-and-acid/" >- Transactions and ACID</option>
+      <option value="/en/technical-architecture-and-guide/3-6_indexes/" >- Indexes</option>
+      <option value="/en/technical-architecture-and-guide/3-7_storage-architecture/"  selected>- Storage Architecture</option>
+      <option value="/en/technical-architecture-and-guide/3-8_replication-distribution/" >- Replication &amp; Distribution</option>
+      <option value="/en/technical-architecture-and-guide/3-9_sharding/" >- Sharding</option>
+  
+    <option value="/en/data-modeling/" >
+   Data Modeling</option>
+    <option value="/en/sample-applications/" >
+   Sample Application</option>
+    <option value="/en/administration/" >
+   Administration</option>
+    <option value="/en/drivers-and-integrators/" >
+   Drivers &amp; Integrators</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/\/en";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Storage Architecture</h1>
+    
+    
+    
+    
+
+<h3 id="griddb-nodes">GridDB Nodes</h3>
+
+<p>GridDB is operated by clusters which are composed of multiple nodes. To access the database from an application system, the nodes have to be started up and the cluster has to be constituted (cluster service is executed). A cluster is formed and cluster service is started when a number of nodes specified by the user joins the cluster. Cluster service will not be started and access from the application will not be possible until all nodes constituting a cluster have joined the cluster. A cluster needs to be composed even when operating with 1 node only. In this case, the number of nodes constituting a cluster is 1. A composition that operates a single node is known as a single composition.</p>
+
+<p>Cluster names are used to separate multiple clusters so that the correct clusters (using the intended nodes) can be composed using multiple GridDB nodes on a network. Multiple GridDB clusters can be composed in the same network. A cluster is composed of nodes with the same cluster name, number of nodes constituting a cluster, and with the same multi-cast address setting. When composing a cluster, the parameters need to be specified as well in addition to setting the cluster name in the cluster definition file which is a definition file saved for each node constituting a cluster.</p>
+
+<p>In GridDB, there is no SPOF (single point of failure) because the clusters are constantly duplicating data (hereinafter known as replicas). Replicas also allow data-processing to continue, even when failure occurs in any of the nodes constituting the cluster. Special operating procedures are not necessary as the system will also automatically perform re-arrangement of the data after a node failure occurs (autonomous data arrangement). When the data arranged in a failed node is restored from a replica, the data is re-arranged so that the set number of replicas is reached automatically.</p>
+
+<p>Duplex, triplex or multiplex replica can be set according to the availability requirements.</p>
+
+<p>Each node performs persistence of the data update information using a disk, and all registered and updated data up to that point in time can be restored without any data being lost even following failure across the entire cluster system.</p>
+
+<p>In addition, since the client also possesses cache information on the data arrangement and management, upon detecting a node failure, it will automatically perform a failover and data access can be continued using a replica.</p>
+
+<h3 id="data-perpetuation">Data perpetuation</h3>
+
+<p>Data registered or updated in a container or table is perpetuated in the disk or SSD, and protected from data loss when a node failure occurs. There are 2 types of transaction log process, one to synchronize data in a data update and write the updated data sequentially in a transaction log file, and the other is a checkpoint process to store updated data in the memory regularly in the database file on a block basis.</p>
+
+<p>To write to a transaction log, either one of the following settings can be made in the node definition file.</p>
+
+<ul>
+<li>0: SYNC</li>
+<li>An integer value of 1 or higher1: DELAYED_SYNC</li>
+</ul>
+
+<p>In the &lsquo;SYNC&rsquo; mode, log writing is carried out synchronously every time an update transaction is committed or aborted. In the &lsquo;DELAYED_SYNC&rsquo; mode, log writing during an update is carried out at a specified delay of several seconds regardless of the update timing. Default value is &lsquo;1 (DELAYED_SYNC 1 sec)&lsquo;.</p>
+
+<p>When &lsquo;SYNC&rsquo; is specified, although the possibility of losing the latest update details when a node failure occurs is lower, the performance is affected in systems that are updated frequently.</p>
+
+<p>On the other hand, if &lsquo;DELAYED_SYNC&rsquo; is specified, although the update performance improves, any update details that have not been written in the disk when a node failure occurs will be lost.</p>
+
+<p>If there are 2 or more replicas in a raster configuration, the possibility of losing the latest update details when a node failure occurs is lower even if the mode is set to &lsquo;DELAYED_SYNC&rsquo; as the other nodes contain replicas. Consider setting the mode to &lsquo;DELAYED_SYNC&rsquo; as well if the update frequency is high and performance is required. In a checkpoint, the update block is updated in the database file. A checkpoint process operates at the cycle set on a node basis. A checkpoint cycle is set by the parameters in the node definition file. Initial value is 1200 sec (20 minutes).</p>
+
+<p>By raising the checkpoint execution cycle figure, data perpetuation can be set to be carried out in a time band when there is relatively more time to do so e.g. by perpetuating data to a disk at night and so on. On the other hand, when the cycle is lengthened, the disadvantage is that the number of transaction log files that have to be rolled forward when a node is restarted outside the system process increases, thereby increasing the recovery time.</p>
+
+<p>Data that is updated in a checkpoint execution is pooled and maintained in a memory separate from the checkpoint writing block. Set checkpoint concurrent execution for the checkpoint to carry out the checkpoint quickly. If concurrent execution is set, concurrent processing is carried out until the number of transactions executed simultaneously is the same.</p>
+
+<p><img src="img/data%20pepetuation.png" alt="" /></p>
+
+<h3 id="in-memory-data-overflow">In-Memory Data Overflow</h3>
+
+<p>In GridDB, most of the data processing is handled by the machine&rsquo;s memory. When configuring the cluster, storeMemoryLimit must be set to some factor, though most typically it is most of the available memory (64GB, for example). All data loaded under that limit is kept in memory and flushed to disk as is needed.</p>
+
+<p>If your database begins to grow to a larger dataset than your previously set parameter storeMemoryLimit, GridDB will overflow data not likely to be used soon onto the disk. That disk can be either an SSD or an HDD, but SSDs will provide smaller drop-offs in speed should this process need to occur. This method of handling data ensures most transactions occur in-memory to ensure high performance throughout use.</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/en/technical-architecture-and-guide/3-6_indexes/" title="Indexes"> <i class="fa fa-chevron-left"></i><label>Indexes</label></a>
+    <a class="nav nav-next" href="/en/technical-architecture-and-guide/3-8_replication-distribution/" title="Replication &amp; Distribution" style="margin-right: 0px;"><label>Replication &amp; Distribution</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+  
+
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/technical%20architecture%20and%20guide/3-7_storage-architecture.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+<script src="/js/newitemstoggle.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
