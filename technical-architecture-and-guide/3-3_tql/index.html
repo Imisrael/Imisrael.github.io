@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>TQL :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/technical-architecture-and-guide/3-3_tql/">
     
       <header>
   <div class="logo">
@@ -151,10 +151,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/technical-architecture-and-guide/" class="dd-item haschildren
+    <li data-nav-id="/technical-architecture-and-guide/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/technical-architecture-and-guide/"><b>3. </b>Technical Architecture and Guide</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/technical-architecture-and-guide/"><b>3. </b>Technical Architecture and Guide</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/technical-architecture-and-guide/3-1_griddb-technical-overview/" class="dd-item">
@@ -171,7 +172,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/technical-architecture-and-guide/3-3_tql/" class="dd-item">
+      <li data-nav-id="/technical-architecture-and-guide/3-3_tql/" class="dd-item active">
         <div>
           <a href="/technical-architecture-and-guide/3-3_tql/">
             TQL
@@ -540,7 +541,17 @@
     <option value="/getting-started/" >
    Getting Started</option>
     <option value="/technical-architecture-and-guide/" >
-   Technical Architecture and Guide</option>
+   Technical Architecture and Guide</option> 
+      <option value="/technical-architecture-and-guide/3-1_griddb-technical-overview/" >- GridDB Technical Overview</option>
+      <option value="/technical-architecture-and-guide/3-2_key-container-model/" >- Key Container Model</option>
+      <option value="/technical-architecture-and-guide/3-3_tql/"  selected>- TQL</option>
+      <option value="/technical-architecture-and-guide/3-4_crud-operations/" >- CRUD Operations</option>
+      <option value="/technical-architecture-and-guide/3-5_transactions-and-acid/" >- Transactions and ACID</option>
+      <option value="/technical-architecture-and-guide/3-6_indexes/" >- Indexes</option>
+      <option value="/technical-architecture-and-guide/3-7_storage-architecture/" >- Storage Architecture</option>
+      <option value="/technical-architecture-and-guide/3-8_replication-distribution/" >- Replication &amp; Distribution</option>
+      <option value="/technical-architecture-and-guide/3-9_sharding/" >- Sharding</option>
+  
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
@@ -571,33 +582,60 @@
       </div>
     
 
+    <h1>TQL</h1>
     
     
     
-    
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
+    <p>TQL in NoSQL products and SQL-92 compliant SQL in NewSQL products are supported as database access languages.</p>
 
+<ul>
+<li><p>What is TQL?<br />
+A simplified version of SQL prepared for NoSQL products. The support range is limited to functions such as search, aggregation, etc., using a container as a unit. TQL is employed by using the client API (Java, C language) of NoSQL products.</p></li>
+
+<li><p>What is SQL?<br />
+SQL stands for &ldquo;Structured Query Language&rdquo;, and it has been the standard query language for RDMS systems for years. Standardization of the language specifications is carried out in ISO to support the interface for defining and performing data operations in conformance with SQL-92 in GridDB. SQL uses the ODBC/JDBC of the new SQL product.</p></li>
+</ul>
+
+<p>GridDB has a NoSQL interface to access containers and a NewSQL interface to access tables. The GridDB Standard Edition supports the NoSQL interface while the GridDB Advanced Edition supports both NoSQL and NewSQL interfaces. The range of access to tables and containers using these interfaces are shown below.</p>
+
+<ul>
+<li>The NoSQL interface provides access to containers but not tables.</li>
+<li>The NewSQL interface provides access to tables but not containers.</li>
+</ul>
+
+<p><strong>More Information on TQL</strong></p>
+
+<p>TQL supports a query corresponding to the SQL SELECT statement which is required to select data to be fetched, deleted or updated. It does not support management of data structure and transaction processing other than a selection query (such as manipulation of selected data).</p>
+
+<p>All queries are expressed by the syntax below:</p>
+
+<p>[EXPLAIN [ANALYZE]] SELECT (select expression) [FROM (Collection or TimeSeries name)]  [WHERE (conditional expression)] ORDER BY (Column name) [ASC|DESC] [, (Column name) [ASC|DESC]]* [LIMIT (number) [OFFSET (number)]]</p>
+
+<p>A SELECT statement is used to narrow down Rows in a Collection or TimeSeries specified in the FROM clause according to the conditional expression in the WHERE clause and process the result set according to the select expression specifing target Column(s), a calculation formula, etc.</p>
+
+<p>If a target Collection or TimeSeries is already specified, you need to omit the FROM clause or specify the same name as the target in the FROM clause. You should note that the FROM clause is case-insensitive. If the WHERE clause is omitted, all the Rows of a target Collection or TimeSeries are selected.</p>
+
+<p>You can place EXPLAIN or EXPLAIN ANALYZE before a SELECT statement to obtain execution plan information and analysis information on execution results in relation to the SELECT statement. See the later section for more information.</p>
+
+<p>Unlike SQL, you cannot extract only specific Column(s) except for aggregation operations. Additionally, clauses corresponding to the following are not available.</p>
+
+<ul>
+<li>GROUP BY</li>
+<li>HAVING</li>
+<li>DISTINCT</li>
+<li>FOR UPDATE ※can be carried out with the API</li>
+<li>JOIN</li>
+</ul>
+
+<p>ASCII characters in the keywords of the basic syntax and the names of functions, operators and enumeration constants described in the later sections can be written in lower case.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/technical-architecture-and-guide/3-2_key-container-model/" title="Key Container Model"> <i class="fa fa-chevron-left"></i><label>Key Container Model</label></a>
+    <a class="nav nav-next" href="/technical-architecture-and-guide/3-4_crud-operations/" title="CRUD Operations" style="margin-right: 0px;"><label>CRUD Operations</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +651,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/technical%20architecture%20and%20guide/3-3_tql.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

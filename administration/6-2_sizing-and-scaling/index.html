@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>Sizing and Scaling :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/administration/6-2_sizing-and-scaling/">
     
       <header>
   <div class="logo">
@@ -421,10 +421,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/administration/" class="dd-item haschildren
+    <li data-nav-id="/administration/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/administration/"><b>6. </b>Administration</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/administration/"><b>6. </b>Administration</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/administration/6-1_supported-os-platforms-and-system-requirements/" class="dd-item">
@@ -434,7 +435,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/administration/6-2_sizing-and-scaling/" class="dd-item">
+      <li data-nav-id="/administration/6-2_sizing-and-scaling/" class="dd-item active">
         <div>
           <a href="/administration/6-2_sizing-and-scaling/">
             Sizing and Scaling
@@ -546,7 +547,16 @@
     <option value="/sample-applications/" >
    Sample Application</option>
     <option value="/administration/" >
-   Administration</option>
+   Administration</option> 
+      <option value="/administration/6-1_supported-os-platforms-and-system-requirements/" >- Supported OS, Platforms and System Requirements</option>
+      <option value="/administration/6-2_sizing-and-scaling/"  selected>- Sizing and Scaling</option>
+      <option value="/administration/6-3_installing/" >- Installing</option>
+      <option value="/administration/6-4_upgrading-the-editions/" >- Upgrading Editions</option>
+      <option value="/administration/6-5_migration-from-other-databases/" >- Migration from Other Databases</option>
+      <option value="/administration/6-6_cluster-administration-operations/" >- Cluster Administration &amp; Operations</option>
+      <option value="/administration/6-7_monitoring-troubleshooting/" >- Monitoring &amp; Troubleshooting</option>
+      <option value="/administration/6-8_tuning/" >- Tuning</option>
+  
     <option value="/drivers-and-integrators/" >
    Drivers &amp; Integrators</option>
 
@@ -571,33 +581,76 @@
       </div>
     
 
+    <h1>Sizing and Scaling</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>GridDB is a scale-out database that unlike a conventional DB, careful system design and sizing is not required in order to achieve non-stop operation. However, the following points should be considered as guidelines in the initial system design.</p>
+
+<ul>
+<li>Memory usage</li>
+<li>Number of nodes in a cluster</li>
+<li>Disk usage</li>
+</ul>
+
+<p>The estimation method is explained in sequence below.</p>
+
+<p>Functions to increase the capacity by using external storage devices such as SSDs etc. have not been considered in calculating the memory size below. Please check with our service desk for estimation if these functions are used.</p>
+
+<h3 id="total-memory-usage">Total memory usage</h3>
+
+<p>Predict the amount of data to be stored in the container and then estimate the memory usage.</p>
+
+<p>First, predict the amount of data to be stored in the application. Estimate the following:</p>
+
+<ul>
+<li>Data size of row</li>
+<li>Number of rows to be registered</li>
+</ul>
+
+<p>Next, estimate the memory required to store those estimated data.</p>
+
+<p>Memory capacity used = row data size × no. of registered rows ÷ 0.75 + 8 × no. of registered rows × (assigned index number + 2) ÷ 0.66 (byte)</p>
+
+<p>Perform a similar estimation for all collections created and used in the application. The total sum becomes the amount of memory required in the GridDB cluster.</p>
+
+<ul>
+<li>Total memory usage = the sum of memory usage in all collections</li>
+</ul>
+
+<p>However, please consider this number as the minimum requirement, as the memory usage also depends on update frequency.</p>
+
+<h3 id="no-of-nodes-constituting-a-cluster">No. of Nodes Constituting a Cluster</h3>
+
+<p>Estimate the required no. of nodes used in GridDB. In the example below, it is assumed that one node is executed in one machine.</p>
+
+<p>First, make an assumption of the memory required per machine.</p>
+
+<ul>
+<li>Memory size of machine</li>
+</ul>
+
+<p>In addition, make an assumption of the no. of replicas to create. The no. of replicas is given as a GridDB configuration value.</p>
+
+<ul>
+<li>No. of replicas</li>
+</ul>
+
+<p>Default no. of replicas is 2.</p>
+
+<p>No. of nodes = (Total memory usage ÷ machine memory size) × no. of replicas (units)</p>
+
+<p>However, please consider this as the minimum requirement as it is preferable to have a greater number of spare units to take into account the load distribution and availability improvement.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/administration/6-1_supported-os-platforms-and-system-requirements/" title="Supported OS, Platforms and System Requirements"> <i class="fa fa-chevron-left"></i><label>Supported OS, Platforms and System Requirements</label></a>
+    <a class="nav nav-next" href="/administration/6-3_installing/" title="Installing" style="margin-right: 0px;"><label>Installing</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +666,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/administration/6-2_sizing-and-scaling.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

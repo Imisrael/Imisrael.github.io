@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>Key Container Model :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/technical-architecture-and-guide/3-2_key-container-model/">
     
       <header>
   <div class="logo">
@@ -151,10 +151,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/technical-architecture-and-guide/" class="dd-item haschildren
+    <li data-nav-id="/technical-architecture-and-guide/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/technical-architecture-and-guide/"><b>3. </b>Technical Architecture and Guide</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/technical-architecture-and-guide/"><b>3. </b>Technical Architecture and Guide</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/technical-architecture-and-guide/3-1_griddb-technical-overview/" class="dd-item">
@@ -164,7 +165,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/technical-architecture-and-guide/3-2_key-container-model/" class="dd-item">
+      <li data-nav-id="/technical-architecture-and-guide/3-2_key-container-model/" class="dd-item active">
         <div>
           <a href="/technical-architecture-and-guide/3-2_key-container-model/">
             Key Container Model
@@ -540,7 +541,17 @@
     <option value="/getting-started/" >
    Getting Started</option>
     <option value="/technical-architecture-and-guide/" >
-   Technical Architecture and Guide</option>
+   Technical Architecture and Guide</option> 
+      <option value="/technical-architecture-and-guide/3-1_griddb-technical-overview/" >- GridDB Technical Overview</option>
+      <option value="/technical-architecture-and-guide/3-2_key-container-model/"  selected>- Key Container Model</option>
+      <option value="/technical-architecture-and-guide/3-3_tql/" >- TQL</option>
+      <option value="/technical-architecture-and-guide/3-4_crud-operations/" >- CRUD Operations</option>
+      <option value="/technical-architecture-and-guide/3-5_transactions-and-acid/" >- Transactions and ACID</option>
+      <option value="/technical-architecture-and-guide/3-6_indexes/" >- Indexes</option>
+      <option value="/technical-architecture-and-guide/3-7_storage-architecture/" >- Storage Architecture</option>
+      <option value="/technical-architecture-and-guide/3-8_replication-distribution/" >- Replication &amp; Distribution</option>
+      <option value="/technical-architecture-and-guide/3-9_sharding/" >- Sharding</option>
+  
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
@@ -571,33 +582,103 @@
       </div>
     
 
+    <h1>Key Container Model</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>GridDB data adopts a Key-Container data model that is expanded from a Key-Value model. Data is stored in a &ldquo;container&rdquo;, which acts similarly to a RDB table. In fact, a container can be considered a RDB table for easier understanding and to help conceptualizing. When accessing data in GridDB, the model allows data to be short-listed with a key thanks to its Key-Value database structure, allowing processing to be carried out at the highest speed. A design that prepares a container serving as a key is required to support the entity under management.</p>
+
+<h3 id="3-2-1-collection-container">3.2.1 Collection Container</h3>
+
+<p>A type of container storing and managing ROWS. A ROW can have a key, but a key is not mandatory. A key can be assigned to a single string or integer (INTEGER or LONG type only), or time-type data. The data housed in this container is typically thought of as more &lsquo;traditional&rsquo; (ie. STRING, BOOLEAN, ARRAY, etc). An example of both calling the data and how it is viewed can be seen below</p>
+
+<p><strong>List.1 Data retrieving process</strong> (WeatherStationLogic.java)</p>
+
+<p>package sample;</p>
+
+<p>import com.toshiba.mwcloud.gs.Collection;
+import com.toshiba.mwcloud.gs.GSException;
+import com.toshiba.mwcloud.gs.GridStore;</p>
+
+<p>import sample.logic.GridDBLogic;
+import sample.logic.WeatherStationLogic;
+import sample.row.WeatherStation;</p>
+
+<p>public class CollectionDeleteRow {</p>
+
+<pre><code>public static void main(String\[\] args) throws GSException {
+    GridStore store = null;
+    try {
+        WeatherStationLogic wsLogic = new WeatherStationLogic();
+
+        // Create Connection
+        store = wsLogic.createGridStore();
+
+        // Get Collection
+        Collection weatherStationCol =
+                store.getCollection(&quot;weather_station&quot;, WeatherStation.class); 
+</code></pre>
+
+<p><strong>List.2 Call data retrieving operation</strong>(CollectionRetrieve.java)</p>
+
+<p>try {
+    System.out.println(&ldquo;ID \tName \t \t \tLongitude \tLatitude \tCamera&rdquo;);
+    for (int i=0; i &lt; WeatherStationLogic.JP_PREFECTURE; i ++) {
+        // Retrieve row by key
+        WeatherStation weatherStation=weatherStationCol.get (String.valueOf (i + 1));
+        System.out.println (String.format(&ldquo;% - 3s \t% -20s \t% -10s \t% -10s \t% -5s&rdquo;,
+        weatherStation.id, weatherStation.name, weatherStation.latitude,
+        weatherStation.longitude, weatherStation.hasCamera));
+    }
+} Finally {
+    // Close Connection
+    weatherStationCol.close ();
+}</p>
+
+<p>Execution results are as follows.</p>
+
+<p><strong>List.3 data acquisition result</strong></p>
+
+<p>ID  Name            Longitude   Latitude    Camera
+1   Hokkaido-Sapporo    43.06417    141.34694   true
+2   Aomori-Aomori       40.82444    140.74      false
+3   Iwate-Morioka       39.70361    141.1525    true
+4   Miyagi-Sendai       38.26889    140.87194   false
+5   Akita-Akita         39.71861    140.1025    true
+(Snip)</p>
+
+<p><img src="img/containers.png" alt="" /></p>
+
+<h3 id="3-2-2-timeseries-container">3.2.2 TimeSeries Container</h3>
+
+<p>A type of container storing and managing ROWS with a time-type key, provided with a special function to operate TimeSeries data. A key corresponds to the time of a TimeSeries row. Suitable for handling large volumes of TimeSeries data that is generated by sensors. Other values paired with the time of occurrence, space data (such as position information, etc.) can also be registered and space specific operations (space intersection) can also be carried out in a container. A variety of data can be handled as the system supports non-standard data such as array data, BLOB and other data as well. A unique compression function and a function to release data that has expired and so on are provided in a TimeSeries container, making it suitable for the management of data which is generated in large volumes.</p>
+
+<p>A small example of calling a TimeSeries container and viewing the information can be seen below</p>
+
+<p><strong>List.1 process of acquiring the specified time</strong> (TimeSeriesRetrieve.java)</p>
+
+<p>// Specify Time
+InstrumentLog log=logTs.get (format.parse(&ldquo;2016/07/02 12:00&rdquo;));
+System.out.println(&ldquo;get by Time&rdquo;);
+System.out.println (String.format(&ldquo;% s \ t% -20s \ t% -10s&rdquo;, log.timestamp, log.weatherStationId,
+log.temperture));</p>
+
+<p>Execution results are as follows.</p>
+
+<p><strong>List.2 specified time of acquisition results</strong></p>
+
+<p>get by Time
+Sat Jul 02 12:00:00 EDT 2016 weather_station_1 80.0</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/technical-architecture-and-guide/3-1_griddb-technical-overview/" title="GridDB Technical Overview"> <i class="fa fa-chevron-left"></i><label>GridDB Technical Overview</label></a>
+    <a class="nav nav-next" href="/technical-architecture-and-guide/3-3_tql/" title="TQL" style="margin-right: 0px;"><label>TQL</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +694,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/technical%20architecture%20and%20guide/3-2_key-container-model.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

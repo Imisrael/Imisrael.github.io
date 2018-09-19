@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-4_prepare-client/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -375,7 +377,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-4_prepare-client/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-4_prepare-client/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-4_prepare-client/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,189 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-4-preparation-environment-client">5.1.4 Preparation: Environment (client)</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This chapter shows the procedure to build an environment where you can build and execute GridDB Java applications. These instructions are specifically use Windows 10 (64 bit) as a development environment and CentOS 7.2 (64 bit) as an execution environment but can be adapted for other operating systems as well.</p>
+
+<h2 id="obtaining-the-files">Obtaining the files</h2>
+
+<p>First download the following the files to your build environment, the tested versions and filenames are listed in Table 1.</p>
+
+<p><strong>Table 1 file available to</strong></p>
+
+<p>Software</p>
+
+<p>Version</p>
+
+<p>File name</p>
+
+<p>Site to get</p>
+
+<p>Java(Java SE Development Kit) (Windows)</p>
+
+<p>8u102</p>
+
+<p>jdk-8u101-windows-x64.exe</p>
+
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8</a></p>
+
+<p>Java(Java SE Development Kit) (Linux)</p>
+
+<p>8u102</p>
+
+<p>jdk-8u101-linux-x64.rpm</p>
+
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8</a></p>
+
+<p>Eclipse(Eclipse IDE for Java Developers)</p>
+
+<p>Neon</p>
+
+<p>eclipse-java-neon-R-win32-x86_64.zip</p>
+
+<p><a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neonr">Eclipse IDE for Java Developers</a></p>
+
+<h2 id="construction-of-build-environment">Construction of Build Environment</h2>
+
+<h3 id="java-installation">Java Installation</h3>
+
+<p>Table 1 there run the Java installer (jdk-8u102-windows-x64.exe), and install it. If you do not want to change the setting, it will be installed in <code>C:\ Program Files \ Java \ jdk1.8.0_102</code>.</p>
+
+<h3 id="setting-of-environment-variable">Setting of environment variable</h3>
+
+<p>First set Java&rsquo;s path in the Windows environment variable registry.<br />
+<code>Control Panel &gt; system and security &gt; system &gt; Advanced System Settings and click</code> , <code>Open the properties</code> of the system.</p>
+
+<p><img src="img/prepare_client_01.png" alt="Figure 1 System Advanced" title="Figure 1 System Advanced Settings" /><br />
+<strong>Figure 1 system Advanced</strong></p>
+
+<p>Click on the <code>Advanced tab</code> of <code>environment variable (N) ...</code> button.</p>
+
+<p><img src="img/prepare_client_02.png" alt="Figure 2 environment variable" title="Figure 2 environment variable" /><br />
+<strong>Figure 2 environment variable</strong></p>
+
+<p>Add the following to the environment variable to the system environment variables:</p>
+
+<ul>
+<li>Variable name: <code>JAVA_HOME</code></li>
+<li>Variable value: <code>C:\Program Files\Java\jdk1.8.0_102</code></li>
+</ul>
+
+<p><img src="img/prepare_client_03.png" alt="Figure 3 Java environment variable" title="Figure 3 Java environment variables" /><br />
+<strong>Figure 3 Java environment variable</strong></p>
+
+<p>In addition, the system path must be changed by first selecting &lsquo;Path&rsquo; in the list, clicking the &lsquo;Edit&rsquo; button, and then then inserting &ldquo;%JAVA_HOME%;&rdquo; to the beginning of the text field.</p>
+
+<p><img src="img/prepare_client_04.png" alt="Figure 4 Edit Path" title="Figure 4 Edit Path" /><br />
+<strong>Figure 4 Edit Path</strong></p>
+
+<p>After you change the above environment variables click the &lsquo;OK&rsquo; button.</p>
+
+<h3 id="install-eclipse">Install Eclipse</h3>
+
+<p>Follow Eclipse&rsquo;s instructions on how to run the Eclipse. No specific options are required for GridDB development.</p>
+
+<h3 id="import-of-source-code">Import of source code</h3>
+
+<p>After Eclipse is installed you can start it and create a workspace in any location.</p>
+
+<p>Download the source code for the first GridDB sample presented in GridDB Basics <a href="https://www.griddb.net/en/docs/documents/img/griddb-first.zip">here: griddb_first.zip</a>.</p>
+
+<p><img src="img/prepare_client_05.png" alt="Figure 5 Creating a work space" title="Figure 5 Creating a work space" /><br />
+<strong>Figure 5 Creatde a Workspace</strong></p>
+
+<p>In the Eclipse Package Exploer click the &lsquo;Import&rsquo; function:</p>
+
+<p><img src="img/prepare_client_06.png" alt="6 project import of" title="6 project import of" /><br />
+<strong>6 project import of</strong></p>
+
+<p>Select <code>General &gt; Existing Projects</code> and click the <code>Next</code> button.</p>
+
+<p><img src="img/prepare_client_07.png" alt="7 import method selection" title="7 import method selection" /><br />
+<strong>7 import method selection</strong></p>
+
+<p>Select the Zip file that you downloaded and click the <code>Finish</code> button.</p>
+
+<p><img src="img/prepare_client_08.png" alt="Figure 8 import method selection" title="8 import method selection" /><br />
+<strong>8 import method selection</strong></p>
+
+<h3 id="build-of-jar-file">Build of jar file</h3>
+
+<p>Use the Ant build.xml that will compile and generates a jar file.</p>
+
+<p>In the Package Explorer <code>build &gt; to select build.xml</code> to display the context menu, Click on the <code>1 Ant Build Run As &gt;</code>.</p>
+
+<p><img src="img/prepare_client_09.png" alt="9 build run" title="9 build run" /><br />
+<strong>9 build run</strong></p>
+
+<p>If the build is successful, jar file in the folder out is output. When you click the <code>Refresh</code> in the context menu of the Package Explorer, It shows.</p>
+
+<p><img src="img/prepare_client_10.png" alt="Figure 10 build success" title="Figure 10 build success" /><br />
+<strong>Figure 10 build success</strong></p>
+
+<h2 id="construction-of-execution-environment">Construction of execution environment</h2>
+
+<p>Then, in gshost that you created in the Environment (server)] (../ sample_app_prepare_server) Install the Java in order to run the sample application.</p>
+
+<h3 id="installation-of-java">Installation of Java</h3>
+
+<p>Place Table 1 of Java of rpm files (jdk-8u101-linux-x64.rpm) to any location on the gshost, Please install the following procedure.</p>
+
+<p>$ cd /tmp
+$ sudo rpm -Uvh /tmp/jdk-8u101-linux-x64.rpm
+$ sudo alternatives &ndash;config java</p>
+
+<p>There are 2 programs which provide &lsquo;java&rsquo;.</p>
+
+<p>  Selection Command
+-----------------------------------------------
+* + 1 /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.111-2.6.7.2.el7_2.x86_64/jre/bin/java
+   2 /usr/java/jdk1.8.0_102/jre/bin/java</p>
+
+<p>Press Enter to keep the current selection [+], or type the selection number you wish too use. In this case, we want to use <strong>2</strong> . Now java returns corresponds with the correct version.</p>
+
+<p>$ java -version
+java version &ldquo;1.8.0_102&rdquo;
+Java &trade; SE Runtime Environment (build 1.8.0_102-b14)
+Java HotSpot &trade; 64-Bit Server VM (build 25.102-b14, mixed mode)</p>
+
+<h3 id="placement-of-the-jar-file">Placement of the jar file</h3>
+
+<p>Create a sample directory and copy the files from the built Eclipse project as follows:</p>
+
+<p>sample /
+├─lib &hellip; Directly copy the lib directory of the Eclipse project.
+│ gridstore-conf.jar
+│ gridstore.jar
+│ opencsv-3.8.jar
+├─data &hellip; Directly copy the data directory in the Eclipse project.
+│ liveimage1.jpg
+│ liveimage2.jpg
+│ instrument_log.csv
+│ weather_station.csv
+└─ &lt; jar file &gt; &hellip; Copy the jar file from the output directory of the Eclipse project.</p>
+
+<p>You can run the sample application as follows:</p>
+
+<p>$ java -jar &lt; jar file &gt;</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-3_prepare-server/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-5_connection/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +797,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-4_prepare-client.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

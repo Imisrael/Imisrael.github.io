@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-11_collection-modify/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -277,7 +279,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-11_collection-modify/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-11_collection-modify/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-11_collection-modify/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,157 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-11-collection-modification">5.1.11 Collection Modification</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This section describes modifying the schema and the index of a GridDB collection.</p>
+
+<h2 id="schema-modification">Schema Modification</h2>
+
+<p>You can modify the schema by adding or deleting columns in a container after the container has been created.<br />
+This example demonstrates how to modify a newly created class with a new column in addition to <code>WeatherStation</code> class.<br />
+In addition, there is a way to modify the schema without creating a new class. Please refer to <a href="5-1-22_metainfo.php">Meta-information</a> for more details.</p>
+
+<p><strong>List.1 Modified Class</strong> (AnotherWeatherStation.java)</p>
+
+<p>package sample.row;</p>
+
+<p>import com.toshiba.mwcloud.gs.RowKey;</p>
+
+<p>public class AnotherWeatherStation {
+    / **
+    * ID of WeatherStation
+    * /
+    @RowKey
+    public String id;</p>
+
+<pre><code>/ \*\*
+\* Name of WeatherStation
+\* /
+public String name;
+
+/ \*\*
+\* Installation Latitude
+\* /
+public double latitude;
+
+/ \*\*
+\* Installation Longitude
+\* /
+public double longitude;
+
+/ \*\*
+\* Camera exists or not
+\* /
+public boolean hasCamera;
+
+/ \*\*
+\* Added field to WeatherStation
+\* /
+public String description;
+</code></pre>
+
+<p>}</p>
+
+<ul>
+<li>L.35: The newly added column.</li>
+</ul>
+
+<p>In the case creating a new collection, the <code>GridStore.putCollection(String, Class)</code> method is used, and the case modifying schema of column, the method with parameters of modification options <code>GridStore.putCollection(String, Class, boolean)</code> is used.</p>
+
+<p><strong>List.2 putCollection Method</strong></p>
+
+<p>&lt; K, R &gt; Collection &lt; K, R &gt; putCollection (java.lang.String name,
+                                    java.lang.Class &lt; R &gt; rowType,
+                                    boolean modifiable)
+                                    throws GSException</p>
+
+<p>You can modify a schema of an existing collection with setting the modifiable parameter to true.<br />
+However there are several conditions in order to modify. Please refer to <a href="../GridDB_API_Reference.html">GridDB API Reference</a> for more information.</p>
+
+<p><strong>List.3 Modifying the collection to be added a new column</strong> (CollectionModify.java)</p>
+
+<p>// Modify ano ther schema Collection
+Collection ano therWeatherStationCol =
+        store.putCollection(&ldquo;weather_station&rdquo;, AnotherWeatherStation.class, true );</p>
+
+<ul>
+<li>L.29-30: Set the <code>modifiable</code> paramater to true.
+
+<br /></li>
+</ul>
+
+<h2 id="add-an-index">Add an Index</h2>
+
+<p>You can set an Index to column in GridDB identically with general RDB.</p>
+
+<p><strong>List.4 Adding an Index</strong> (CollectionIndex.java)</p>
+
+<p>// Create Index
+weatherStationCol.createIndex(&ldquo;id&rdquo;);
+weatherStationCol.createIndex(&ldquo;name&rdquo;, IndexType.TREE);</p>
+
+<ul>
+<li>L.34: Add an index with specifying a column name id of the measuring instrument ID with <code>Container.createIndex(String)</code> method.</li>
+<li>L.35: Add ab index specifying a column name of the measuring instrument name with <code>Container.createIndex(String, IndexType)</code> method and set <code>IndexType.TREE</code> to the index type.</li>
+</ul>
+
+<p>Types of indexes are as follows:</p>
+
+<p><strong>Table.1 Index types</strong></p>
+
+<p>Index type</p>
+
+<p>Description</p>
+
+<p>HASH</p>
+
+<p>High speed retrieval, but not suitable for the operation of reading Row sequentially and impossible to set in the TimeSeries container.</p>
+
+<p>TREE</p>
+
+<p>It is suitable for a retrival specifying that whether the value is larger or smaller than a retrieval vulue to a retrieval range.</p>
+
+<p>There are index types which can not be specified owing to the container type or the column type. Please refer to <a href="../GridDB_API_Reference.html">GridDB API Reference</a> and <a href="../GridDB_TechnicalReference.pdf">GridDB Technical Reference</a> for more information.</p>
+
+<h2 id="delete-an-index">Delete an Index</h2>
+
+<p>Index set in the column can be deleted.</p>
+
+<p><strong>List.5 Delete an Index</strong> (CollectionIndex.java)</p>
+
+<p>// Drop Index
+weatherStationCol.dropIndex(&ldquo;id&rdquo;);
+weatherStationCol.dropIndex(&ldquo;name&rdquo;);</p>
+
+<ul>
+<li>L.38-39: Delete an Index with the <code>Container.dropIndex (String)</code> method specifying column name set to the index.
+
+<br /></li>
+</ul>
+
+<h2 id="complete-source-code">Complete source code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p>Download: <a href="img/collection-modify.zip">collection_modify.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-10_collection-delete/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-12_timeseries-register/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +765,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-11_collection-modify.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

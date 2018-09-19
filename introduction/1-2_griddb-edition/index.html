@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>GridDB Editions :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/introduction/1-2_griddb-edition/">
     
       <header>
   <div class="logo">
@@ -93,10 +93,11 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/introduction/" class="dd-item haschildren
+    <li data-nav-id="/introduction/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/introduction/"><b>1. </b>Introduction</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/introduction/"><b>1. </b>Introduction</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/introduction/1-1_what-is-griddb/" class="dd-item">
@@ -106,7 +107,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/introduction/1-2_griddb-edition/" class="dd-item">
+      <li data-nav-id="/introduction/1-2_griddb-edition/" class="dd-item active">
         <div>
           <a href="/introduction/1-2_griddb-edition/">
             GridDB Editions
@@ -536,7 +537,10 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/introduction/" >
-   Introduction</option>
+   Introduction</option> 
+      <option value="/introduction/1-1_what-is-griddb/" >- What is GridDB</option>
+      <option value="/introduction/1-2_griddb-edition/"  selected>- GridDB Editions</option>
+  
     <option value="/getting-started/" >
    Getting Started</option>
     <option value="/technical-architecture-and-guide/" >
@@ -571,33 +575,113 @@
       </div>
     
 
+    <h1>GridDB Editions</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>There are currently two distinct versions of GridDB available. The information below is designed to help distinguish between the editions and help users arrive to the correct choice for their situation.</p>
+
+<h5 id="griddb-community-edition-griddb-ce">GridDB Community Edition (GridDB CE)</h5>
+
+<p>GridDB CE is available under the AGPLv3 as a high-performant, open-source NoSQL database built with scalability and fault tolerance in-mind. This is the only edition of GridDB that is open-source.</p>
+
+<h5 id="griddb-standard-edition-griddb-se">GridDB Standard Edition (GridDB SE)</h5>
+
+<p>A high-performant <em>commerical</em> NoSQL database. Included with the commercial license are tools, features, and the software support needed for critical big data applications.</p>
+
+<p>Comparison of each edition are as follows:</p>
+
+<p> </p>
+
+<p>SOFTWARE SUPPORT</p>
+
+<p>Free Evaluation of SE does not include software support</p>
+
+<p>Maintenance Releases</p>
+
+<p>x</p>
+
+<p>Bug fixes/Patches</p>
+
+<p>x</p>
+
+<p>Updates</p>
+
+<p>x</p>
+
+<p>BASIC</p>
+
+<p>Distributed Data Management</p>
+
+<p>Transaction Management</p>
+
+<p>DATA TYPE SUPPORT</p>
+
+<p>Key-value data</p>
+
+<p>Time-series data</p>
+
+<p>Geometry data</p>
+
+<p>x</p>
+
+<p>QUERY LANGUAGE</p>
+
+<p>SQL Subset (TQL)</p>
+
+<p>SCALABILITY</p>
+
+<p>Offline expansion</p>
+
+<p>Online expansion</p>
+
+<p>x</p>
+
+<p>PERSISTENCY</p>
+
+<p>In-Memory and Disk</p>
+
+<p>API</p>
+
+<p>Java</p>
+
+<p>C</p>
+
+<p>ADMINISTRATIVE TOOL</p>
+
+<p>Offline backup</p>
+
+<p>Online backup</p>
+
+<p>x</p>
+
+<p>Export/import</p>
+
+<p>x</p>
+
+<p>Differential backup function</p>
+
+<p>x</p>
+
+<p>Management GUI</p>
+
+<p>x</p>
+
+<p>Status Acquisition</p>
+
+<p>License Types</p>
+
+<p>Subscription License: A license that can only be used during the contract period service</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/introduction/1-1_what-is-griddb/" title="What is GridDB"> <i class="fa fa-chevron-left"></i><label>What is GridDB</label></a>
+    <a class="nav nav-next" href="/getting-started/" title="Getting Started" style="margin-right: 0px;"><label>Getting Started</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +697,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/introduction/1-2_griddb-edition.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

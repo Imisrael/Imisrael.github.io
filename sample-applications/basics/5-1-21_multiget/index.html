@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-21_multiget/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -354,7 +356,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-21_multiget/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-21_multiget/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-21_multiget/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,127 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-21-multi-get">5.1.21 Multi-Get</h1>
+
+<h2 id="what-is-multi-get">What is Multi-Get</h2>
+
+<p>Note: The concept of Multi-Get is described in our <a href="/en/docs/GridDB_TechnicalReference.pdf">GridDB_TechnicalReference (Section 4.7.2)</a></p>
+
+<h2 id="create-the-acquisition-conditions">Create the acquisition conditions</h2>
+
+<p><strong>List.1 Create the acquisition conditions</strong>(MultiGet.java)</p>
+
+<p>private static Map<String, RowKeyPredicate<?>&gt; createMultiGetCondition(
+                Collection<String, WeatherStation> weatherStationCol)
+                throws GSException, ParseException {
+        SimpleDateFormat format = new SimpleDateFormat(&ldquo;yyyy/MM/dd HH:mm&rdquo;, Locale.US);</p>
+
+<pre><code>    // Create search condition of WeatherStation
+    RowKeyPredicate&lt;String&gt; wsRowKeys = RowKeyPredicate.create(String.class);
+
+    // Create multiget condition
+    Map&lt;String, RowKeyPredicate&lt;?&gt;&gt; containerPredicateMap = new HashMap&lt;&gt;();
+    for (int i = 0; i &lt; 2; i++) {
+            // Get WeatherStation
+            WeatherStation weatherStation = weatherStationCol.get(String.valueOf(i + 1));
+            wsRowKeys.add(weatherStation.id);
+
+            // Create search condition of InstrumentLog
+            RowKeyPredicate&lt;Date&gt; logRowKeys = RowKeyPredicate.create(Date.class);
+            // Set TimeSeries Rows Timestamp
+            logRowKeys.setStart(format.parse(&quot;2016/07/02 6:00&quot;));
+            logRowKeys.setFinish(format.parse(&quot;2016/07/02 12:00&quot;));
+            // Add ContainerName and RowKeyPredicate
+            String logContainerName = &quot;weather\_station\_&quot; + weatherStation.id;
+
+            // Put multiget condition
+            containerPredicateMap.put(logContainerName, logRowKeys);
+    }
+    // Put multiget condition
+    String wsContainerName = &quot;weather_station&quot;;
+    containerPredicateMap.put(wsContainerName, wsRowKeys);
+    return containerPredicateMap;
+</code></pre>
+
+<p>}</p>
+
+<h2 id="multi-get-execution">Multi-Get execution</h2>
+
+<p><strong>List.2 Multi-Get execution</strong>(MultiGet.java)</p>
+
+<p>// Create Connection
+store = gridLogic.createGridStore();</p>
+
+<p>// Get Collection
+Collection<String, WeatherStation> weatherStationCol =
+        store.getCollection(&ldquo;weather_station&rdquo;, WeatherStation.class);</p>
+
+<p>// Create MultiGet parameters
+Map<String, RowKeyPredicate<?>&gt; containerPredicateMap =
+        careteMultiGetCondition(weatherStationCol);</p>
+
+<p>// Get by multiget
+Map<String, List<Row>&gt; multiGetResults = store.multiGet(containerPredicateMap);</p>
+
+<h2 id="result-of-multi-get-execution">Result of Multi-Get execution</h2>
+
+<p><strong>List.3 Obtain of Multi-Get results</strong>(MultiGet.java)</p>
+
+<p>// Retrieve results
+for (Entry<String, List<Row>&gt; multiGetResult : multiGetResults.entrySet()) {
+    // Container Name
+    String containerName = multiGetResult.getKey();
+    System.out.println(containerName + &ldquo; ################&rdquo;);</p>
+
+<pre><code>if (&quot;weather_station&quot;.equals(containerName)) {
+    // Retrieve WeatherStation Rows
+    retieveWeatherStationRows(multiGetResult);
+} else {
+    // Retrieve InstrumentLog Rows
+    retrieveInstrumentLogRows(multiGetResult);
+}
+</code></pre>
+
+<p>}</p>
+
+<p><strong>List.4 Result of Multi-Get execution</strong></p>
+
+<p>weather_station_2 ################
+Timestamp                       WeatherStation ID       Temperature      Live Image
+Sat Jul 02 06:00:00 JST 2016    weather_station_2       70.0            None
+Sat Jul 02 09:00:00 JST 2016    weather_station_2       75.0            None
+Sat Jul 02 12:00:00 JST 2016    weather_station_2       80.0            None
+weather_station ################
+ID      Name                    Longitude               Latitude        Camera
+1       Hokkaido-Sapporo        43.06417                141.34694       true
+2       Aomori-Aomori           40.82444                140.74          true
+weather_station_1 ################
+Timestamp                       WeatherStation ID       Temperature      Live Image
+Sat Jul 02 06:00:00 JST 2016    weather_station_1       70.0            None
+Sat Jul 02 09:00:00 JST 2016    weather_station_1       75.0            None
+Sat Jul 02 12:00:00 JST 2016    weather_station_1       90.0            None</p>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p>Download:<a href="img/multi-get.zip">multi-get.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-20_multiquery/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-2_griddb-basics/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +735,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-21_multiget.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

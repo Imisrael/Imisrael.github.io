@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-7_container-create-drop/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -396,7 +398,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-7_container-create-drop/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-7_container-create-drop/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-7_container-create-drop/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,157 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-7-container-creation-and-deletion">5.1.7 Container Creation and Deletion</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This chapter describes how to create/delete GridDB containers.</p>
+
+<h2 id="collection-and-timeseries-container">Collection and Timeseries Container</h2>
+
+<p>There are 2 container types, a <strong>timeseries container</strong> and a <strong>collection</strong>.</p>
+
+<ul>
+<li>Timeseries container
+
+<ul>
+<li>A container that specializes for data whcih is consisted of the pair of time and value, such as sensor data.</li>
+<li>The TIMESTAMP data can be specified in a row key.</li>
+<li>It is possible to acquire the data in a specified period of time or to aggregate the data.</li>
+<li>Value can be linearly interpolated when register or retreive the data.</li>
+</ul></li>
+<li>Collection
+
+<ul>
+<li>Collection is a general purpose container.</li>
+<li>Collection does not have any functions related to timeseries data, however it can be used with any data type in a key and it can be used in the same way as the other key-value database.</li>
+</ul></li>
+</ul>
+
+<p>Here are some programming samples to create or delete each type of containers.</p>
+
+<h2 id="how-to-create-a-collection">How to create a Collection</h2>
+
+<p>Collection can be created as follows.</p>
+
+<p><strong>List.1 Creating a Collection</strong>(WeatherStationLogic.java)</p>
+
+<p>// Create Collection
+Collection<String, WeatherStation> weatherStationCol =
+        store.putCollection(&ldquo;weather_station&rdquo;, WeatherStation.class);
+return weatherStationCol;</p>
+
+<ul>
+<li>L.34-35: Use <code>GridStore.putCollection(String, Class)</code> method to create a Collection.<br />
+A container name should be specified to <code>String</code>, and <code>WeatherStation</code> class which can be created in chapter <a href="5-1-6_container-schema.php">Schema definition</a> should be set to <code>Class</code>.<br />
+A created Collection will obtained as an instance of <code>com.toshiba.mwcloud.gs.Collection</code> class.
+
+<br /></li>
+</ul>
+
+<p><strong>List.2 Releasing a Collection</strong>(CollectionCreate.java)</p>
+
+<p>} finally {
+    // Close Connection
+    weatherStationCol.close();
+}</p>
+
+<ul>
+<li>L.183: Use <code>Collection.close()</code> method to release associated resources by closing the created Collection.
+
+<br /></li>
+</ul>
+
+<h2 id="how-to-create-a-timeseries-container">How to create a Timeseries Container</h2>
+
+<p>Timeseries Container can be created as follows.</p>
+
+<p><strong>List.3 Creating a Timeseries Container</strong>(InstrumentLogLogic.java)</p>
+
+<p>for (int i = 0; i &lt; WeatherStationLogic.JP_PREFECTURE; i++) {
+    // Create TimeSeries Container
+    TimeSeries<InstrumentLog> ts =
+            store.putTimeSeries(&ldquo;weather_station_&rdquo; + (i + 1), InstrumentLog.class);</p>
+
+<pre><code>(snip)
+</code></pre>
+
+<p>}</p>
+
+<ul>
+<li>L.137-138: Use <code>GridStore.putTimeSeries(String, Class)</code> method to create a Timeseries Container.<br />
+A Timeseries container name should be specified to <code>String</code>, and <code>InstrumentLog</code> class which can be created in chapter <a href="5-1-6_container-schema.php">Schema definition</a> should be set to <code>Class</code>.<br />
+A created Timeseries Container will obtained as an instance of <code>com.toshiba.mwcloud.gs.TimeSeries</code> class.
+
+<br /></li>
+</ul>
+
+<p><strong>List.4 Releasing a Timeseries Container</strong>(InstrumentLogLogic.java)</p>
+
+<p>// Close TimeSeries Container
+ts.close();</p>
+
+<ul>
+<li>L.56: In the same manner as Collection, use <code>Collection.close()</code> method to release associated resources by closing the created Timeseries Container.
+
+<br /></li>
+</ul>
+
+<h2 id="how-to-delete-a-container">How to delete a Container</h2>
+
+<p><strong>List.5 Deleting Collection</strong>(WeatherStationLogic.java)</p>
+
+<p>public void dropCollection(GridStore store) throws GSException {
+    // Drop Collection
+    store.dropCollection(&ldquo;weather_station&rdquo;);
+}</p>
+
+<ul>
+<li>L.47: Use <code>GridStore.dropCollection(String)</code> method to delete a Collection.
+
+<br /></li>
+</ul>
+
+<p><strong>List.6 Deleting Timeseries Container</strong>(SampleTimeSeries.java)</p>
+
+<p>public void dropTimeSeries(GridStore store, String name) throws GSException {
+    // Drop TimeSeries Container
+    store.dropTimeSeries(name);
+}</p>
+
+<ul>
+<li>L.69: Use <code>GridStore.dropTimeSeries(String)</code> method to delete a Timeseries Container.</li>
+</ul>
+
+<hr />
+
+<p>This chapter provided how to create or delete 2 types of Container, a <strong>Collection</strong> and a <strong>Timeseries Container</strong>.<br />
+Container can be easily created or deleted by simply preparing a container name and a class that represents the rows.</p>
+
+<p>Here we describe only the static method of preparing a class that represents a row in advance, but there is a way to dynamically create a Container without providing a class.<br />
+Please refer to <a href="5-1-22_metainfo.php">Meta-information</a> for more details.</p>
+
+<h2 id="complete-source-code">Complete source code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p>Download: <a href="img/container-create-drop.zip">container-create-drop.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-6_container-schema/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-8_collection-register/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +765,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-7_container-create-drop.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

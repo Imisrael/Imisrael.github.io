@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-14_timeseries-delete/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -298,7 +300,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-14_timeseries-delete/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-14_timeseries-delete/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-14_timeseries-delete/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,74 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-14-timeseries-data-deletion">5.1.14 TimeSeries Data Deletion</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This section describes deleting data in a TimeSeries container.</p>
+
+<h2 id="data-deletion">Data deletion</h2>
+
+<p>To delete the data (row) in a TimeSeries container, specify the timestamp of the rows you want to delete.</p>
+
+<p><strong>List.1 Delete TimeSeries Data</strong> (TimeSeriesDeleteRow.java)</p>
+
+<p>SimpleDateFormat format = new SimpleDateFormat(&ldquo;yyyy/MM/dd HH:mm&rdquo;, Locale.US);</p>
+
+<p>String containerName = &ldquo;weather_station_1&rdquo;;
+// Get TimeSeries Container
+TimeSeries<InstrumentLog> logTs =
+        store.getTimeSeries(containerName, InstrumentLog.class);
+Date deleteTime = format.parse(&ldquo;2016/07/02 12:00&rdquo;);</p>
+
+<p>System.out.println(containerName + &ldquo; ################&rdquo;);
+System.out.println(&ldquo;Timestamp\t\t\tWeatherStation ID\tTemperture&rdquo;);</p>
+
+<p>// Delete the Instrument log of the specified time
+boolean deleteSuccessed = logTs.remove(deleteTime);
+System.out.println(&ldquo;Delete Result:&rdquo; + deleteSuccessed);</p>
+
+<p>InstrumentLog log = logTs.get(format.parse(&ldquo;2016/07/02 12:00&rdquo;));
+if (log == null) {
+    System.out.println(&ldquo;Deleted log at 2016/07/02 12:00&rdquo;);
+}</p>
+
+<ul>
+<li>L.41: Specify the timestamps of the data to remove using the <code>TimeSeries.remove(Date)</code> method. Here the time stamp is <code>2016/07/02 12:00</code>. If the deletion is successful, it will return is true.
+
+<br /></li>
+</ul>
+
+<p>Execution results are as follows.</p>
+
+<p><strong>List.2 Result</strong></p>
+
+<p>Delete Result: true
+Deleted log at 2016/07/02 12:00</p>
+
+<p>You can check that the specified data has been deleted.</p>
+
+<h2 id="complete-source-code">Complete source code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p>Download: <a href="img/timeseries-delete.zip">timeseries-delete.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-13_timeseries-retrieve/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-15_timeseries-modify/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +682,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-14_timeseries-delete.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>
