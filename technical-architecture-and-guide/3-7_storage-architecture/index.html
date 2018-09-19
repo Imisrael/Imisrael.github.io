@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>Storage Architecture :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/technical-architecture-and-guide/3-7_storage-architecture/">
     
       <header>
   <div class="logo">
@@ -151,10 +151,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/technical-architecture-and-guide/" class="dd-item haschildren
+    <li data-nav-id="/technical-architecture-and-guide/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/technical-architecture-and-guide/"><b>3. </b>Technical Architecture and Guide</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/technical-architecture-and-guide/"><b>3. </b>Technical Architecture and Guide</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/technical-architecture-and-guide/3-1_griddb-technical-overview/" class="dd-item">
@@ -199,7 +200,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/technical-architecture-and-guide/3-7_storage-architecture/" class="dd-item">
+      <li data-nav-id="/technical-architecture-and-guide/3-7_storage-architecture/" class="dd-item active">
         <div>
           <a href="/technical-architecture-and-guide/3-7_storage-architecture/">
             Storage Architecture
@@ -540,7 +541,17 @@
     <option value="/getting-started/" >
    Getting Started</option>
     <option value="/technical-architecture-and-guide/" >
-   Technical Architecture and Guide</option>
+   Technical Architecture and Guide</option> 
+      <option value="/technical-architecture-and-guide/3-1_griddb-technical-overview/" >- GridDB Technical Overview</option>
+      <option value="/technical-architecture-and-guide/3-2_key-container-model/" >- Key Container Model</option>
+      <option value="/technical-architecture-and-guide/3-3_tql/" >- TQL</option>
+      <option value="/technical-architecture-and-guide/3-4_crud-operations/" >- CRUD Operations</option>
+      <option value="/technical-architecture-and-guide/3-5_transactions-and-acid/" >- Transactions and ACID</option>
+      <option value="/technical-architecture-and-guide/3-6_indexes/" >- Indexes</option>
+      <option value="/technical-architecture-and-guide/3-7_storage-architecture/"  selected>- Storage Architecture</option>
+      <option value="/technical-architecture-and-guide/3-8_replication-distribution/" >- Replication &amp; Distribution</option>
+      <option value="/technical-architecture-and-guide/3-9_sharding/" >- Sharding</option>
+  
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
@@ -571,33 +582,64 @@
       </div>
     
 
+    <h1>Storage Architecture</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<h3 id="griddb-nodes">GridDB Nodes</h3>
+
+<p>GridDB is operated by clusters which are composed of multiple nodes. To access the database from an application system, the nodes have to be started up and the cluster has to be constituted (cluster service is executed). A cluster is formed and cluster service is started when a number of nodes specified by the user joins the cluster. Cluster service will not be started and access from the application will not be possible until all nodes constituting a cluster have joined the cluster. A cluster needs to be composed even when operating with 1 node only. In this case, the number of nodes constituting a cluster is 1. A composition that operates a single node is known as a single composition.</p>
+
+<p>Cluster names are used to separate multiple clusters so that the correct clusters (using the intended nodes) can be composed using multiple GridDB nodes on a network. Multiple GridDB clusters can be composed in the same network. A cluster is composed of nodes with the same cluster name, number of nodes constituting a cluster, and with the same multi-cast address setting. When composing a cluster, the parameters need to be specified as well in addition to setting the cluster name in the cluster definition file which is a definition file saved for each node constituting a cluster.</p>
+
+<p>In GridDB, there is no SPOF (single point of failure) because the clusters are constantly duplicating data (hereinafter known as replicas). Replicas also allow data-processing to continue, even when failure occurs in any of the nodes constituting the cluster. Special operating procedures are not necessary as the system will also automatically perform re-arrangement of the data after a node failure occurs (autonomous data arrangement). When the data arranged in a failed node is restored from a replica, the data is re-arranged so that the set number of replicas is reached automatically.</p>
+
+<p>Duplex, triplex or multiplex replica can be set according to the availability requirements.</p>
+
+<p>Each node performs persistence of the data update information using a disk, and all registered and updated data up to that point in time can be restored without any data being lost even following failure across the entire cluster system.</p>
+
+<p>In addition, since the client also possesses cache information on the data arrangement and management, upon detecting a node failure, it will automatically perform a failover and data access can be continued using a replica.</p>
+
+<h3 id="data-perpetuation">Data perpetuation</h3>
+
+<p>Data registered or updated in a container or table is perpetuated in the disk or SSD, and protected from data loss when a node failure occurs. There are 2 types of transaction log process, one to synchronize data in a data update and write the updated data sequentially in a transaction log file, and the other is a checkpoint process to store updated data in the memory regularly in the database file on a block basis.</p>
+
+<p>To write to a transaction log, either one of the following settings can be made in the node definition file.</p>
+
+<ul>
+<li>0: SYNC</li>
+<li>An integer value of 1 or higher1: DELAYED_SYNC</li>
+</ul>
+
+<p>In the &lsquo;SYNC&rsquo; mode, log writing is carried out synchronously every time an update transaction is committed or aborted. In the &lsquo;DELAYED_SYNC&rsquo; mode, log writing during an update is carried out at a specified delay of several seconds regardless of the update timing. Default value is &lsquo;1 (DELAYED_SYNC 1 sec)&lsquo;.</p>
+
+<p>When &lsquo;SYNC&rsquo; is specified, although the possibility of losing the latest update details when a node failure occurs is lower, the performance is affected in systems that are updated frequently.</p>
+
+<p>On the other hand, if &lsquo;DELAYED_SYNC&rsquo; is specified, although the update performance improves, any update details that have not been written in the disk when a node failure occurs will be lost.</p>
+
+<p>If there are 2 or more replicas in a raster configuration, the possibility of losing the latest update details when a node failure occurs is lower even if the mode is set to &lsquo;DELAYED_SYNC&rsquo; as the other nodes contain replicas. Consider setting the mode to &lsquo;DELAYED_SYNC&rsquo; as well if the update frequency is high and performance is required. In a checkpoint, the update block is updated in the database file. A checkpoint process operates at the cycle set on a node basis. A checkpoint cycle is set by the parameters in the node definition file. Initial value is 1200 sec (20 minutes).</p>
+
+<p>By raising the checkpoint execution cycle figure, data perpetuation can be set to be carried out in a time band when there is relatively more time to do so e.g. by perpetuating data to a disk at night and so on. On the other hand, when the cycle is lengthened, the disadvantage is that the number of transaction log files that have to be rolled forward when a node is restarted outside the system process increases, thereby increasing the recovery time.</p>
+
+<p>Data that is updated in a checkpoint execution is pooled and maintained in a memory separate from the checkpoint writing block. Set checkpoint concurrent execution for the checkpoint to carry out the checkpoint quickly. If concurrent execution is set, concurrent processing is carried out until the number of transactions executed simultaneously is the same.</p>
+
+<p><img src="img/data%20pepetuation.png" alt="" /></p>
+
+<h3 id="in-memory-data-overflow">In-Memory Data Overflow</h3>
+
+<p>In GridDB, most of the data processing is handled by the machine&rsquo;s memory. When configuring the cluster, storeMemoryLimit must be set to some factor, though most typically it is most of the available memory (64GB, for example). All data loaded under that limit is kept in memory and flushed to disk as is needed.</p>
+
+<p>If your database begins to grow to a larger dataset than your previously set parameter storeMemoryLimit, GridDB will overflow data not likely to be used soon onto the disk. That disk can be either an SSD or an HDD, but SSDs will provide smaller drop-offs in speed should this process need to occur. This method of handling data ensures most transactions occur in-memory to ensure high performance throughout use.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/technical-architecture-and-guide/3-6_indexes/" title="Indexes"> <i class="fa fa-chevron-left"></i><label>Indexes</label></a>
+    <a class="nav nav-next" href="/technical-architecture-and-guide/3-8_replication-distribution/" title="Replication &amp; Distribution" style="margin-right: 0px;"><label>Replication &amp; Distribution</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +655,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/technical%20architecture%20and%20guide/3-7_storage-architecture.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

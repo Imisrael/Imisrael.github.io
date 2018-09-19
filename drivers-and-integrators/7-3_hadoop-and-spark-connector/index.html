@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>Hadoop and Spark Connector :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/drivers-and-integrators/7-3_hadoop-and-spark-connector/">
     
       <header>
   <div class="logo">
@@ -485,10 +485,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/drivers-and-integrators/" class="dd-item haschildren
+    <li data-nav-id="/drivers-and-integrators/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/drivers-and-integrators/"><b>7. </b>Drivers &amp; Integrators</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/drivers-and-integrators/"><b>7. </b>Drivers &amp; Integrators</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/drivers-and-integrators/7-1_jdbc-connector/" class="dd-item">
@@ -505,7 +506,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/drivers-and-integrators/7-3_hadoop-and-spark-connector/" class="dd-item">
+      <li data-nav-id="/drivers-and-integrators/7-3_hadoop-and-spark-connector/" class="dd-item active">
         <div>
           <a href="/drivers-and-integrators/7-3_hadoop-and-spark-connector/">
             Hadoop and Spark Connector
@@ -548,7 +549,12 @@
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
-   Drivers &amp; Integrators</option>
+   Drivers &amp; Integrators</option> 
+      <option value="/drivers-and-integrators/7-1_jdbc-connector/" >- JDBC Connector</option>
+      <option value="/drivers-and-integrators/7-2_odbc-connector/" >- ODBC Connector</option>
+      <option value="/drivers-and-integrators/7-3_hadoop-and-spark-connector/"  selected>- Hadoop and Spark Connector</option>
+      <option value="/drivers-and-integrators/7-4_grafana-connector/" >- </option>
+  
 
 
 
@@ -571,33 +577,261 @@
       </div>
     
 
+    <h1>Hadoop and Spark Connector</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<h3 id="overview">Overview</h3>
+
+<p>The Hadoop MapReduce GridDB connector is a Java library for using GridDB as an input source and output destination for Hadoop MapReduce jobs. This library allows the GridDB performance to be used directly by MapReduce jobs through in-memory processing.</p>
+
+<h4 id="operating-environment">Operating Environment</h4>
+
+<p>Building of the library and execution of the sample programs are checked in the environment below.</p>
+
+<p>OS:         CentOS6.7(x64)
+Java:       JDK 1.8.0_60
+Maven:      apache-maven-3.3.9
+Hadoop:     CDH5.7.1(YARN)</p>
+
+<h3 id="quickstart">QuickStart</h3>
+
+<h4 id="preparations">Preparations</h4>
+
+<p>Build a GridDB Java client and place the created gridstore.jar under the lib directory.</p>
+
+<h4 id="build">Build</h4>
+
+<p>Run the mvn command like the following: $ mvn package and create the following jar files.</p>
+
+<p>gs-hadoop-mapreduce-client/target/gs-hadoop-maprduce-client-1.0.0.jar
+gs-hadoop-mapreduce-examples/target/gs-hadoop-maprduce-examples-1.0.0.jar</p>
+
+<h4 id="running-the-sample-program">Running The Sample Program</h4>
+
+<p>An operating example to run the WordCount program using GridDB is shown below. GridDB and Hadoop (HDFS and YARN) need to be started in advance. Run the following in an environment in which these and hadoop commands can be used.</p>
+
+<p>$ cd gs-hadoop-mapreduce-examples
+$ ./exec-example.sh <br />
+&gt; &ndash;job wordcount <br />
+&gt; &ndash;define notificationAddress= <br />
+&gt; &ndash;define notificationPort= <br />
+&gt; &ndash;define clusterName= <br />
+&gt; &ndash;define user= <br />
+&gt; &ndash;define password= <br />
+&gt; pom.xml 2&gt; /dev/null | sort -r</p>
+
+<p>5        5
+   3        org.apache.hadoop
+   3        com.toshiba.mwcloud.gs.hadoop
+&hellip;</p>
+
+<p>The first number is the number of occurrences while the right side is a word in the file (pom.xml) specified as a processing target. See gs-hadoop-mapreduce-examples/README.md for details about the sample programs.</p>
+
+<h2 id="spark-connector">Spark Connector</h2>
+
+<p>The Spark Connector can be downloaded from our <a href="/en/downloads/">downloads page</a>.</p>
+
+<p>Full list of dependencies:</p>
+
+<ul>
+<li><strong>OS:</strong> CentOS6.7(x64)</li>
+<li><strong>Maven:</strong> apache-maven-3.3.9</li>
+<li><strong>Java:</strong> JDK 1.8.0_101</li>
+<li><strong>Apache Hadoop:</strong> Version 2.6.5</li>
+<li><strong>Apache Spark:</strong> Version 2.1.0</li>
+<li><strong>Scala:</strong> Version 2.11.8</li>
+<li><strong>GridDB server and Java client:</strong> 3.0 CE</li>
+<li><strong>GridDB connector for Apache Hadoop MapReduce:</strong> 1.0</li>
+</ul>
+
+<p>If beginning from scratch, I recommend ensuring all of these items are installed and configured. This tutorial also assumes that your Hadoop, Spark, and Connector are all installed in the <code>[INSTALL_FOLDER]</code> directory (I used <code>/opt</code>).</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Once verified, please proceed with the steps outlined below:</p>
+
+<p>We start this process off with adding the following environment variables to <code>.bashrc</code></p>
+
+<p>$ nano ~/.bashrc</p>
+
+<p>export JAVA_HOME=/usr/lib/jvm/[JDK folder]
+ export HADOOP_HOME=[INSTALL_FOLDER]/hadoop-2.6.5
+ export SPARK_HOME=[INSTALL_FOLDER]/spark-2.1.0-bin-hadoop2.6
+ export GRIDDB_SPARK=[INSTALL_FOLDER]/griddb_spark
+ export GRIDDB_SPARK_PROPERTIES=$GRIDDB_SPARK/gd-config.xml</p>
+
+<p>export PATH=$HADOOP_HOME/sbin:$HADOOP_HOME/bin:$SPARK_HOME/bin:$PATH</p>
+
+<p>export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+ export HADOOP_OPTS=&ldquo;$HADOOP_OPTS -Djava.library.path=$HADOOP_HOME/lib/native&rdquo;</p>
+
+<p>$ source ~/.bashrc</p>
+
+<p>Once those are added, modify the <code>gd-config.xml</code> file.</p>
+
+<p>$ cd $GRIDDB_SPARK
+$ nano gd-config.xml</p>
+
+<p>&lt;!-- GridDB properties &ndash;&gt;
+ <property>
+     <name>gs.user </name>
+     <value>[GridDB user] </value>
+ </property>
+ <property>
+     <name>gs.password </name>
+     <value>[GridDB password] </value>
+ </property>
+ <property>
+     <name>gs.cluster.name </name>
+     <value>[GridDB cluster name] </value>
+ </property>
+  &lt;!-- Define address and port for multicast method, leave it blank if using other method &ndash;&gt;
+ <property>
+     <name>gs.notification.address </name>
+     <value>[GridDB notification address(default is 239.0.0.1)] </value>
+ </property>
+ <property>
+     <name>gs.notification.port </name>
+     <value>[GridDB notification port(default is 31999)] </value>
+ </property></p>
+
+<h3 id="build-the-connector-an-example">Build The Connector + An Example</h3>
+
+<p>Next up, refer to this <a href="https://github.com/griddb/griddb_spark/blob/master/Configuration.md">configuration</a> page for a quick definition of each of the GridDB properties.</p>
+
+<p>To build a GridDB Java client and a GridDB connector for Hadoop MapReduce, place the following files under the <code>$GRIDDB_SPARK/gs-spark-datasource/lib</code> directory.</p>
+
+<p>gridstore.jar
+gs-hadoop-mapreduce-client-1.0.0.jar</p>
+
+<p>(Note: these <code>.jar</code> files should have been created when you built your GridDB client and the GridDB Mapreduce Connector. You can find <code>gridstore.jar</code> in <code>/usr/griddb-X.X.X/bin</code>, for example)</p>
+
+<p>Once that&rsquo;s complete, add the SPARK_CLASSPATH to &ldquo;spark-env.sh&rdquo;</p>
+
+<p>$ cd $SPARK_HOME
+$ nano conf/spark-env.sh</p>
+
+<p>SPARK_CLASSPATH=.:$GRIDDB_SPARK/gs-spark-datasource/target/gs-spark-datasource.jar:$GRIDDB_SPARK/gs-spark-datasource/lib/gridstore.jar:$GRIDDB_SPARK/gs-spark-datasource/lib/gs-hadoop-mapreduce-client-1.0.0.jar</p>
+
+<p>Now that we&rsquo;ve got the prerequisites out of the way, we can continue on to build the connector and an example to ensure everything is working properly.</p>
+
+<p>To begin, we will need to edit our <code>Init.java</code> file to add the correct authentication credientials.</p>
+
+<p>$ cd $SPARK_HOME/gs-spark-datasource-example/src/
+$ nano Init.java</p>
+
+<p>And add in your credentials:</p>
+
+<p>Properties props = new Properties();
+props.setProperty(&ldquo;notificationAddress&rdquo;, &ldquo;239.0.0.1&rdquo;);
+props.setProperty(&ldquo;notificationPort&rdquo;, &ldquo;31999&rdquo;);
+props.setProperty(&ldquo;clusterName&rdquo;, &ldquo;Spark-Cluster&rdquo;);
+props.setProperty(&ldquo;user&rdquo;, &ldquo;admin&rdquo;);
+props.setProperty(&ldquo;password&rdquo;, &ldquo;hunter2&rdquo;);
+GridStore store = GridStoreFactory.getInstance().getGridStore(props);</p>
+
+<p>And now we can run the mvn command like so:</p>
+
+<p>$ cd $GRIDDB_SPARK
+$ mvn package</p>
+
+<p>which will create the following <code>.jar</code> files:</p>
+
+<p>gs-spark-datasource/target/gs-spark-datasource.jar
+gs-spark-datasource-example/target/example.jar</p>
+
+<p>Now proceed with running the example program. First start your GridDB cluster. And then:</p>
+
+<p>Put some data into the server with the GridDB Java client</p>
+
+<p>$ cd $GRIDDB_SPARK
+$ java -cp ./gs-spark-datasource-example/target/example.jar:gs-spark-datasource/lib/gridstore.jar Init</p>
+
+<h2 id="queries">Queries</h2>
+
+<p>Now you can run queries with your GridDB connector for Spark:</p>
+
+<p>$ spark-submit &ndash;class Query ./gs-spark-datasource-example/target/example.jar</p>
+
+<p>We will go over some brief examples of Apache Spark&rsquo;s API. Examples are pulled from the <a href="https://spark.apache.org/examples.html">official page</a>.</p>
+
+<p>Spark&rsquo;s defining feature is its RDD (Resilient Distributed Datasets) and the accompanying API. RDDs are immutable data structures that can be run in parallel on commodity hardware &ndash; essentially it is exactly what allows Spark to run its queries in parallel and outperform MapReduce. Here&rsquo;s a very basic example; it will showcase how to build an RDD of the numbers 1 - 5</p>
+
+<p>List data = Arrays.asList(1, 2, 3, 4, 5);
+JavaRDD distData = sc.parallelize(data);</p>
+
+<p>With this, you can now run that small array in parallel. Pretty cool, huh?</p>
+
+<h4 id="command-line-query">Command Line Query</h4>
+
+<p>A &ldquo;must-run&rdquo; query in the Big Data scene is running a word count, so here&rsquo;s what it looks like on Spark. For this example, let&rsquo;s try using the shell (example taken from: <a href="https://www.dezyre.com/apache-spark-tutorial/spark-tutorial">here</a>). To run this, please be sure you place a text file <code>input.txt</code> into your <code>$GRIDDB_SPARK</code> directory. Fill it with whatever text you like; I used the opening chapter of <em>Moby Dick</em> . Now fire up the spark shell:</p>
+
+<p>$ spark-shell</p>
+
+<p><a href="https://griddb.net/en/wp-content/uploads/2017/08/Screenshot_7.png"><img src="https://griddb.net/en/wp-content/uploads/2017/08/Screenshot_7.png" alt="" /></a></p>
+
+<p>scala&gt; val inputfile = sc.textFile (&ldquo;input.txt&rdquo;)
+inputfile: org.apache.spark.rdd.RDD[String] = input.txt MapPartitionsRDD[1] at textFile at :24</p>
+
+<p>scala&gt; val counts = inputfile.flatMap (line =&gt; line.split (&rdquo; &ldquo; )).map (word =&gt; (word, 1)).reduceByKey(<em>+</em>)
+counts: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[4] at reduceByKey at :26</p>
+
+<p>scala&gt; counts.saveAsTextFile (&ldquo;output&rdquo;)</p>
+
+<p>And now if you head back into <code>$GRIDDB_SPARK</code>, you should find the <code>output</code> dir. Now just run a simple <code>cat</code> on the file in there to retrieve the word count results of your text file.</p>
+
+<p>$ cd $GRIDDB_SPARK
+$ cd output
+$ cat part-00000
+(Ah!,1)
+(Let,1)
+(dreamiest,,1)
+(dotings,1)
+(cooled,1)
+(spar,1)
+(previous,2)
+(street,,1)
+(old,6)
+(left,,1)
+(order,2)
+(told,1)
+(marvellous,,1)
+(Now,,1)
+(virtue,1)
+(Take,1)</p>
+
+<h4 id="ts-query">TS Query</h4>
+
+<p>Of course, Spark is also capable of handling much more complex queries. Because GridDB ideally deals mostly in TimeSeries (TS) data, how about we take a look into a TS query? Here&rsquo;s a sample query taken from <a href="http://sryza.github.io/spark-timeseries/0.3.0/docs/users.html">here</a>:</p>
+
+<p>val tsRdd: TimeSeriesRDD = &hellip;</p>
+
+<p>// Find a sub-slice between two dates
+val zone = ZoneId.systemDefault()
+val subslice = tsRdd.slice(
+  ZonedDateTime.of(LocalDateTime.parse(&ldquo;2015-04-10T00:00:00&rdquo;), zone)
+  ZonedDateTime.of(LocalDateTime.parse(&ldquo;2015-04-14T00:00:00&rdquo;), zone))</p>
+
+<p>// Fill in missing values based on linear interpolation
+val filled = subslice.fill(&ldquo;linear&rdquo;)</p>
+
+<p>// Use an AR(1) model to remove serial correlations
+val residuals = filled.mapSeries(series =&gt; ar(series, 1).removeTimeDependentEffects(series))</p>
+
+<h3 id="license">License</h3>
+
+<p>The Hadoop MapReduce GridDB connector source license is Apache License, version 2.0.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/drivers-and-integrators/7-2_odbc-connector/" title="ODBC Connector"> <i class="fa fa-chevron-left"></i><label>ODBC Connector</label></a>
+    <a class="nav nav-next" href="/drivers-and-integrators/7-4_grafana-connector/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +847,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/drivers%20and%20integrators/7-3_hadoop-and-spark-connector.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

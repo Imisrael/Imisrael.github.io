@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-2_griddb-basics/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -361,7 +363,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-2_griddb-basics/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-2_griddb-basics/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-2_griddb-basics/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,312 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-2-griddb-basics">5.1.2 GridDB Basics</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>We will introduce a series of basic operations in this chapter to help better understand the overall of GridDB API. It should be noted that not all of specification information about specific GridDB API&rsquo;s will be introduced. Please refer to the individual chapter for further details. In addition, this chapter uses the data described in the <a href="5-1-1_introduction.php">Introduction</a>.</p>
+
+<h2 id="application-workflow">Application Workflow</h2>
+
+<p>The basic workflow of a GridDB application is as follows:</p>
+
+<ol>
+<li><a href="#connection">Connect</a>
+
+<ul>
+<li>Open a connection from the client program to the GridDB server.</li>
+</ul></li>
+<li><a href="#container_create">Create a container</a>
+
+<ul>
+<li>Create a container to store the data in GridDB/</li>
+</ul></li>
+<li><a href="#collection_register">Register data</a>
+
+<ul>
+<li>Register the data in the container.</li>
+</ul></li>
+<li><a href="#collection_retrieve">Get the data</a>
+
+<ul>
+<li>Get the data from the container.</li>
+</ul></li>
+<li><a href="#close">Close</a>
+
+<ul>
+<li>Disconnect the client program from the server to free up resources.</li>
+</ul></li>
+</ol>
+
+<p>The flow of the process is shown below.</p>
+
+<p><img src="img/operation_sequence_en.png" alt="Figure 1 Basic Operation Sequence" title="Figure 1 Basic Operation Sequence" />Figure 1 GridDB basic operation sequence</p>
+
+<p>FirstGridDB in the figure refers to the client program. For more information on classes and each processing will be described below.</p>
+
+<h2 id="client-program">Client program</h2>
+
+<p>Let&rsquo;s take a look at the basic workflow of a GridDB application. Since the description of the individual parts in the process will be described later, we focus on the overall workflow of the program.</p>
+
+<p><strong>List.1 client program</strong> (FirstGridDB.java)</p>
+
+<p>package sample;</p>
+
+<p>import java.util.Properties;</p>
+
+<p>import com.toshiba.mwcloud.gs.Collection;
+import com.toshiba.mwcloud.gs.GSException;
+import com.toshiba.mwcloud.gs.GridStore;
+import com.toshiba.mwcloud.gs.GridStoreFactory;</p>
+
+<p>import sample.row.WeatherStation;</p>
+
+<p>public class FirstGridDB {</p>
+
+<pre><code>    public static void main(String\[\] args) throws GSException {
+            // Set the Connection parameter for GridDB
+            Properties props = new Properties();
+            props.setProperty(&quot;host&quot;, &quot;127.0.0.1&quot;);
+            props.setProperty(&quot;port&quot;, &quot;10001&quot;);
+            props.setProperty(&quot;clusterName&quot;, &quot;GSCLUSTER&quot;);
+            props.setProperty(&quot;database&quot;, &quot;public&quot;);
+            props.setProperty(&quot;user&quot;, &quot;admin&quot;);
+            props.setProperty(&quot;password&quot;, &quot;admin&quot;);
+            GridStore store = GridStoreFactory.getInstance().getGridStore(props);
+
+            // Create Collection
+            Collection weatherStationCol =
+                            store.putCollection(&quot;weather_station&quot;, WeatherStation.class);
+
+            // Set the value to Row data
+            WeatherStation weatherStation1 = new WeatherStation();
+            weatherStation1.id = &quot;1&quot;;
+            weatherStation1.name = &quot;WeatherStation 01&quot;;
+            weatherStation1.latitude = 35.68944;
+            weatherStation1.longitude = 139.69167;
+            weatherStation1.hasCamera = true;
+
+            WeatherStation weatherStation2 = new WeatherStation();
+            weatherStation2.id = &quot;2&quot;;
+            weatherStation2.name = &quot;WeatherStation 02&quot;;
+            weatherStation2.latitude = 35.02139;
+            weatherStation2.longitude = 135.75556;
+            weatherStation2.hasCamera = false;
+
+            // Register Collection
+            weatherStationCol.put(weatherStation1);
+            weatherStationCol.put(weatherStation2);
+
+            // Retrieve Collection
+            System.out.println(&quot;get by key&quot;);
+            System.out.println(&quot;ID\\tName\\t\\t\\tLongitude\\tLatitude\\tCamera&quot;);
+            weatherStationCol = store.getCollection(&quot;weather_station&quot;, WeatherStation.class);
+
+            for (int i = 0; i &lt; 2; i++) {
+                    WeatherStation weatherStation = weatherStationCol.get(String.valueOf(i + 1));
+                    System.out.println(String.format(&quot;%-3s\\t%-20s\\t%-10s\\t%-10s\\t%-5s&quot;, weatherStation.id,
+                                    weatherStation.name, weatherStation.latitude, weatherStation.longitude,
+                                    weatherStation.hasCamera));
+            }
+
+            // Close Connection
+            store.close();
+    }
+</code></pre>
+
+<p>}</p>
+
+<h3 id="1-connection">1. Connection</h3>
+
+<p>Let&rsquo;s connect to the GridDB.</p>
+
+<p><strong>List.2 connection process</strong> (FirstGridDB.java)</p>
+
+<p>// Set the Connection parameter for GridDB
+Properties props = new Properties ();
+props.setProperty(&ldquo;host&rdquo;, &ldquo;127.0.0.1&rdquo;);
+props.setProperty(&ldquo;port&rdquo;, &ldquo;10001&rdquo;);
+props.setProperty(&ldquo;clusterName&rdquo;, &ldquo;GSCLUSTER&rdquo;);
+props.setProperty(&ldquo;database&rdquo;, &ldquo;public&rdquo;);
+props.setProperty(&ldquo;user&rdquo;, &ldquo;admin&rdquo;);
+props.setProperty(&ldquo;password&rdquo;, &ldquo;admin&rdquo;);
+GridStore store = GridStoreFactory.getInstance().getGridStore(props);</p>
+
+<ul>
+<li>L.16-22: Set the connection poperties.</li>
+<li>L.23: From a GridStoreFactory instance, get a store object that will be later used to specify the connection information.</li>
+</ul>
+
+<p>For more information and further details about connecting to GridDB, please see the [Connection chapter] (../sample_app_prepare_connection).</p>
+
+<h3 id="2-creating-a-container">2. Creating a container</h3>
+
+<p>Containers can be made easily by defining the data as a class. It is possible to specify the data type dynamically in the program as well. For more information is available in the <a href="5-1-7_container-create-drop.php">Container Create/Delete</a> and also the <a href="5-1-22_metainfo.php">meta-information</a> chapters.</p>
+
+<p><strong>List.3 measuring instrument class</strong> (WeatherStation.java)</p>
+
+<p>package sample.row;</p>
+
+<p>import com.toshiba.mwcloud.gs.RowKey;</p>
+
+<p>/**
+ * Class that represents the definition of the schema.
+ */
+public class WeatherStation {
+    /**
+     * ID of WeatherStation
+     */
+    @RowKey
+    public String id;</p>
+
+<pre><code>/\*\*
+ \* Name of WeatherStation
+ */
+public String name;
+
+/\*\*
+ \* Installation Latitude
+ */
+public double latitude;
+
+/\*\*
+ \* Installation Longitude
+ */
+public double longitude;
+
+/\*\*
+ \* Camera exists or not
+ */
+public boolean hasCamera;
+</code></pre>
+
+<p>}</p>
+
+<ul>
+<li>L.12-13: The <code>@RowKey</code> keyword specifies which variable becomes the key of the container.
+
+<br /></li>
+</ul>
+
+<p><strong>List.4 container creation process</strong> (FirstGridDB.java)</p>
+
+<p>// Create Collection
+Collection <String, WeatherStation> weatherStationCol =
+    store.putCollection(&ldquo;weather_station&rdquo;, WeatherStation.class);</p>
+
+<ul>
+<li>L.26-27: Creates the container with name and collection class type.
+
+<br /></li>
+</ul>
+
+<h3 id="3-register-the-data">3. Register the data</h3>
+
+<p>Ready access to GridDB in the above process is now ready. Let&rsquo;s try to register the data in GridDB.</p>
+
+<p><strong>List.5 data registration processing</strong> (FirstGridDB.java)</p>
+
+<p>// Set the value to Row data
+WeatherStation weatherStation1 = new WeatherStation();
+weatherStation1.id = &ldquo;1&rdquo;;
+weatherStation1.name = &ldquo;WeatherStation 01&rdquo;;
+weatherStation1.latitude = 35.68944;
+weatherStation1.longitude = 139.69167;
+weatherStation1.hasCamera = true;</p>
+
+<p>WeatherStation weatherStation2 = new WeatherStation();
+weatherStation2.id = &ldquo;2&rdquo;;
+weatherStation2.name = &ldquo;WeatherStation 02&rdquo;;
+weatherStation2.latitude = 35.02139;
+weatherStation2.longitude = 135.75556;
+weatherStation2.hasCamera = false;</p>
+
+<p>// Register Collection
+weatherStationCol.put(weatherStation1);
+weatherStationCol.put(weatherStation2);</p>
+
+<ul>
+<li>L.30-42: Set the values of the data to be registered.</li>
+<li>L.45-46: Pack data and register it in the container.</li>
+</ul>
+
+<p>For more information on data registration, please see that <a href="5-1-8_collection-register.php">chapter</a>. There is also further information about TimeSeries data registration in that <a href="5-1-12_timeseries-register.php">chapter</a>.</p>
+
+<h4 id="4-data-retrieval">4. Data Retrieval</h4>
+
+<p>Now the just registered data can be retrieved from the GridDB server.</p>
+
+<p><strong>List.6 data acquisition process</strong> (FirstGridDB.java)</p>
+
+<p>// Retrieve Collection
+System.out.println(&ldquo;get by key&rdquo;);
+System.out.println(&ldquo;ID\tName\t\t\tLongitude\tLatitude\tCamera&rdquo;);
+weatherStationCol = store.getCollection(&ldquo;weather_station&rdquo;, WeatherStation.class);</p>
+
+<p>for (int i = 0; i &lt; 2; i++) {
+    WeatherStation weatherStation = weatherStationCol.get(String.valueOf(i + 1));
+    System.out.println(String.format(&ldquo;%-3s\t%-20s\t%-10s\t%-10s\t%-5s&rdquo;, weatherStation.id,
+            weatherStation.name, weatherStation.latitude, weatherStation.longitude,
+            weatherStation.hasCamera));
+}</p>
+
+<ul>
+<li>L.51: First get the container by specifying the container name and class.</li>
+<li>L.54: Then get row data by specifying the key.</li>
+</ul>
+
+<p>Here is the output:</p>
+
+<p><strong>List.7 data acquisition result</strong></p>
+
+<p>get by key
+ID Name Longitude Latitude Camera
+1 WeatherStation 01 35.68944 139.69167 true
+2 WeatherStation 02 35.02139 135.75556 false</p>
+
+<p>Further details are explained in the <a href="5-1-9_collection-retrieve.php">Data retrieval chapter</a>. Also refer to <a href="5-1-13_timeseries-retrieve.php">TimeSeries data retrieval</a>.</p>
+
+<h4 id="5-closing-the-connection">5. Closing the Connection</h4>
+
+<p>Finally, cut the client program and GridDB.</p>
+
+<p><strong>List.8 data acquisition process</strong> (FirstGridDB.java)</p>
+
+<p>// Close Connection
+store.close ();</p>
+
+<ul>
+<li>L.61: Release the used resources on both the client and the server.
+
+<br /></li>
+</ul>
+
+<hr />
+
+<p>This chapter provided a brief overview of the GridDB workflow and should give an understanding of GridDB&rsquo;s basic functions. Image of the program to access the GridDB is I think I was able to understand. There are many more functions in the GridDB API that are not described here. Please refer to each specific for more details.</p>
+
+<h3 id="source-code">Source code</h3>
+
+<p>Complete source code used in this chapter can be downloaded from the following.</p>
+
+<p>Download: <a href="img/griddb-first.zip">griddb-first.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-21_multiget/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-3_prepare-server/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +920,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-2_griddb-basics.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

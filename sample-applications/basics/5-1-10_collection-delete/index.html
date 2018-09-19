@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-10_collection-delete/">
     
       <header>
   <div class="logo">
@@ -258,19 +258,21 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-10_collection-delete/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,80 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-10-data-deletion">5.1.10 Data Deletion</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This chapter covers deleting data from a GridDB collection.</p>
+
+<h2 id="delete-data">Delete data</h2>
+
+<p>Delete data from a collection with specifying a Row key.</p>
+
+<p><strong>List.1 Delete Data</strong> (CollectionDeleteRow.java)</p>
+
+<p>// Get Collection
+Collection weatherStationCol =
+        store.getCollection(&ldquo;weather_station&rdquo;, WeatherStation.class);</p>
+
+<p>// Delete Row
+boolean deleteSucceed = weatherStationCol.remove(&ldquo;1&rdquo;);
+System.out.println(&ldquo;Delete Succeed:&rdquo; + deleteSucceed);</p>
+
+<p>System.out.println(&ldquo;ID\tName\t\t\tLongitude\tLatitude\tCamera&rdquo;);
+for (int i = 0; i &lt; WeatherStationLogic.JP_PREFECTURE; i++) {
+    // Retrieve row by key
+    WeatherStation weatherStation = weatherStationCol.get(String.valueOf(i + 1));
+    if (weatherStation != null) {
+        System.out.println(String.format(&ldquo;%-3s\t%-20s\t%-10s\t%-10s\t%-5s&rdquo;,
+                weatherStation.id, weatherStation.name, weatherStation.latitude,
+                weatherStation.longitude, weatherStation.hasCamera));
+    } else {
+        System.out.println(String.format(&ldquo;ID:%s is not exist&rdquo;, (i + 1)));
+    }
+}</p>
+
+<ul>
+<li>L.28: Delete a Row with specifying the measuring instrument ID using <code>Container.remove(String)</code> method. If the deletion was sucesseful, the return value is True.</li>
+<li>L.32-42: Display the retrieved data after the deletion.
+
+<br /></li>
+</ul>
+
+<p>Execution results are as follows:</p>
+
+<p><strong>List.2 Result</strong></p>
+
+<p>Delete Succeed:true
+ID  Name        Longitude   Latitude    Camera
+ID: 1 does not exist
+2   Aomori-Aomori   40.82444    140.74      false
+3   Iwate-Morioka   39.70361    141.1525    true
+4   Miyagi-Sendai   38.26889    140.87194   false
+5   Akita-Akita 39.71861    140.1025    true
+(Snip)</p>
+
+<h2 id="complete-source-code">Complete Source Code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p>Download: <a href="img/collection-delete.zip">griddb-delete.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/" title="Basics"> <i class="fa fa-chevron-left"></i><label>Basics</label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-11_collection-modify/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +688,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-10_collection-delete.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

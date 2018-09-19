@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-19_multiput/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -333,7 +335,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-19_multiput/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-19_multiput/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-19_multiput/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,173 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-19-multi-put">5.1.19 Multi-Put</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This section describes Multi-put, a method of registering batches of data at one time. It is described further in the <a href="https://www.toshiba.co.jp/cl/pro/bigdatapf/lineup/GridDB/doc/GridDB_TechnicalReference.html#sec-4.7.2">GridDB Technical Reference</a>.</p>
+
+<h2 id="batch-processing">Batch Processing</h2>
+
+<p>When data is sent or received in a one by one manner it is possible to reach the upper limit of network bandwidth and throughput will peak, the following GridDB API&rsquo;s offer a solution to this problem with methods to work with large sets of data in an efficient manner:</p>
+
+<ul>
+<li>Multi-put</li>
+<li>Multi-get</li>
+<li>Multi-query
+
+<br /></li>
+</ul>
+
+<h2 id="create-row-for-registration">Create Row for registration</h2>
+
+<p><strong>List.1 Create Row of WeatherStation</strong>(MultiPut.java)</p>
+
+<p>private static Row createWeatherStationRow(GridStore store, String id, String name,
+        double latitude, double longitude, boolean hasCamera) throws GSException {
+    // Create WeatherStation Row
+    ContainerInfo wsContainerInfo = store.getContainerInfo(&ldquo;weather_station&rdquo;);
+    Row wsRow = store.createRow(wsContainerInfo);</p>
+
+<pre><code>// Set by specifying the index of the order of definition of the WeatherStation class
+// ID
+wsRow.setString(0, id);
+// Name
+wsRow.setString(1, name);
+// Latitude
+wsRow.setDouble(2, latitude);
+// Longitude
+wsRow.setDouble(3, longitude);
+// hasCamera
+wsRow.setBool(4, hasCamera);
+
+return wsRow;
+</code></pre>
+
+<p>}</p>
+
+<p><strong>List.2 Create Row of Intrument Log(MultiPut.java)</strong></p>
+
+<p>private static Row createIntrumentLogRow(GridStore store, Date timestamp, String weatherStationId,
+        float temperture, Blob liveImage)
+        throws GSException, ParseException, SerialException, SQLException {
+    // Create IntrumentLogRow Row
+    ContainerInfo logContainerInfo = store.getContainerInfo(&ldquo;weather_station_99&rdquo;);
+    Row logRow = store.createRow(logContainerInfo);</p>
+
+<pre><code>// Set by specifying the index of the order of definition of the InstrumentLog class
+// Timestamp
+logRow.setTimestamp(0, timestamp);
+// ID of WeatherStation
+logRow.setString(1, weatherStationId);
+// Temperture
+logRow.setFloat(2, temperture);
+// Live Image data
+logRow.setBlob(3, liveImage);
+
+return logRow;
+</code></pre>
+
+<p>}</p>
+
+<h2 id="multi-put-execution">Multi-Put execution</h2>
+
+<p><strong>List.3 Multi-Put execution</strong>(MultiPut.java)</p>
+
+<p>// Create Connection
+store = gridLogic.createGridStore();</p>
+
+<p>SimpleDateFormat format = new SimpleDateFormat(&ldquo;yyyy/MM/dd HH:mm&rdquo;, Locale.US);</p>
+
+<p>// multiput Rows
+Map<String, List<Row>&gt; containerRowsMap = new HashMap&lt;&gt;();</p>
+
+<p>// Create WeatherStation Row
+Row wsRow =
+        createWeatherStationRow(store, &ldquo;99&rdquo;, &ldquo;new WeaterStation&rdquo;, 45.26, 75.42, true);</p>
+
+<p>// Add multiput value
+List<Row> wsRowList = new ArrayList&lt;&gt;();
+wsRowList.add(wsRow);
+containerRowsMap.put(&ldquo;weather_station&rdquo;, wsRowList);</p>
+
+<p>// Create InstrumentLog Container and Row
+store.putTimeSeries(&ldquo;weather_station_99&rdquo;, InstrumentLog.class);</p>
+
+<p>// Create WeatherStation Row
+Row logRow = createIntrumentLogRow(store, format.parse(&ldquo;2016/07/03 12:00:00&rdquo;),
+        &ldquo;weather_station_99&rdquo;, 40.5f,
+        new SerialBlob(new byte[] {0x10, 0x11, 0x12, 0x13, 0x14, 0x15}));</p>
+
+<p>// Add multiput value
+List<Row> logRowList = new ArrayList&lt;&gt;();
+logRowList.add(logRow);
+containerRowsMap.put(&ldquo;weather_station_99&rdquo;, logRowList);</p>
+
+<p>// Register by multiput
+store.multiPut(containerRowsMap);</p>
+
+<h2 id="result-of-multi-get-execution">Result of Multi-Get execution</h2>
+
+<p><strong>List.4 Obtain of Multi-Put results(WeatherStation)</strong>(MultiPut.java)</p>
+
+<p>System.out.println(&ldquo;#####  WeatherStation:&ldquo;);
+System.out.println(&ldquo;ID\tName\t\t\tLongitude\tLatitude\tCamera&rdquo;);
+// Get WeatherStation
+Collection<String, WeatherStation> weatherStationCol =
+        store.getCollection(&ldquo;weather_station&rdquo;, WeatherStation.class);
+WeatherStation weatherStation = weatherStationCol.get(rowKey);</p>
+
+<p>System.out.println(String.format(&ldquo;%-3s\t%-20s\t%-10s\t%-10s\t%-5s&rdquo;, weatherStation.id,
+        weatherStation.name, weatherStation.latitude, weatherStation.longitude,
+        weatherStation.hasCamera));</p>
+
+<p><strong>List.5 Result of Multi-Get execution(WeatherStation)</strong></p>
+
+<p>#####  WeatherStation:
+ID      Name                    Longitude       Latitude        Camera
+99      new WeatherStation       45.26           75.42           true</p>
+
+<p><strong>List.6 Obtain of Multi-Put results(InstrumentLog)</strong>(MultiPut.java)</p>
+
+<p>System.out.println(&ldquo;#####  InstrumentLog:&ldquo;);
+System.out.println(&ldquo;Timestamp\t\t\tWeatherStation ID\tTemperture&rdquo;);
+TimeSeries<InstrumentLog> logTs =
+        store.getTimeSeries(&ldquo;weather_station_99&rdquo;, InstrumentLog.class);
+InstrumentLog log = logTs.get(rowKey);
+// Make a displayable byte string
+String byteText = InstrumentLogLogic.makeByteString(log.liveImage);</p>
+
+<p>System.out.println(String.format(&ldquo;%s\t%-20s\t%-10s\t%s&rdquo;, log.timestamp,
+        log.weatherStationId, log.temperture, byteText));</p>
+
+<p><strong>List.7 Result of Multi-Get execution(InstrumentLog)</strong></p>
+
+<p>#####  InstrumentLog:
+Timestamp                       WeatherStation ID       Temperature      Live Image
+Sun Jul 03 12:00:00 EDT 2016    weather_station_99      40.5</p>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p>Download:<a href="img/multi-put.zip">multi-put.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-18_trigger-jms/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-1_introduction/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +781,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-19_multiput.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

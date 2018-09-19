@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-20_multiquery/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -347,7 +349,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-20_multiquery/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-20_multiquery/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-20_multiquery/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,146 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-20-multi-query">5.1.20 Multi-Query</h1>
+
+<h2 id="what-is-multi-query">What is Multi-Query</h2>
+
+<p>Note: The concept of Multi-Query is described in our <a href="/en/docs/GridDB_TechnicalReference.pdf">GridDB_TechnicalReference (Section 4.7.2)</a></p>
+
+<h2 id="create-query">Create query</h2>
+
+<p><strong>List.1 Create query</strong>(MultiQuery.java)</p>
+
+<p>private static List<Query<?>&gt; createQueries(TimeSeries<InstrumentLog> logTs)
+        throws ParseException, GSException {
+    // Set TimeSeries conditions
+    Date start = TimestampUtils.getFormat().parse(&ldquo;2016-07-01T06:00:00Z&rdquo;);
+    Date end = TimestampUtils.getFormat().parse(&ldquo;2016-07-01T18:00:00Z&rdquo;);</p>
+
+<pre><code>List&lt;Query&lt;?&gt;&gt; queries = new ArrayList&lt;&gt;();
+
+// Get Max Temperture
+String maxTempertureTql = String.format(
+        &quot;SELECT MAX(temperture) WHERE&quot;
+                \+ &quot; TIMESTAMP('%s') &lt; timestamp AND timestamp &lt; TIMESTAMP('%s')&quot;,
+        TimestampUtils.format(start), TimestampUtils.format(end));
+Query&lt;AggregationResult&gt; maxTempertureQuery =
+        logTs.query(maxTempertureTql, AggregationResult.class);
+queries.add(maxTempertureQuery);
+
+// Get Min Temperture
+String minTempertureTql = String.format(
+        &quot;SELECT MIN(temperture) WHERE&quot;
+                \+ &quot; TIMESTAMP('%s') &lt; timestamp AND timestamp &lt; TIMESTAMP('%s')&quot;,
+        TimestampUtils.format(start), TimestampUtils.format(end));
+Query&lt;AggregationResult&gt; minTempertureQuery =
+        logTs.query(minTempertureTql, AggregationResult.class);
+queries.add(minTempertureQuery);
+
+// Get Average
+String avgTempertureTql = String.format(
+        &quot;SELECT AVG(temperture) WHERE&quot;
+                \+ &quot; TIMESTAMP('%s') &lt; timestamp AND timestamp &lt; TIMESTAMP('%s')&quot;,
+        TimestampUtils.format(start), TimestampUtils.format(end));
+Query&lt;AggregationResult&gt; avgTempertureQuery =
+        logTs.query(avgTempertureTql, AggregationResult.class);
+queries.add(avgTempertureQuery);
+
+// Retrieve by time range
+Query&lt;InstrumentLog&gt; timeRangeQuery = logTs.query(start, end);
+queries.add(timeRangeQuery);
+
+return queries;
+</code></pre>
+
+<p>}</p>
+
+<h2 id="multi-query-execution">Multi-Query execution</h2>
+
+<p><strong>List.2 Multi-Query execution</strong>(MultiQuery.java)</p>
+
+<p>// Create Connection
+store = gridLogic.createGridStore();</p>
+
+<p>// Get InstrumentLog
+TimeSeries<InstrumentLog> logTs =
+        store.getTimeSeries(&ldquo;weather_station_1&rdquo;, InstrumentLog.class);</p>
+
+<p>// Create query list
+List<Query<?>&gt; queries = createQueries(logTs);</p>
+
+<p>// Execute Multi Query
+store.fetchAll(queries);</p>
+
+<h2 id="result-of-multi-query-execution">Result of Multi-Query execution</h2>
+
+<p><strong>List.3 Obtain of Multi-Query results</strong>(MultiQuery.java)</p>
+
+<p>// Retrieve reulsts
+for (Query&lt;?&gt; query : queries) {
+    RowSet&lt;?&gt; rowSet = query.getRowSet();
+    while (rowSet.hasNext()) {
+        Object rowObj = rowSet.next();
+        if (rowObj instanceof AggregationResult) {
+            // When retrieve AggregationResult
+            AggregationResult aggregation = (AggregationResult) rowObj;
+            System.out.println(&ldquo;AggregationResult:&rdquo; + aggregation.getDouble());</p>
+
+<pre><code>    } else if (rowObj instanceof InstrumentLog) {
+        // When retrieve InstrumentLog
+        InstrumentLog log = (InstrumentLog) rowObj;
+        System.out.println(String.format(&quot;%s\\t%-20s\\t%-10s&quot;, log.timestamp,
+                log.weatherStationId, log.temperture));
+
+    } else {
+        // Do not reach in this sample
+        System.out.println(rowObj);
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p><strong>List.4 Result of Multi-Get execution</strong></p>
+
+<p>AggregationResult:70.0
+AggregationResult:50.0
+AggregationResult:60.0
+Fri Jul 01 15:00:00 EDT 2016    weather_station_1       75.0
+Fri Jul 01 18:00:00 EDT 2016    weather_station_1       70.0
+Fri Jul 01 21:00:00 EDT 2016    weather_station_1       60.0
+Sat Jul 02 00:00:00 EDT 2016    weather_station_1       50.0
+Sat Jul 02 03:00:00 EDT 2016    weather_station_1       60.0
+AggregationResult:70.0
+AggregationResult:50.0
+AggregationResult:60.0
+Fri Jul 01 15:00:00 EDT 2016    weather_station_2       75.0
+Fri Jul 01 18:00:00 EDT 2016    weather_station_2       70.0
+Fri Jul 01 21:00:00 EDT 2016    weather_station_2       60.0
+Sat Jul 02 00:00:00 EDT 2016    weather_station_2       50.0
+Sat Jul 02 03:00:00 EDT 2016    weather_station_2       60.0</p>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p><a href="img/multi-query.zip">Download:multi-query.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-1_introduction/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-21_multiget/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +754,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-20_multiquery.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

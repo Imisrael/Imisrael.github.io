@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-6_container-schema/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -389,7 +391,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-6_container-schema/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-6_container-schema/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-6_container-schema/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,246 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-6-schema-definition">5.1.6 Schema definition</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This chapter describes the schema definition and data types.</p>
+
+<h2 id="schema-definition">Schema definition</h2>
+
+<p>Data of the measuring instruments and instrument log that will be handled in this sample application are defined in the container as follows.</p>
+
+<p><strong>Table.1 Container Information</strong></p>
+
+<p>Data</p>
+
+<p>Container type</p>
+
+<p>Quantity</p>
+
+<p>Container name</p>
+
+<p>Row key</p>
+
+<p>Measuring instrument</p>
+
+<p>Collection</p>
+
+<p>1</p>
+
+<p>weather_station</p>
+
+<p>Instrument ID</p>
+
+<p>Instrument log</p>
+
+<p>TimeSeries Container</p>
+
+<p>1 per instrument</p>
+
+<p>weather_station_<br />
+(Example:weather_station_1)</p>
+
+<p>Logging date and time</p>
+
+<p>One collection will be created with rows corresponding to different measuring instruments..<br />
+One TimeSeries container will be created as the instrument log for each measuring instrument.<br />
+The instrument ID to will be included in the instrument log&rsquo;s container name.</p>
+
+<p>There are two ways to use Container in your programs.<br />
+One is to pre-define the class statically which represents a row of the container.<br />
+The other is to create a Container dynamically without preparing the pre-defined class.<br />
+Here we describe only the static method, so please refer to <a href="5-1-22_metainfo.php">Meta-information</a> for more details about dynamic method.</p>
+
+<p><strong>List.1 Measuring instrument class</strong>(WeatherStation.java)</p>
+
+<p>package sample.row;</p>
+
+<p>import com.toshiba.mwcloud.gs.RowKey;</p>
+
+<p>/**
+ * Class that represents the definition of the schema.
+ */
+public class WeatherStation {
+    /**
+     * ID of WeatherStation
+     */
+    @RowKey
+    public String id;</p>
+
+<pre><code>/\*\*
+ \* Name of WeatherStation
+ */
+public String name;
+
+/\*\*
+ \* Installation Latitude
+ */
+public double latitude;
+
+/\*\*
+ \* Installation Longitude
+ */
+public double longitude;
+
+/\*\*
+ \* Camera exists or not
+ */
+public boolean hasCamera;
+</code></pre>
+
+<p>}</p>
+
+<ul>
+<li>L.12: The <code>@RowKey</code> annotates the field to be used as a row key.
+
+<br /></li>
+</ul>
+
+<p><strong>List.2 Instrument log class</strong>(InstrumentLog.java)</p>
+
+<p>package sample.row;</p>
+
+<p>import java.sql.Blob;
+import java.util.Date;</p>
+
+<p>import com.toshiba.mwcloud.gs.RowKey;</p>
+
+<p>/**
+ * Class that represents the definition of the Row of Instrument log.
+ */
+public class InstrumentLog {
+    /**
+     * Timestamp of log
+     */
+    @RowKey
+    public Date timestamp;</p>
+
+<pre><code>/\*\*
+ \* ID of Weather Station
+ */
+public String weatherStationId;
+
+/\*\*
+ \* Temperature of the measurement result
+ */
+public float temperture;
+
+/\*\*
+ \* Image data obtained by photographing the sky
+ */
+public Blob liveImage;
+</code></pre>
+
+<p>}</p>
+
+<ul>
+<li>L.15: The <code>@RowKey</code> annotates the field to be used as a row key.
+
+<br /></li>
+</ul>
+
+<h2 id="column-data-types">Column Data Types</h2>
+
+<p>The following types of data can be used in a GridDB column.</p>
+
+<p><strong>Table.2 Available column type</strong></p>
+
+<p>Column Type</p>
+
+<p>Type in Program</p>
+
+<p>Description</p>
+
+<p>BOOL</p>
+
+<p>boolean or Boolean</p>
+
+<p>TRUE or FALSE.</p>
+
+<p>STRING</p>
+
+<p>String</p>
+
+<p>Zero or more Unicode characters excluding the NULL character (U+0000).</p>
+
+<p>BYTE</p>
+
+<p>Byte or byte</p>
+
+<p>Integer value in the following range.(-27 to 27-1)</p>
+
+<p>SHORT</p>
+
+<p>Short or short</p>
+
+<p>Integer value in the following range.(-215 to 215-1)</p>
+
+<p>INTEGER</p>
+
+<p>Integer or int</p>
+
+<p>Integer value in the following range.(-231 to 231-1)</p>
+
+<p>LONG</p>
+
+<p>Long or long</p>
+
+<p>Integer value in the following range.(-263 to 263-1)</p>
+
+<p>FLOAT</p>
+
+<p>Float or float</p>
+
+<p>Single-precision floating point number.</p>
+
+<p>DOUBLE</p>
+
+<p>Double or double</p>
+
+<p>Double-precision floating point number.</p>
+
+<p>TIMESTAMP</p>
+
+<p>java.util.Date</p>
+
+<p>Combination of a date and time consisting of year, month, day, hour, minute and second.</p>
+
+<p>BLOB</p>
+
+<p>java.sql.Blob</p>
+
+<p>Binary data.</p>
+
+<p>All types except <code>BLOB</code> can be stored as an array.</p>
+
+<hr />
+
+<p>This chapter demonstrated how to define a schema and use it in your GridDB applications.<br />
+Please refer to the <a href="https://www.griddb.net/en/docs/GridDB_ProgrammingTutorial.html">GridDB Programming Tutorial</a> for more details on schema definitions.</p>
+
+<h3 id="complete-source-code">Complete source code</h3>
+
+<p>The complete source code used in this sample can be downloaded from the following:</p>
+
+<p>Download: <a href="img/container-schema.zip">container-schema.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-5_connection/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-7_container-create-drop/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +854,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-6_container-schema.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>ODBC Connector :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/drivers-and-integrators/7-2_odbc-connector/">
     
       <header>
   <div class="logo">
@@ -485,10 +485,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/drivers-and-integrators/" class="dd-item haschildren
+    <li data-nav-id="/drivers-and-integrators/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/drivers-and-integrators/"><b>7. </b>Drivers &amp; Integrators</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/drivers-and-integrators/"><b>7. </b>Drivers &amp; Integrators</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/drivers-and-integrators/7-1_jdbc-connector/" class="dd-item">
@@ -498,7 +499,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/drivers-and-integrators/7-2_odbc-connector/" class="dd-item">
+      <li data-nav-id="/drivers-and-integrators/7-2_odbc-connector/" class="dd-item active">
         <div>
           <a href="/drivers-and-integrators/7-2_odbc-connector/">
             ODBC Connector
@@ -548,7 +549,12 @@
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
-   Drivers &amp; Integrators</option>
+   Drivers &amp; Integrators</option> 
+      <option value="/drivers-and-integrators/7-1_jdbc-connector/" >- JDBC Connector</option>
+      <option value="/drivers-and-integrators/7-2_odbc-connector/"  selected>- ODBC Connector</option>
+      <option value="/drivers-and-integrators/7-3_hadoop-and-spark-connector/" >- Hadoop and Spark Connector</option>
+      <option value="/drivers-and-integrators/7-4_grafana-connector/" >- </option>
+  
 
 
 
@@ -571,33 +577,159 @@
       </div>
     
 
+    <h1>ODBC Connector</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<h4 id="operating-environment">Operating Environment</h4>
+
+<p>The ODBC driver used in GridDB AE (Advanced Edition) can be used with the following operating systems:</p>
+
+<ul>
+<li>Windows Server 2012 R2</li>
+<li>Windows Server 2008 R2</li>
+<li>Windows 8</li>
+<li>Windows 7</li>
+</ul>
+
+<p>Overview of ODBC</p>
+
+<p>ODBC (Open Database Connectivity) is a standard interface for accessing database management systems (DBMS) from Windows-compatible applications advocated by Microsoft</p>
+
+<ul>
+<li><p>ODBC-compatible application (Windows)
+For ODBC functions invoked from an ODBC-compatible application, the OS will control the connection to a specific database of the specified ODBC data source. In addition, management of the data source is also carried out.</p></li>
+
+<li><p>ODBC driver for GridDB AE (Windows)
+This is a unique driver that can be used to connect to GridDB AE. 32-bit and 64-bit versions are available and should be chosen carefully based on the application.</p></li>
+
+<li><p>GridDB Cluster (Linux)
+This is a GridDB AE Cluster operating in Linux OS on another machine</p></li>
+</ul>
+
+<h3 id="installation-method">Installation Method</h3>
+
+<p>The ODBC driver for GridDB AE is included in the &ldquo;/Windows/ODBC&rdquo; directory of the installation media.</p>
+
+<p>The installation method is as follows.</p>
+
+<ul>
+<li>When installing a 32-bit driver</li>
+</ul>
+
+<ol>
+<li>Select the &ldquo;GridStoreODBC_32bit_setup.bat&rdquo;, right-click, and select &ldquo;Run as administrator&rdquo;</li>
+<li>Check that GridStoreODBC32.dll has been copied to the program c://Program Files/TOSHIBA/GridStore/bin directory</li>
+</ol>
+
+<h4 id="registration-of-odbc-data-source">Registration of ODBC data source</h4>
+
+<p>In order to access the GridDB AE database using GridDB ODBC, it is necessary to register the ODBC data source in advance. Registration of the ODBC data source is performed with the following procedure:</p>
+
+<ul>
+<li><strong>For 64-bit</strong></li>
+</ul>
+
+<ol>
+<li><p>For Windows 7/Windows 2008, start [Data source] (ODBC) from the [Management tools].<br />
+For Windows 8/Windows 2012, start [ODBS dats source (64-bit)] from the [Management tools]</p></li>
+
+<li><p>Create a system data source (system DSN)</p></li>
+
+<li><p>Set up the connection data to the GridDB cluster when the GridStore ODBC setup screen appears.</p></li>
+</ol>
+
+<h4 id="input-items">Input Items</h4>
+
+<ul>
+<li>&ldquo;Data source&rdquo;: specify the data source name ot be registered to the ODBC driver manager. The application will specify the data source name specified here to connect to the GridDB cluster.</li>
+<li>&ldquo;Multicase Address&rdquo;: Specify the multicast address used to connect to the GridDB cluster. Default is 239.0.0.1. Value of &ldquo;sql/notificationAddress&rdquo; in the cluster definition file (gs_cluster.json) of th eGridDB node needs to be specified.</li>
+<li>&ldquo;Port number&rdquo;: Refers to the port number used to connect to GridDB cluster. Default is 41999. Value of &ldquo;sql/notificationPort&rdquo; in the cluster definittion file (gs_cluster.json) of the GridDB node needs to be specified.</li>
+<li>&ldquo;Cluster name&rdquo;: Refers to the cluster name of the GridDB cluster. Value of &ldquo;cluster/clusterName&rdquo; in the cluster definition file (gs_cluster.json) of the GridDB node needs to be specified.</li>
+<li>&ldquo;User Name&rdquo;: Refers to the user name connected to GridDB cluster.</li>
+<li>&ldquo;Password&rdquo;: Refers to the password of the user mentioned above</li>
+</ul>
+
+<h4 id="buttons">Buttons</h4>
+
+<ul>
+<li>&ldquo;Test connection&rdquo;: Check the connection to the GridDB cluster.</li>
+<li>&ldquo;Save&rdquo;: Save the configurations to the registry and close the dialog.</li>
+
+<li><p>&ldquo;Cancel&rdquo;: Discard any changes made.</p></li>
+
+<li><p><strong>For 32-bit</strong></p></li>
+</ul>
+
+<ol>
+<li>For Windows 7/Windows 2008, star the command prompt as adminstrator, and run the 32-bit version of ODBC adminstrator (odbcad32.exe).</li>
+</ol>
+
+<p>Storage location: /windir/SysWOW64/odbcad32.exe</p>
+
+<p>Example: c:/WINDOWS/SysWOW64.odbcad32.exe</p>
+
+<p><strong>[Attention]</strong><br />
+If [Data source (ODBC) is started from the [Management tools] in a 64-bit OS, the 64-bit ODBC adminstrator will be started and it will not be possible to configure the 32-bit settings.</p>
+
+<p>For Windows 8/Windows 2012, start [ODBS data source (32-bit)] from the [Management tools].</p>
+
+<ol>
+<li>Create a system data source (system DSN)
+<br /></li>
+</ol>
+
+<p>*Select &ldquo;GridStore ODBC (x86)&rdquo; when specifying the driver.</p>
+
+<ol>
+<li>Set up the connection data to the GridDB server in the GridStore ODBC setup screen. The configuration method is the same as the 64-bit version</li>
+</ol>
+
+<p>*The database at the connection destination will serve as the default public database. A database cannot be specified by the ODBC driver.</p>
+
+<p>*Only GridDB clusters configured with the multicast method can be connected.</p>
+
+<h3 id="connection-method">Connection Method</h3>
+
+<p>If a business intelligence/ETL tool is used, please specify the data source name set in the &ldquo;GridStore ODBC setup screen&rdquo;.</p>
+
+<p>If the ODBC API is used, specify the data source name set in the &ldquo;GridStore ODBC setup screen&rdquo; as well.</p>
+
+<p>Example: Specify in the second argument for SQLConnect functions.</p>
+
+<p>SQLConnect(hdbc, (SQLTCHAR *) TEXT(&ldquo;GridStoreODBC-DB1&rdquo;), SQL_NTS, (SQLTCHAR <em>) TEXT(&ldquo;&rdquo;), SQL_NTS, (SQLTCHAR</em>) TEXT(&ldquo;&rdquo;) SQL_NTS);</p>
+
+<h3 id="samples">Samples</h3>
+
+<p>Sample programs in the C language using ODBC API and VisualStudio project files are included in the file &ldquo;gridstore-odbc-sample.zip&rdquo;. (These are stored under Windows in the installation media.)</p>
+
+<p>The samples are written and tested (operation check in VisualStudio 2005 SP1)</p>
+
+<ul>
+<li>GridStoreODBC-sample.sln: VisualStudio solution file</li>
+<li>ODBC-sample/GridStoreODBC-sample.cpp: Sample Source</li>
+<li>GridStoreODBC-sample.vcproj: Project file</li>
+</ul>
+
+<p>Try to perform table creation, data registration, and search. The project settings are configured for 64-bit and 32-bit use.</p>
+
+<p>The following ODBC data source settings are required to execute a program.</p>
+
+<p><strong>For 64-bit</strong><br />
+Data source name: GridStoreODBC-test64bit</p>
+
+<p><strong>For 32-bit</strong><br />
+Data source name: GridStoreODBC-test32bit</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/drivers-and-integrators/7-1_jdbc-connector/" title="JDBC Connector"> <i class="fa fa-chevron-left"></i><label>JDBC Connector</label></a>
+    <a class="nav nav-next" href="/drivers-and-integrators/7-3_hadoop-and-spark-connector/" title="Hadoop and Spark Connector" style="margin-right: 0px;"><label>Hadoop and Spark Connector</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +745,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/drivers%20and%20integrators/7-2_odbc-connector.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

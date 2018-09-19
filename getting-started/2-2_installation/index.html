@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>Installation :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/getting-started/2-2_installation/">
     
       <header>
   <div class="logo">
@@ -115,10 +115,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/getting-started/" class="dd-item haschildren
+    <li data-nav-id="/getting-started/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/getting-started/"><b>2. </b>Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/getting-started/"><b>2. </b>Getting Started</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/getting-started/2-1_system-requirements/" class="dd-item">
@@ -128,7 +129,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/getting-started/2-2_installation/" class="dd-item">
+      <li data-nav-id="/getting-started/2-2_installation/" class="dd-item active">
         <div>
           <a href="/getting-started/2-2_installation/">
             Installation
@@ -538,7 +539,12 @@
     <option value="/introduction/" >
    Introduction</option>
     <option value="/getting-started/" >
-   Getting Started</option>
+   Getting Started</option> 
+      <option value="/getting-started/2-1_system-requirements/" >- System Requirements</option>
+      <option value="/getting-started/2-2_installation/"  selected>- Installation</option>
+      <option value="/getting-started/2-3_run-your-first-griddb-node-cluster/" >- Run your First GridDB Node/Cluster</option>
+      <option value="/getting-started/2-4_run-a-sample-java-client-app/" >- Run a Sample Java Client App</option>
+  
     <option value="/technical-architecture-and-guide/" >
    Technical Architecture and Guide</option>
     <option value="/data-modeling/" >
@@ -571,33 +577,436 @@
       </div>
     
 
+    <h1>Installation</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>The following instructions are for the Standard Edition of GridDB. Instructions for the Community Edition can be found <a href="#text-2">below</a></p>
+
+<h3 id="setup">Setup</h3>
+
+<p>This chapter explains the installation of a node onto a single machine. See the chapter on operations for the cluster configuration.</p>
+
+<pre><code>// The lsb_release command prints certain LSB (Linux Standard Base) and Distribution information.
+$ lsb_release -id
+Distributor ID: CentOS
+Description: CentOS release 6.3 (Final)
+</code></pre>
+
+<ul>
+<li><p><strong>Installing a Node</strong></p>
+
+<p>The following 3 RPM packages are needed when installing a GridDB node. Place these packages anywhere in the machine.</p>
+
+<p>TODO: Table</p>
+
+<p>Package name</p>
+
+<p>File name</p>
+
+<p>Description</p>
+
+<p>griddb-server</p>
+
+<p>griddb-server-X.X.X-linux.x86_64.rpm</p>
+
+<p>The start and other commands for the GridDB node module and server are included.</p>
+
+<p>griddb-client</p>
+
+<p>griddb-client-X.X.X-linux.x86_64.rpm</p>
+
+<p>One set of operating commands except start node is included.</p>
+
+<p>griddb-docs</p>
+
+<p>griddb-docs-X.X.X-linux.x86_64.rpm</p>
+
+<p>GridDB manual and program samples are included.</p></li>
+</ul>
+
+<p>*X.X.X is the GridDB version</p>
+
+<p>Install using the rpm command as a root user.</p>
+
+<pre><code>$ su
+\# rpm -Uvh griddb-server-X.X.X-linux.x86_64.rpm
+Under preparation...           ########################################### \[100%\]
+User gsadm and group gridstore have been registered.
+GridStore uses new user and group.
+   1:griddb-server                 ########################################### \[100%\]
+\# rpm -Uvh griddb-client-X.X.X-linux.x86_64.rpm
+Under preparation...           ########################################### \[100%\]
+User and group has already been registered correctly.
+GridStore uses existing user and group.
+   1:griddb-client                  ########################################### \[100%\]
+\# rpm -Uvh griddb-docs-X.X.X-linux.x86_64.rpm
+Under preparation...           ########################################### \[100%\]
+   1:griddb-docs                   ########################################### \[100%\]
+</code></pre>
+
+<p>When you install the package, the following group and user are created in the OS. This OS user is set as the operator of GridDB.</p>
+
+<p>TODO: Table<br />
+Group</p>
+
+<p>User</p>
+
+<p>Home directory</p>
+
+<p>gridstore</p>
+
+<p>gsadm</p>
+
+<p>/var/lib/gridstore</p>
+
+<p>The following environment variables are defined in this gsadm user.</p>
+
+<p>TODO: Table
+Environment variables</p>
+
+<p>Value</p>
+
+<p>Meaning</p>
+
+<p>GS_HOME</p>
+
+<p>/var/lib/gridstore</p>
+
+<p>gsadm/GridDB home directory</p>
+
+<p>GS_LOG</p>
+
+<p>/var/lib/gridstore/log</p>
+
+<p>Event log file output directory</p>
+
+<p><strong>[Points to note]</strong></p>
+
+<ul>
+<li>These environment variables are used in the operating commands described later.</li>
+<li>The password of the gsadm user has not been set. With the root user privilege, please set the password appropriately.
+
+<ul>
+<li>Some of the functions of the operation tools may be necessary.</li>
+</ul></li>
+</ul>
+
+<p>In addition, when the GridDB node module is installed, services that are executed automatically upon startup of the OS will be registered.</p>
+
+<p>TODO: Table
+Service Name</p>
+
+<p>Run Level</p>
+
+<p>gridstore</p>
+
+<p>3, 4, 5</p>
+
+<p>The service registration data can be checked with the following command.</p>
+
+<p># /sbin/chkconfig &ndash;list | grep gridstore
+gridstore 0:off 1:off 2:off 3:on 4:on 5:on 6:off</p>
+
+<p>The GridDB node will be started automatically by this service during OS startup.</p>
+
+<p><strong>[Points to note]</strong></p>
+
+<ul>
+<li>Services will not start automatically immediately after installation.</li>
+</ul>
+
+<p>To Stop auto startup of a service, use the command below.</p>
+
+<p># /sbin/chkconfig gridstore off</p>
+
+<p>See the chapter on services in &lsquo;GridDB Operational Management Guide&rsquo; (GridDB_OperationGuide.html) for details of the services.</p>
+
+<p><strong>Post-Installation Checks</strong></p>
+
+<p>Check the directory configuration of the installed GridDB node.</p>
+
+<p>First, check that the GridDB home directory, and related directory and files have been created.</p>
+
+<h3 id="griddb-home-directory">GridDB home directory</h3>
+
+<pre><code>/var/lib/gridstore/                      # GridDB home directory
+                   admin/                # integrated operational management GUI home directory
+                   backup/               # backup directory
+                   conf/                 # definition file directory
+                        gs_cluster.json  # cluster definition file
+                        gs_node.json     # node definition file
+                        password         # user definition file
+                   data/                 # database file directory
+                   log/                  # log directory
+</code></pre>
+
+<p>Confirm the following command.</p>
+
+<pre><code>$ ls /var/lib/gridstore/
+admin backup conf data log
+</code></pre>
+
+<p>Next, check that the installation directory has been created.</p>
+
+<h3 id="installation-directory">Installation directory</h3>
+
+<pre><code>/usr/gridstore-X.X.X/              # installation directory
+                     Fixlist.pdf   # revision record
+                     Readme.txt    # release instructions
+                     bin/          # operation command, module directory
+                     conf/         # definition file sample directory
+                     docs/         # document directory
+                     etc/
+                     lib/          # library directory
+                     license/      # license directory
+                     prop/         # configuration file directory
+                     web/          # integrated operational management GUI file directory
+</code></pre>
+
+<p>Confirm with the following command.</p>
+
+<pre><code>$ ls /usr/gridstore-X.X.X/
+Fixlist.pdf Readme.txt bin conf etc lib license prop web
+</code></pre>
+
+<p>All documents have been compressed into a single ZIP file. Decompress and refer to the documents where appropriate as shown below.</p>
+
+<pre><code>$ cd /usr/gridstore-X.X.X/docs
+$ unzip griddb-documents-X.X.X.zip
+</code></pre>
+
+<p>In addition, the following symbolic links are created as shown below in a few directories under the installation directory for greater convenience.</p>
+
+<pre><code>$ ls /usr/gridstore/
+conf lib prop web
+</code></pre>
+
+<p>Lastly, confirm the version of the server module installed with the following command.</p>
+
+<pre><code>$ gsserver --version
+GridDB version X.X.X build XXXXX
+</code></pre>
+
+<p><strong>[Points to note]</strong></p>
+
+<p>The following files are created when GridDB is operated according to the following procedure.</p>
+
+<p>[Database file]</p>
+
+<pre><code>/var/lib/gridstore/                     # GridDB home directory
+                   data/                # database file directory
+                        gs\_log\_n_m.log  # log file to record the transaction logs (n, m are numbers)
+                        gs\_cp\_n_p.dat   # checkpoint file to record data regularly (n, p are numbers)
+</code></pre>
+
+<p>[Log file]</p>
+
+<pre><code>/var/lib/gridstore/                            # GridDB home directory
+                   log/                        # log directory
+                       gridstore-%Y%m%d-n.log  # event log file
+                       gs_XXXX.log             # operation tool log file
+</code></pre>
+
+<p>The directory where these files are created can be changed by the parameter settings in the node definition file.</p>
+
+<p>*gs_XXXX is an operation tool name. (Example: gs_startnode.log)</p>
+
+<p>Setting Up an Administrator User</p>
+
+<p>Administrator privilege is used for authentication related matter within the nodes and clusters. Creation date of administrator user is saved in the user definition file. The default file is as shown below.</p>
+
+<pre><code>   /var/lib/gridstore/conf/password
+</code></pre>
+
+<p>The default user below exists immediately after installation.</p>
+
+<p>TODO: Table
+User</p>
+
+<p>Password</p>
+
+<p>Example of proper use</p>
+
+<p>admin</p>
+
+<p>admin</p>
+
+<p>For authentication of operation administrator user, operation commands</p>
+
+<p>system</p>
+
+<p>manager</p>
+
+<p>For authentication of application user, client execution</p>
+
+<p>Administrator user information including the above-mentioned default users can be changed using the user administration command in the operating commands.</p>
+
+<p>TODO: Table
+Command</p>
+
+<p>Function</p>
+
+<p>gs_adduser</p>
+
+<p>Add an administrator user</p>
+
+<p>gs_deluser</p>
+
+<p>Delete an administrator user</p>
+
+<p>gs_passwd</p>
+
+<p>Change the password of administrator user</p>
+
+<p>Change the password as shown below when using a default user. The password is encrypted during registration.</p>
+
+<pre><code>$ gs_passwd admin
+Password: (enter password)
+Retype password: (re-enter password)
+</code></pre>
+
+<p><strong>[Points to note]</strong></p>
+
+<ul>
+<li>A GridDB administrator user is different from the OS user gsadm created during installation.</li>
+<li>A change in the administrator user information using a user administration command becomes valid when a node is restarted.</li>
+<li>In order to use it for authentication purposes in the client, the same user data needs to be registered in all the nodes. Copy the user definition file and make sure the same user data can be referred to in all the nodes.</li>
+<li>Execute the operating command as a gsadm user.</li>
+</ul>
+
+<p><strong>[Memo]</strong></p>
+
+<ul>
+<li>See “GridDB Operational Management Guide” (<a href="https://griddb.net/en/docs/manuals/v3.1/GridDB_OperationGuide.html">GridDB_OperationGuide.html</a>) for details of the user management commands.</li>
+</ul>
+
+<h2 id="installation-community-editon-on-a-singular-node">Installation (Community Editon) on a Singular Node</h2>
+
+<p>This section will layout the steps to installing GridDB. These instructions have been confirmed to work on <strong>CentOS version 6.7.</strong> First, download the GridDB RPM: <a href="https://github.com/griddb/griddb_nosql/releases">here</a>. Switch to the root user and install the RPM by using the “rpm” command:</p>
+
+<pre><code>$ su
+\# rpm -ivh griddb\_nosql-X.X.X-linux.x86\_64.rpm
+Preparing...                ########################################### \[100%\]
+
+Information:
+  User gsadm and group gridstore have been registered.
+  GridDB uses new user and group.
+
+   1:griddb_nosql           ########################################### \[100%\]
+```	
+
+### Confirmation After Installation
+
+After installing GridDB's node module, the user “gsadm” and the group “gridstore” are created. Use the user and group for running a node module and operational commands. And please note that a password for the new user gsadm is not automatically set upon creation, so please take the time to set one. If installation completed normally, the following directories and files are created as well as necessary modules and commands.
+
+</code></pre>
+
+<p>/var/lib/gridstore/        # GridDB home directory
+     backup/               # Backup directory(unused)
+     conf/                 # Directory storing definition files
+         gs_cluster.json   # Cluster definition file
+         gs_node.json      # Node definition file
+         password          # User definition file
+     data/                 # Directory storing database files
+     log/                  # Directory storing event log files</p>
+
+<pre><code>
+We should also confirm that the following files and directories exist:
+
+</code></pre>
+
+<p>$ ls /var/lib/gridstore/*
+/var/lib/gridstore/backup:</p>
+
+<p>/var/lib/gridstore/conf:
+gs_cluster.json  gs_node.json  password</p>
+
+<p>/var/lib/gridstore/data:</p>
+
+<p>/var/lib/gridstore/log:</p>
+
+<pre><code>
+Confirm the directory structure of the installed GridDB client libraries. If installation completed normally, the following files are created.
+
+</code></pre>
+
+<p>$ ls -l /usr/share/java/*gridstore*
+lrwxrwxrwx 1 gsadm gridstore 46 Apr 11 20:43 /usr/share/java/gridstore-conf.jar -&gt; /usr/griddb-X.X.X/bin/gridstore-conf-X.X.X.jar
+lrwxrwxrwx 1 gsadm gridstore 41 Apr 11 20:43 /usr/share/java/gridstore.jar -&gt; /usr/griddb-X.X.X/bin/gridstore-X.X.X.jar</p>
+
+<pre><code>
+If you start a GridDB node and then access and run the node from a client, the following files are created in the directories to store database files and event log files.
+
+</code></pre>
+
+<p>/var/lib/gridstore/        # GridDB home directory
+     data/                 # Directory storing database files
+         gs_log_n_m.log    # File recording transaction logs (n, m: positive number)
+         gs_cp_n_p.dat     # Checkpoint file recording data regularly (n, p: positive number)</p>
+
+<pre><code>
+The event log file will be in the following location
+
+</code></pre>
+
+<p>/var/lib/gridstore/              # GridDB home directory
+     log/                        # Directory storing event logs
+         gridstore-%Y%m%d-n.log  # Event log file</p>
+
+<pre><code>
+### Setting up an Administrator User
+
+After all of this, you must create an administrator user to use GridDB. The administrator user information is stored in the User Definition file. The default file is as shown here: $GS\_HOME/conf/password.
+
+After installation a default user called “admin” will be created. The operating commands used to change the default users’ information are shown below.
+
+  
+TODO: Table
+
+Command
+
+Function
+
+gs\_adduser
+
+Add an administrator user
+
+gs\_deluser
+
+Delete an administrator user
+
+gs\_passwd
+
+Change the password of an administrator user
+
+It is recommended that you add a password to the user “admin” as one is not set upon creation.
+
+</code></pre>
+
+<p>$ gs_passwd admin
+Password:（Input password）
+Retype password:（Input password again）</p>
+
+<pre><code>If you’d like to add another user beyond the default “admin” user, it must start with “gs#”
+
+</code></pre>
+
+<p>$ gs_adduser gs#newuser
+Password:（Input password）
+Retype password:（Input password again）
+```
+Once the changes you wanted to make are done, you will need to restart the node for the changes to have effect.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/getting-started/2-1_system-requirements/" title="System Requirements"> <i class="fa fa-chevron-left"></i><label>System Requirements</label></a>
+    <a class="nav nav-next" href="/getting-started/2-3_run-your-first-griddb-node-cluster/" title="Run your First GridDB Node/Cluster" style="margin-right: 0px;"><label>Run your First GridDB Node/Cluster</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +1022,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/getting%20started/2-2_installation.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

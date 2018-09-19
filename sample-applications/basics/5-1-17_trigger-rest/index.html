@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-17_trigger-rest/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -319,7 +321,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-17_trigger-rest/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-17_trigger-rest/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-17_trigger-rest/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,149 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-17-trigger-rest">5.1.17 Trigger (REST)</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This chapter describes how to notify events by REST method in trigger function.</p>
+
+<h2 id="trigger-function">Trigger function</h2>
+
+<p>A trigger function is an automatic notification function when an operation (add/update or delete) is carried out on the row data of a container. Event notifications can be received without the need to poll and monitor the database by application.</p>
+
+<p>There are 2 ways of notifying events to the application.</p>
+
+<ul>
+<li>REST</li>
+<li>Java Messaging Service (JMS)</li>
+</ul>
+
+<p>Here we describe how to notify the events by REST method.</p>
+
+<h2 id="setting-the-trigger">Setting the Trigger</h2>
+
+<p>Following information should be set to notify events by REST method.</p>
+
+<p><strong>Table.1 Trigger settings (REST)</strong></p>
+
+<p>Item</p>
+
+<p>Description</p>
+
+<p>Name</p>
+
+<p>Trigger name.</p>
+
+<p>Trigger type</p>
+
+<p><code>TriggerInfo.Type.REST</code></p>
+
+<p>Notification condition</p>
+
+<p><code>TriggerInfo.EventType.PUT</code> or <code>TriggerInfo.EventType.DELETE</code></p>
+
+<p>Notification destination URI</p>
+
+<p>It should be described in the following format. (method name)://(host name):(port number)/(path)</p>
+
+<p><strong>List.1 Setting the Trigger</strong> (TriggerRest.java)</p>
+
+<p>// Create Trigger Settings
+TriggerInfo trigger = new TriggerInfo();
+trigger.setName(&ldquo;InstrumentLogRESTTrigger&rdquo;);
+trigger.setType(Type.REST);
+trigger.setTargetEvents(EnumSet.of(EventType.PUT));
+trigger.setURI(URI.create(&ldquo;<a href="http://127.0.0.1/api&quot;)">http://127.0.0.1/api&quot;)</a>);</p>
+
+<p>// Get TimeSeries Container
+TimeSeries<InstrumentLog> logTs =
+        store.getTimeSeries(&ldquo;weather_station_1&rdquo;, InstrumentLog.class);</p>
+
+<p>logTs.createTrigger(trigger);</p>
+
+<p>// Update Data for call Trigger
+SimpleDateFormat format = new SimpleDateFormat(&ldquo;yyyy/MM/dd HH:mm&rdquo;, Locale.US);
+InstrumentLog log = logTs.get(format.parse(&ldquo;2016/07/02 12:00&rdquo;));
+log.temperture = 90;
+ogTs.put(log);</p>
+
+<ul>
+<li>L.33: Instantiate the <code>TriggerInfo</code> which represents the trigger setting.</li>
+<li>L.34−37: Set trigger properties in Table.1</li>
+<li>L.43: Set <code>TriggerInfo</code> into Timeseries Container. Not only Timeseries Container, but also Collection could be used for trigger function.</li>
+<li>L.46-49: Update the Timeseries Container to enable trigger notification.
+
+<br /></li>
+</ul>
+
+<h2 id="rest-server-startup">REST server startup</h2>
+
+<p>You need to prepare the REST server to receive notifications. In this sample, we will show you how to run the simple Web server in Python which can be used to display the logs.</p>
+
+<p><strong>List.2 REST Server Script</strong> (restserver.py)</p>
+
+<p>import sys
+import json
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer</p>
+
+<p>class JsonResponseHandler(BaseHTTPRequestHandler):</p>
+
+<pre><code>def do_POST(self):
+    content_len = int(self.headers.get('content-length'))
+    body = self.rfile.read(content_len).decode('UTF-8')
+    jsonBody = json.loads(body)
+    print(json.dumps(jsonBody, indent=4))
+    self.send_response(200)
+    self.send_header('Content-type', 'text/json')
+    self.end_headers()
+</code></pre>
+
+<p>server = HTTPServer((&ldquo;, 80), JsonResponseHandler)
+server.serve_forever()</p>
+
+<p>This REST server can be run by executing the command below.</p>
+
+<p><strong>List.3 Run REST Server Script</strong></p>
+
+<p>$ sudo python restserver.py</p>
+
+<p>Please note that you should run the REST server on the machine which represents notification destination URI.</p>
+
+<h2 id="result-of-the-trigger-execution">Result of the Trigger execution</h2>
+
+<p>You can see the result below on REST server when <code>TriggerRest.java</code> is executed.</p>
+
+<p><strong>List.4 Result of Update the Row</strong></p>
+
+<p>{
+    &ldquo;container&rdquo;: &ldquo;weather_station_1&rdquo;,
+    &ldquo;event&rdquo;: &ldquo;put&rdquo;
+}
+gsnode2.griddb_default - - [13/Sep/2016 10:18:01] &ldquo;POST /api HTTP/1.1&rdquo; 200 -</p>
+
+<p>In this case, Container <code>weather_station_1</code> exists in <code>gsnode2.griddb_default</code> and you can see the the notification content.</p>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p>Download: <a href="img/trigger-rest.zip">trigger-rest.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-16_tql/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-18_trigger-jms/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +757,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-17_trigger-rest.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

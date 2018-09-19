@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>Run a Sample Java Client App :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/getting-started/2-4_run-a-sample-java-client-app/">
     
       <header>
   <div class="logo">
@@ -115,10 +115,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/getting-started/" class="dd-item haschildren
+    <li data-nav-id="/getting-started/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/getting-started/"><b>2. </b>Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/getting-started/"><b>2. </b>Getting Started</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/getting-started/2-1_system-requirements/" class="dd-item">
@@ -142,7 +143,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/getting-started/2-4_run-a-sample-java-client-app/" class="dd-item">
+      <li data-nav-id="/getting-started/2-4_run-a-sample-java-client-app/" class="dd-item active">
         <div>
           <a href="/getting-started/2-4_run-a-sample-java-client-app/">
             Run a Sample Java Client App
@@ -538,7 +539,12 @@
     <option value="/introduction/" >
    Introduction</option>
     <option value="/getting-started/" >
-   Getting Started</option>
+   Getting Started</option> 
+      <option value="/getting-started/2-1_system-requirements/" >- System Requirements</option>
+      <option value="/getting-started/2-2_installation/" >- Installation</option>
+      <option value="/getting-started/2-3_run-your-first-griddb-node-cluster/" >- Run your First GridDB Node/Cluster</option>
+      <option value="/getting-started/2-4_run-a-sample-java-client-app/"  selected>- Run a Sample Java Client App</option>
+  
     <option value="/technical-architecture-and-guide/" >
    Technical Architecture and Guide</option>
     <option value="/data-modeling/" >
@@ -571,33 +577,34 @@
       </div>
     
 
+    <h1>Run a Sample Java Client App</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<h4 id="build-a-client">Build a Client</h4>
+
+<pre><code>$ ant -f java_client/build.xml
+</code></pre>
+
+<h4 id="execute-a-sample-program">Execute a sample program</h4>
+
+<pre><code>$ export CLASSPATH=${CLASSPATH}:$GS_HOME/bin/gridstore.jar
+$ mkdir gsSample
+$ cp $GS_HOME/docs/sample/program/Sample1.java gsSample/.
+$ javac gsSample/Sample1.java
+$ java gsSample/Sample1 239.0.0.1 31999 your_clustername admin your_password
+--&gt; Person:  name=name02 status=false count=2 lob=[65, 66, 67, 68, 69, 70, 71, 72, 73, 74]
+</code></pre>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/getting-started/2-3_run-your-first-griddb-node-cluster/" title="Run your First GridDB Node/Cluster"> <i class="fa fa-chevron-left"></i><label>Run your First GridDB Node/Cluster</label></a>
+    <a class="nav nav-next" href="/technical-architecture-and-guide/" title="Technical Architecture and Guide" style="margin-right: 0px;"><label>Technical Architecture and Guide</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +620,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/getting%20started/2-4_run-a-sample-java-client-app.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

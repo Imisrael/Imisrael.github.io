@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>Data Modeling Basics :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/data-modeling/4-1_data-modeling-basics/">
     
       <header>
   <div class="logo">
@@ -222,13 +222,14 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/data-modeling/" class="dd-item haschildren
+    <li data-nav-id="/data-modeling/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/data-modeling/"><b>4. </b>Data Modeling</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/data-modeling/"><b>4. </b>Data Modeling</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/data-modeling/4-1_data-modeling-basics/" class="dd-item">
+      <li data-nav-id="/data-modeling/4-1_data-modeling-basics/" class="dd-item active">
         <div>
           <a href="/data-modeling/4-1_data-modeling-basics/">
             Data Modeling Basics
@@ -542,7 +543,12 @@
     <option value="/technical-architecture-and-guide/" >
    Technical Architecture and Guide</option>
     <option value="/data-modeling/" >
-   Data Modeling</option>
+   Data Modeling</option> 
+      <option value="/data-modeling/4-1_data-modeling-basics/"  selected>- Data Modeling Basics</option>
+      <option value="/data-modeling/4-2_data-modeling-using-griddb/" >- Data Modeling Using GridDB</option>
+      <option value="/data-modeling/4-3_modeling-relationships/" >- </option>
+      <option value="/data-modeling/4-4_possibilities-and-variations-of-data-models-in-griddb/" >- </option>
+  
     <option value="/sample-applications/" >
    Sample Application</option>
     <option value="/administration/" >
@@ -571,33 +577,53 @@
       </div>
     
 
+    <h1>Data Modeling Basics</h1>
     
     
     
-    
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
+    <p>GridDB is a unique Key-Container data model that resembles Key-Value. It has the following features.</p>
 
+<ul>
+<li>A concept resembling a RDB table that is a container for grouping Key-Value.</li>
+<li>A schema to define the data type for the container can be set. An index can be set in a column.</li>
+<li>Transactions can be carried out on a row basis within the container. In addition, ACID is guaranteed on a container basis.</li>
+</ul>
+
+<p>GridDB manages data on a block, container, partition, and partition group basis.</p>
+
+<ul>
+<li>Block<br />
+A block is a data unit for data persistence processing in a disk (hereinafter known as a checkpoint) and is the smallest physical data management unit in GridDB. Multiple container data are arranged in a block. Before initial startup of GridDB, a size of either 64 KB or 1 MB can be selected for the block size to be set up in the definition file (cluster definition file). Specify 64 KB if the installed memory of the system is low, or if the frequency of data increase is low.</li>
+</ul>
+
+<p>As a database file is created during initial startup of the system, the block size cannot be changed after initial startup of GridDB.</p>
+
+<ul>
+<li>Container<br />
+A container consists of multiple blocks. A container is a data structure that serves as an interface with the user. There are 2 data types in a container, collection and time series.</li>
+<li>Table<br />
+A table is a special container form that exists only in NewSQL products and SQL can be operated as an interface in NewSQL. Before registering data in an application, there is a need to make sure that a container or table is created beforehand. Data is registered in a container or table.</li>
+<li>Row<br />
+A row refers to a line of data to be registered in a container or table. Multiple rows can be registered in a container or table, but this does not mean that data is arranged in the same block. Depending on the registration and update timing, data is arranged in suitable blocks within partitions. Normally, there are columns with multiple data types in a row.</li>
+
+<li><p>Partition<br />
+A partition is a data management unit that includes one or more containers or tables.</p></li>
+
+<li><p>Partition Group<br />
+A group of multiple partitions is known as a partition group.</p></li>
+</ul>
+
+<p>A partition is a data arrangement unit between clusters for managing the data movement to adjust the load balance between nodes and data multiplexing (replica) in case of a failure. Data replica is arranged in a node to compose a cluster on a partition basis. A node that can be updated against a container inside a partition is known as an owner node and 1 node is allocated to each partition. A node that maintains replicas other than owner nodes is a backup node. Master data and multiple backup data exist in a partition, depending on the number of replicas set.</p>
+
+<p>Data maintained by a partition group is saved in an OS disk as a physical database file. A partition group is created with a number that depends on the degree of parallelism of the database processing threads executed by the node.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/data-modeling/" title="Data Modeling"> <i class="fa fa-chevron-left"></i><label>Data Modeling</label></a>
+    <a class="nav nav-next" href="/data-modeling/4-2_data-modeling-using-griddb/" title="Data Modeling Using GridDB" style="margin-right: 0px;"><label>Data Modeling Using GridDB</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +639,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/data%20modeling/4-1_data-modeling-basics.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

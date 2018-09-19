@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-8_collection-register/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -403,7 +405,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-8_collection-register/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-8_collection-register/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-8_collection-register/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,213 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-8-collection-registration">5.1.8 Collection Registration</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This chapter describes registering data in a GridDB collection.</p>
+
+<h2 id="data-to-be-registered">Data to be registered</h2>
+
+<p>Create registration data in a CSV file with the contents as follows:</p>
+
+<ul>
+<li>Measuring instrument CSV file
+
+<ul>
+<li>File name
+
+<ul>
+<li><code>Weather_station.csv</code></li>
+</ul></li>
+<li>Retention data
+
+<ul>
+<li>Row 1: measuring instrument ID</li>
+<li>Row 2: The name</li>
+<li>Row 3: installation coordinates (latitude)</li>
+<li>Row 4: installation coordinates (longitude)</li>
+<li>Row 5: camera presence
+
+<br /></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><strong>List.1 Data File</strong> (weather_station.csv)</p>
+
+<p>1,Hokkaido-Sapporo,43.06417,141.34694,true
+2,Aomori-Aomori-City,40.82444,140.74,false
+3,Iwate-Morioka,39.70361,141.1525,true
+4,Miyagi-Sendai,38.26889,140.87194,false
+5,Akita-Akita,39.71861,140.1025,true
+(Snip)</p>
+
+<h2 id="data-registration">Data registration</h2>
+
+<p>The following code demonstrates registering data:</p>
+
+<p><strong>List.2 Simple Data Registration</strong> (CollectionRegister.java)</p>
+
+<p>// Read WeatherStation data from csv
+List weatherStationList=wsLogic.readCsv ();
+// Register Collection
+wsLogic.registerCollection (store, weatherStationList);</p>
+
+<ul>
+<li>L.26: Read the CSV to get a list of measuring instruments.</li>
+<li>L.28: Register the list of measuring instruments in a GridDB collection.
+
+<br /></li>
+</ul>
+
+<p><strong>List.3 Read CSV</strong> (WeatherStationLogic.java)</p>
+
+<p>public List<WeatherStation> readCsv() throws IOException {
+    List<WeatherStation> weatherStationList = new ArrayList<WeatherStation>();
+    // Read CSV file
+    CSVReader reader = new CSVReader(new FileReader(&ldquo;data/weather_station.csv&rdquo;));</p>
+
+<pre><code>try {
+    String\[\] line = null;
+    WeatherStation weatherStation = null;
+
+    // Read all line of CSV
+    while ((line = reader.readNext()) != null) {
+        // Set the value to Row of WeatherStation
+        weatherStation = new WeatherStation();
+        weatherStation.id = line\[0\];
+        weatherStation.name = line\[1\];
+        weatherStation.latitude = Double.valueOf(line\[2\]);
+        weatherStation.longitude = Double.valueOf(line\[3\]);
+        weatherStation.hasCamera = Boolean.valueOf(line\[4\]);
+
+        // Add Collection
+        weatherStationList.add(weatherStation);
+    }
+} finally {
+    // Close CSV
+    reader.close();
+}
+return weatherStationList;
+</code></pre>
+
+<p>}</p>
+
+<h3 id="read-csv">Read CSV</h3>
+
+<ul>
+<li>L.31: Read a CSV file <code>weather_station.csv</code> that contains the measuring instrument&rsquo;s data. The operation of reading the CSV file uses the <code>CSVReader</code> class of which is an open source software <a href="http://opencsv.sourceforge.net/">opencsv</a>.</li>
+<li>L.38-45: Read the contents of the CSV and set the values to an instance of <code>WeatherStation</code>.
+
+<br /></li>
+</ul>
+
+<h3 id="register-collection">Register Collection</h3>
+
+<p><strong>List.4 Register Data</strong> (WeatherStationLogic.java)</p>
+
+<p>public void registerCollection(GridStore store, List<WeatherStation> weatherStationList)
+        throws GSException {
+    // Get Collection
+    Collection<String, WeatherStation> weatherStationCol =
+            store.getCollection(&ldquo;weather_station&rdquo;, WeatherStation.class);
+    try {
+        // Disable Auto Commit
+        weatherStationCol.setAutoCommit(false);</p>
+
+<pre><code>    boolean isSuccess = true;
+
+    for (WeatherStation weatherStation : weatherStationList) {
+        if (weatherStation != null) {
+            // Add Collection
+            weatherStationCol.put(weatherStation.id, weatherStation);
+        } else {
+            // if Row Data is null, abort register
+            weatherStationCol.abort();
+            System.out.println(&quot;Register of the Collection is aborted.&quot;);
+            isSuccess = false;
+            break;
+        }
+    }
+
+    // Commit only when the registration was successful all
+    if (isSuccess) {
+        // Commit
+        weatherStationCol.commit();
+    }
+} finally {
+    // Close Connection
+    weatherStationCol.close();
+}
+</code></pre>
+
+<p>}</p>
+
+<h3 id="get-container">Get Container</h3>
+
+<ul>
+<li>L.67-68: Get the subject of container to be registered.
+
+<br /></li>
+</ul>
+
+<h3 id="auto-commit">Auto-commit</h3>
+
+<ul>
+<li>L.71: Disable auto-commit.</li>
+</ul>
+
+<p>Auto-commit is set by <code>Collection.setAutoCommit ()</code> method. Auto-commit by default in GridDB is enabled.<br />
+When you register the data collectively, to disable auto-commit makes a reduction in the number of times of the inquiry, therefore increasing the throughput is expectable.</p>
+
+<h3 id="add-data">Add Data</h3>
+
+<ul>
+<li>L.78: Add the value read from CSV to the collection.</li>
+</ul>
+
+<p>In this code auto-commit is disabled, but If auto-commit is enabled, the data will be registered here.</p>
+
+<h3 id="commit">Commit</h3>
+
+<ul>
+<li>L.91: Commit to a collection.</li>
+</ul>
+
+<p>Commit is executed by <code>Collection.commit ()</code> method. If auto-commit is disabled, the data is registered here.</p>
+
+<h3 id="roll-back">Roll back</h3>
+
+<ul>
+<li>L.81: Execute rollback to collection.</li>
+</ul>
+
+<p>Rollback is executed by <code>Collection.abort ()</code> method.<br />
+Rollback must be executed only when an exception occurs other than <code>GSException</code> or problems are detected. Otherwise operation of the pre-commit will be canceled if an exception <code>GSException</code> occurs when auto-commit is disabled.<br />
+In this sample, if the data of the measuring instrument read from the CSV is NULL, execute rollback assuming that a problem occurs.</p>
+
+<h2 id="complete-source-code">Complete source code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p>Download: <a href="img/collection-register.zip">collection-register.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-7_container-create-drop/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-9_collection-retrieve/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +821,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-8_collection-register.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

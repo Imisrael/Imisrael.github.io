@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title>Monitoring &amp; Troubleshooting :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/administration/6-7_monitoring-troubleshooting/">
     
       <header>
   <div class="logo">
@@ -421,10 +421,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/administration/" class="dd-item haschildren
+    <li data-nav-id="/administration/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/administration/"><b>6. </b>Administration</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/administration/"><b>6. </b>Administration</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/administration/6-1_supported-os-platforms-and-system-requirements/" class="dd-item">
@@ -469,7 +470,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/administration/6-7_monitoring-troubleshooting/" class="dd-item">
+      <li data-nav-id="/administration/6-7_monitoring-troubleshooting/" class="dd-item active">
         <div>
           <a href="/administration/6-7_monitoring-troubleshooting/">
             Monitoring &amp; Troubleshooting
@@ -546,7 +547,16 @@
     <option value="/sample-applications/" >
    Sample Application</option>
     <option value="/administration/" >
-   Administration</option>
+   Administration</option> 
+      <option value="/administration/6-1_supported-os-platforms-and-system-requirements/" >- Supported OS, Platforms and System Requirements</option>
+      <option value="/administration/6-2_sizing-and-scaling/" >- Sizing and Scaling</option>
+      <option value="/administration/6-3_installing/" >- Installing</option>
+      <option value="/administration/6-4_upgrading-the-editions/" >- Upgrading Editions</option>
+      <option value="/administration/6-5_migration-from-other-databases/" >- Migration from Other Databases</option>
+      <option value="/administration/6-6_cluster-administration-operations/" >- Cluster Administration &amp; Operations</option>
+      <option value="/administration/6-7_monitoring-troubleshooting/"  selected>- Monitoring &amp; Troubleshooting</option>
+      <option value="/administration/6-8_tuning/" >- Tuning</option>
+  
     <option value="/drivers-and-integrators/" >
    Drivers &amp; Integrators</option>
 
@@ -571,33 +581,240 @@
       </div>
     
 
+    <h1>Monitoring &amp; Troubleshooting</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>This chapter describes the troubleshooting procedures of GridDB. It contains information on how to resolve problems which occur when constructing and operating a GridDB’s system.</p>
+
+<p>This chapter is written for developers, users and system administrators responsible for GridDB’s operation management.</p>
+
+<p>The following subjects are covered in this chapter.</p>
+
+<ul>
+<li>Introduction</li>
+<li>Verification of the circumstances under which problems occurred: explains how to check the detailed circumstances (log file).</li>
+<li>Countermeasures to be adopted when problems occur: contains a list of expected problems and their countermeasures.</li>
+</ul>
+
+<h3 id="checking-the-circumstances-under-which-the-problems-occurred">Checking the Circumstances Under Which the Problems Occurred</h3>
+
+<p>Check the process (action) and error code etc. to see what kind of problem has occurred and the circumstances under which the problem occurred. After checking the circumstances, review/execute the “countermeasures (resolution method)”.</p>
+
+<p>The circumstances can be checked by either checking the process (action) or by checking the error code.</p>
+
+<ul>
+<li>Based on the process (action) carried out when the problem occurred and the error notification, select the appropriate “cause” in <a href="#shoot">Countermeasures to be adopted when a problem occurs</a> and study the countermeasures.</li>
+<li>Based on the error notification, select the appropriate “symptom” in <a href="#shoot">Countermeasures to be adopted when a problem occurs</a>, check the [Description] and “cause” and study the countermeasures.</li>
+</ul>
+
+<p>If the circumstances cannot be narrowed down from the notification error or the process (action) being carried out, check the GridDB status from the log file. See below for the log files such as the event log, client log, etc.</p>
+
+<h3 id="checking-the-event-log-file-of-a-griddb-server">Checking the Event Log File of a GridDB Server</h3>
+
+<p>Check whether an error has occurred and its description from the event log file in the server.</p>
+
+<p>The contents of the latest event log can be checked with the &ldquo;gs_logs&rdquo; command.</p>
+
+<p><strong>[Example]</strong></p>
+
+<p>$ gs_logs -u admin/admin
+2015-03-20T10:07:47.219+0900 host01 22962 INFO CHECKPOINT_SERVICE [30902:CP_STATUS] [CP_START] mode=NORMAL_CHECKPOINT, backupPath=</p>
+
+<p>The format of the event log file is as follows. Check the server status when an error occurs from the time and other data.</p>
+
+<p>(Date and time) (host name) (thread no.) (log level) (category) [(error/trace no.): (error/trace no. name)] (message) &lt; (Detailed data: source code position etc. Only when an error occurs)&gt;</p>
+
+<p>Earlier event log files are output to the event log storage directory (default: &ldquo;/var/lib/gridstore/log&rdquo;). File name is gridstore-log taking date (YYYYMMDD) log. A sequential no. is appended if the log taking date is duplicated.</p>
+
+<p><strong>[Memo]</strong></p>
+
+<ul>
+<li>Execute the &ldquo;gs_logconf&rdquo; command when checking or changing the output level of the event log.</li>
+</ul>
+
+<h3 id="checking-the-log-file-of-a-client">Checking the Log File of a Client</h3>
+
+<p>If an error is detected in the client program such as an application program etc., check the description of the error which occurred.</p>
+
+<p>In the client program where Java API is used, the client log can be output to a file by setting the log output, including the login library in the class path of the execution environment.</p>
+
+<p>For example, the following log is recorded.</p>
+
+<p><strong>[Example]</strong></p>
+
+<p>15/03/25 13:07:56 INFO GridStoreLogger.Transaction: Repairing session (context=7c469c48, statement=PUT_MULTIPLE_ROWS,
+partition=11, statementId=1, containerId=0, sessionId=1, trialCount=0, transactionStarted=false)
+com.toshiba.mwcloud.gs.common.GSStatementException: [110016:TM_SESSION_UUID_UNMATCHED] Failed to operate session or transaction status
+(pId=11, clientId=87a89588-b6e1-4dac-bf42-92fa596b7efb:1, sessionMode=1, txnMode=1, reason=) (address=/192.168.10.10:10001, partitionId=11)</p>
+
+<p>Compare the event log of the server at the time the error was recorded in the client log and check the surrounding logs to verify the status of the server when the error occurred.</p>
+
+<p><strong>[Memo]</strong></p>
+
+<ul>
+<li>An error message may be recorded in the event log if an error were to occur during notification or if the trigger process were to fail.</li>
+<li>See the paragraph on GridStoreFactory class in the “GridDB API Reference” (<a href="/en/docs/GridDB_API_Reference.html">GridDB_API_Reference.html</a>) for the client login settings.</li>
+</ul>
+
+<h3 id="checking-the-log-file-of-a-jdbc-driver">Checking the Log File of a JDBC Driver</h3>
+
+<p>If an error occurs in the GridDB Advanced Edition NewSQL interface e.g. during SQL execution, check the description of the error.</p>
+
+<p>The log file below is created under the execution directory of the application, or under the log output directory specified by the application.</p>
+
+<ul>
+<li>Log file of the JDBC driver is &ldquo;/NewSQLJDBC.log&rdquo;.</li>
+<li>Log file of the engine is &ldquo;/newsql- log taking date and time (YYYYMMDDHHMMSS).log&rdquo;</li>
+</ul>
+
+<p>A log will not be output by default. If the log file has not been created, set up the log output level and output destination.</p>
+
+<p>The log output level and output destination settings are configured from gs.util.Debug.</p>
+
+<p>(1) Import gs.util.Debug.</p>
+
+<p>(2) Use setLogLevel() to change the output level of the log.</p>
+
+<p>　　setLogLevel (int log level)</p>
+
+<p>There are 4 log output levels as shown below.</p>
+
+<ul>
+<li>3: ERROR</li>
+<li>2: WARNING</li>
+<li>1: INFO</li>
+<li>0: DEBUG</li>
+</ul>
+
+<p>When the level is set to low, all logs with a level higher than the level will be output.</p>
+
+<p>(3) Use setLogFilePath() to set the log output destination. Default directory is the current directory.</p>
+
+<p>　　Debug.setLogFilePath(String output directory)</p>
+
+<p><strong>[Example]</strong> When the log output level is debug, and log output destination is under the jdbcLog folder in the current directory</p>
+
+<p>import java.sql.*;
+import gs.util.Debug;</p>
+
+<p>// usage: java SampleJDBC (multicastAddress) (port) (clusterName)</p>
+
+<p>public class Sample {
+ public static void main(String[] args) {
+  Debug.setLogFilePath(&ldquo;jdbcLog&rdquo;);
+  Debug.setLevel(0)
+}</p>
+
+<h3 id="checking-the-log-file-of-an-operating-command">Checking the Log File of an Operating Command</h3>
+
+<p>If an error occurs in the operating tool (gs_admin), check the description of the error which occurred from the log file of the operating command.</p>
+
+<p>Log file of operating command is located at &ldquo;&lt; log data output destination (&ldquo;/var/lib/gridstore/log&rdquo; by default)&gt; / operating command name.log&rdquo;.　<br />
+Example) &ldquo;operating command name.log&rdquo; may be gs_startnode.log or gs_stopcluster.log, gs_stat.log etc.</p>
+
+<p><strong>[Example]</strong> Log file of gs_startnode command file name: gs_startnode.log</p>
+
+<p>2014-10-20 15:25:16,876 [25444] [INFO] <module>(56) /usr/bin/gs_startnode start.
+2014-10-20 15:25:16,877 [25444] [DEBUG] <module>(105) command: [&rsquo;/usr/bin/gsserver&rsquo;, &lsquo;&ndash;conf&rsquo;, &lsquo;/var/lib/gridstore/conf&rsquo;]
+2014-10-20 15:25:17,889 [25444] [INFO] <module>(156) wait for starting node. (node=127.0.0.1:10040 waitTime=0)
+2014-10-20 15:25:18,905 [25444] [INFO] <module>(192) /usr/bin/gs_startnode end.</p>
+
+<p><strong>[Memo]</strong></p>
+
+<ul>
+<li>Event log data of the server is also recommended to be checked together with the data of the operating command.</li>
+</ul>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>Understand the circumstances based on the error notification from the server or application, or the process (action) being executed etc., then select the appropriate problem from the problem and countermeasure list and study the countermeasures.</p>
+
+<h3 id="problems-and-countermeasures-according-to-the-circumstances-under-which-the-problems-occurred">Problems and Countermeasures According to the Circumstances Under Which the Problems Occurred</h3>
+
+<p>Expected problems have been classified as follows according to the circumstances under which they occurred and the countermeasures to resolve these problems have been summarized.</p>
+
+<ul>
+<li>Problems related to cluster configuration</li>
+<li>Problems related to cluster expansion, reduction</li>
+<li>Problems related to client failover</li>
+<li>Problems related to cluster failure</li>
+<li>Problems related to recovery processing</li>
+<li>Problems related to container operation</li>
+<li>TQL-related problems</li>
+</ul>
+
+<h4 id="problems-related-to-cluster-configuration">Problems Related to Cluster Configuration</h4>
+
+<ul>
+<li><a href="img/trouble_guide_troubleList_1.html">List of problems related to cluster configuration</a></li>
+</ul>
+
+<h4 id="problems-related-to-cluster-expansion-reduction">Problems Related to Cluster Expansion, Reduction</h4>
+
+<ul>
+<li><a href="img/trouble_guide_troubleList_2.html">List of problems related to cluster expansion, reduction</a></li>
+</ul>
+
+<h4 id="problems-related-to-client-failover">Problems Related to Client Failover</h4>
+
+<ul>
+<li><a href="img/trouble_guide_troubleList_3.html">List of problems related to client failover</a></li>
+</ul>
+
+<h4 id="problems-related-to-cluster-failure">Problems Related to Cluster Failure</h4>
+
+<ul>
+<li><a href="img/trouble_guide_troubleList_4.html">List of problems related to cluster failure</a></li>
+</ul>
+
+<h4 id="problems-related-to-recovery-processing">Problems Related to Recovery Processing</h4>
+
+<ul>
+<li><a href="img/trouble_guide_troubleList_5.html">List of problems related to recovery processing</a></li>
+</ul>
+
+<h4 id="problems-related-to-container-operation">Problems Related to Container Operation</h4>
+
+<ul>
+<li><a href="img/trouble_guide_troubleList_6.html">List of problems related to container operations</a></li>
+</ul>
+
+<h4 id="tql-related-problems">TQL-Related Problems</h4>
+
+<ul>
+<li><a href="img/trouble_guide_troubleList_7.html">List of TQL-related problems</a></li>
+</ul>
+
+<p>[Reference] Compatibility</p>
+
+<ul>
+<li><a href="img/trouble_guide_troubleList_8.html">Compatibility between client and DB</a></li>
+</ul>
+
+<h4 id="general-griddb-problems">General GridDB problems</h4>
+
+<p>This sheet summarizes the list of problems above according to the circumstances under which the problems occurred. If the area of the problem which occurred can be clearly classified, use key words such as the error code etc. to conduct a search.</p>
+
+<p><a href="img/trouble_guide_troubleList.html">List of general GridDB problems (HTML)</a></p>
+
+<p><a href="img/trouble_guide_troubleList.pdf">List of general GridDB problems (PDF)</a></p>
+
+<p><strong>[Memo]</strong></p>
+
+<ul>
+<li>A list of the general GridDB problems which summarizes all the documents on the problems according to the circumstances under which they occurred into a single document.</li>
+</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/administration/6-6_cluster-administration-operations/" title="Cluster Administration &amp; Operations"> <i class="fa fa-chevron-left"></i><label>Cluster Administration &amp; Operations</label></a>
+    <a class="nav nav-next" href="/administration/6-8_tuning/" title="Tuning" style="margin-right: 0px;"><label>Tuning</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +830,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/administration/6-7_monitoring-troubleshooting.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

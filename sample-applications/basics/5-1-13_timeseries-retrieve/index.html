@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-13_timeseries-retrieve/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -291,7 +293,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-13_timeseries-retrieve/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-13_timeseries-retrieve/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-13_timeseries-retrieve/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/" >-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,235 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-13-data-retrieval">5.1.13 Data Retrieval</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This section describes the data acquisition of time-series container of GridDB in this chapter.</p>
+
+<h2 id="data-acquisition">Data Acquisition</h2>
+
+<p>The following are methods to fetch and read TimeSeries containers:</p>
+
+<h3 id="specified-time">Specified time</h3>
+
+<p>Time to get the data (= low) of the series container, you will need to specify the time is Rouki of time series container.</p>
+
+<p><strong>List.1 Acquire Data for a Specified Time</strong> (TimeSeriesRetrieve.java)</p>
+
+<p>// Specify Time
+InstrumentLog log = logTs.get(format.parse(&ldquo;2016/07/02 12:00&rdquo;));
+System.out.println(&ldquo;get by Time&rdquo;);
+System.out.println(String.format(&ldquo;%s\t%-20s\t%-10s&rdquo;, log.timestamp, log.weatherStationId,
+        log.temperture));</p>
+
+<ul>
+<li>Line 100: Use <code>TimeSeries.get (Date)</code> to get rows with a specified time stamp.</li>
+</ul>
+
+<p>Execution results are as follows.</p>
+
+<p><strong>List.2 Results</strong></p>
+
+<p>get by Time
+Sat Jul 02 12:00:00 EDT 2016 weather_station_1 80.0</p>
+
+<h3 id="specified-range">Specified range</h3>
+
+<p>Time series container will be able to get to specify the range to be retrieved.</p>
+
+<p><strong>List.3 Aquire rows within a Range</strong> (TimeSeriesRetrieve.java)</p>
+
+<p>// Specify Time Range
+System.out.println(&ldquo;get by Time Range&rdquo;);
+Date start = format.parse(&ldquo;2016/07/02 9:00&rdquo;);
+Date end = TimestampUtils.add(start, 6, TimeUnit.HOUR);</p>
+
+<p>Query<InstrumentLog> query = logTs.query(start, end);
+// fetch row
+RowSet<InstrumentLog> rowSet = query.fetch();
+while (rowSet.hasNext()) {
+    InstrumentLog log = rowSet.next();
+    System.out.println(&ldquo;Timestamp\t\t\tWeatherStation ID\tTemperture\tLive Image&rdquo;);
+    System.out.println(String.format(&ldquo;%s\t%-20s\t%-10s\t%s&rdquo;, log.timestamp,
+            log.weatherStationId, log.temperture));
+}</p>
+
+<ul>
+<li>Line 119-120: Generate the start and end time for the range.</li>
+<li>Line 122: Use <code>TimeSeries.query (Date, Date)</code> method with start and end times for the range of data to fetch.</li>
+<li>Line 124-126: Fetch rows.</li>
+</ul>
+
+<p>Execution results are as follows.</p>
+
+<p><strong>List.4 Results</strong></p>
+
+<p>get by Time Range
+Sat Jul 02 09:00:00 EDT 2016 weather_station_1 75.0
+Sat Jul 02 12:00:00 EDT 2016 weather_station_1 80.0
+Sat Jul 02 15:00:00 EDT 2016 weather_station_1 75.0</p>
+
+<h3 id="relative-time">Relative Time</h3>
+
+<p>You can fetch rows with timestamps are earlier or later than specified timestamp with the <code>TimeOperator</code> enum.</p>
+
+<p><strong>Table 1 TimeOperator Enum</strong></p>
+
+<p>Acquisition method</p>
+
+<p>Description</p>
+
+<p>TimeOperator.NEXT</p>
+
+<p>Returns the oldest among the Rows whose timestamp are identical with or later than the specified time.</p>
+
+<p>TimeOperator.NEXT_ONLY</p>
+
+<p>Returns the oldest among the Rows whose timestamp are later than the specified time.</p>
+
+<p>TimeOperator.PREVIOUS</p>
+
+<p>Returns the newest among the Rows whose timestamp are identical with or earlier than the specified time.</p>
+
+<p>TimeOperator.PREVIOUS_ONLY</p>
+
+<p>Returns the newest among the Rows whose timestamp are earlier than the specified time.</p>
+
+<p><strong>Fetching Rows with a Relative Time stamp</strong> (TimeSeriesRetrieve.java)</p>
+
+<p>// Specify the next time, including a specified time
+InstrumentLog log = logTs.get(format.parse(&ldquo;2016/07/02 12:00&rdquo;), TimeOperator.NEXT);
+System.out.println(&ldquo;get by Next Time&rdquo;);
+System.out.println(String.format(&ldquo;%s\t%-20s\t%-10s&rdquo;, log.timestamp, log.weatherStationId,
+        log.temperture));</p>
+
+<p>// Specify the next time
+log = logTs.get(format.parse(&ldquo;2016/07/02 12:00&rdquo;), TimeOperator.NEXT_ONLY);
+System.out.println(&ldquo;get by NextOnly Time&rdquo;);
+System.out.println(String.format(&ldquo;%s\t%-20s\t%-10s&rdquo;, log.timestamp, log.weatherStationId,
+        log.temperture));</p>
+
+<p>// Specify the previous time, including a specified time
+log = logTs.get(format.parse(&ldquo;2016/07/02 12:00&rdquo;), TimeOperator.PREVIOUS);
+System.out.println(&ldquo;get by Previous Time&rdquo;);
+System.out.println(String.format(&ldquo;%s\t%-20s\t%-10s&rdquo;, log.timestamp, log.weatherStationId,
+        log.temperture));</p>
+
+<p>// Specify the previous time
+log = logTs.get(format.parse(&ldquo;2016/07/02 12:00&rdquo;), TimeOperator.PREVIOUS_ONLY);
+System.out.println(&ldquo;get by PreviousOnly Time&rdquo;);
+System.out.println(String.format(&ldquo;%s\t%-20s\t%-10s&rdquo;, log.timestamp, log.weatherStationId,
+        log.temperture));</p>
+
+<ul>
+<li>Line 144: you get to specify the <code>TimeOperator.NEXT</code>.</li>
+<li>Line 150: you get to specify the <code>TimeOperator.NEXT_ONLY</code>.</li>
+<li>Line 156: you get to specify the <code>TimeOperator.PREVIOUS</code>.</li>
+<li>Line 162: you get to specify the <code>TimeOperator.PREVIOUS_ONLY</code>.</li>
+</ul>
+
+<p>Serving as a reference time has designated all <code>&quot; 2016/07/02 12:00 &quot;</code>.</p>
+
+<p>Execution results are as follows.</p>
+
+<p><strong>List.6 Results</strong> that the constant time was on the basis of</p>
+
+<p>get by Next Time
+Sat Jul 02 12:00:00 EDT 2016 weather_station_1 80.0
+get by NextOnly Time
+Sat Jul 02 15:00:00 EDT 2016 weather_station_1 75.0
+get by Previous Time
+Sat Jul 02 12:00:00 EDT 2016 weather_station_1 80.0
+get by PreviousOnly Time
+Sat Jul 02 09:00:00 EDT 2016 weather_station_1 75.0</p>
+
+<h3 id="aggregatation">Aggregatation</h3>
+
+<p>Time series container is able to aggregate the data for the specified time period.</p>
+
+<p><strong>List.7 Aggregate Average</strong></p>
+
+<p>// Average Temperature
+Date start = format.parse(&ldquo;2016/07/01 12:00&rdquo;);
+Date end = format.parse(&ldquo;2016/07/02 9:00&rdquo;);
+AggregationResult aggrResult =
+        logTs.aggregate(start, end, &ldquo;temperture&rdquo;, Aggregation.AVERAGE);
+System.out.println(&ldquo;Average Temperature:&rdquo; + aggrResult.getDouble() + &ldquo;\n&rdquo;);</p>
+
+<ul>
+<li>181-182 line: <code>TimeSeries.aggregate (Date, Date, String, Aggregation)</code> method You have a summary to find the average value of the temperature.</li>
+</ul>
+
+<p>Execution results are as follows.</p>
+
+<p><strong>List.8 Aggregate Results</strong></p>
+
+<p>Average Temperature: 67.5</p>
+
+<p>The different types of Aggregation methods are as follows:</p>
+
+<p><strong>Table 2 Aggregation types</strong></p>
+
+<p>Aggregation method</p>
+
+<p>Description</p>
+
+<p>Aggregation.AVERAGE</p>
+
+<p>Obtain the average value.</p>
+
+<p>Aggregation.COUNT</p>
+
+<p>Obtain the number of samples.</p>
+
+<p>Aggregation.MAXIMUM</p>
+
+<p>Obtain the maximum value.</p>
+
+<p>Aggregation.MINIMUM</p>
+
+<p>Obtain the minimum value.</p>
+
+<p>Aggregation.STANDARD_DEVIATION</p>
+
+<p>Obtain the standard deviation.</p>
+
+<p>Aggregation.TOTAL</p>
+
+<p>Obtain the total value (sum).</p>
+
+<p>Aggregation.VARIANCE</p>
+
+<p>Obtain the variance within the rows.</p>
+
+<p>Aggregation.WEIGHTED_AVERAGE</p>
+
+<p>Obtain the weighted average.</p>
+
+<p>For more information, please refer to the <a href="/en/docs/GridDB_API_Reference.html">GridDB API Reference</a></p>
+
+<h2 id="complete-source-code">Complete source code</h2>
+
+<p>Complete source code used in this sample can be downloaded from the following.</p>
+
+<p>Download: <a href="img/timeseries-retrieve.zip">timeseries-retrieve.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-12_timeseries-register/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-14_timeseries-delete/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +843,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-13_timeseries-retrieve.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

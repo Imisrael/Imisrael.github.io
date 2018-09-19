@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Documentation for Hugo docDock :: Documentation for Hugo docDock</title>
+<title> :: Documentation for Hugo docDock</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/sample-applications/basics/5-1-5_connection/">
     
       <header>
   <div class="logo">
@@ -258,16 +258,18 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/sample-applications/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/"><b>5. </b>Sample Application</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/"><b>5. </b>Sample Application</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/sample-applications/basics/" class="dd-item haschildren
+    <li data-nav-id="/sample-applications/basics/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/sample-applications/basics/"><b>5.1 </b>Basics</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/sample-applications/basics/5-1-10_collection-delete/" class="dd-item">
@@ -382,7 +384,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/sample-applications/basics/5-1-5_connection/" class="dd-item">
+      <li data-nav-id="/sample-applications/basics/5-1-5_connection/" class="dd-item active">
         <div>
           <a href="/sample-applications/basics/5-1-5_connection/">
             
@@ -544,7 +546,33 @@
     <option value="/data-modeling/" >
    Data Modeling</option>
     <option value="/sample-applications/" >
-   Sample Application</option>
+   Sample Application</option> 
+    <option value="/sample-applications/basics/" >
+  - 
+   Basics</option> 
+      <option value="/sample-applications/basics/5-1-10_collection-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-11_collection-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-12_timeseries-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-13_timeseries-retrieve/" >-- </option>
+      <option value="/sample-applications/basics/5-1-14_timeseries-delete/" >-- </option>
+      <option value="/sample-applications/basics/5-1-15_timeseries-modify/" >-- </option>
+      <option value="/sample-applications/basics/5-1-16_tql/" >-- </option>
+      <option value="/sample-applications/basics/5-1-17_trigger-rest/" >-- </option>
+      <option value="/sample-applications/basics/5-1-18_trigger-jms/" >-- </option>
+      <option value="/sample-applications/basics/5-1-19_multiput/" >-- </option>
+      <option value="/sample-applications/basics/5-1-1_introduction/" >-- </option>
+      <option value="/sample-applications/basics/5-1-20_multiquery/" >-- </option>
+      <option value="/sample-applications/basics/5-1-21_multiget/" >-- </option>
+      <option value="/sample-applications/basics/5-1-2_griddb-basics/" >-- </option>
+      <option value="/sample-applications/basics/5-1-3_prepare-server/" >-- </option>
+      <option value="/sample-applications/basics/5-1-4_prepare-client/" >-- </option>
+      <option value="/sample-applications/basics/5-1-5_connection/"  selected>-- </option>
+      <option value="/sample-applications/basics/5-1-6_container-schema/" >-- </option>
+      <option value="/sample-applications/basics/5-1-7_container-create-drop/" >-- </option>
+      <option value="/sample-applications/basics/5-1-8_collection-register/" >-- </option>
+      <option value="/sample-applications/basics/5-1-9_collection-retrieve/" >-- </option>
+  
+  
     <option value="/administration/" >
    Administration</option>
     <option value="/drivers-and-integrators/" >
@@ -571,33 +599,91 @@
       </div>
     
 
+    <h1></h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>Table of Contents</p>
+
+<h1 id="5-1-5-preparation-connecting-to-griddb">5.1.5 Preparation: Connecting to GridDB</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This section describes the connecting to and disconnecting from a GridDB server.</p>
+
+<h2 id="connecting-to-griddb">Connecting to GridDB</h2>
+
+<p>In order to connect with the GridDB server, we use a Property class to set the connnection details which will be used by GridStoreFactory to open a connection. Refer to <a href="5-1-3_prepare-server.php">Environment (server)</a> on what these settings are configured as in your envrionment.</p>
+
+<p><strong>List.1 Connecting to a GridDB server</strong> (GridDBLogic.java)</p>
+
+<p>// Set the Connection parameter for GridDB
+Properties props=new Properties ();
+props.setProperty(&ldquo;host&rdquo;, &ldquo;127.0.0.1&rdquo;);
+props.setProperty(&ldquo;port&rdquo;, &ldquo;10001&rdquo;);
+props.setProperty(&ldquo;clusterName&rdquo;, &ldquo;GSCLUSTER&rdquo;);
+props.setProperty(&ldquo;database&rdquo;, &ldquo;public&rdquo;);
+props.setProperty(&ldquo;user&rdquo;, &ldquo;admin&rdquo;);
+props.setProperty(&ldquo;password&rdquo;, &ldquo;admin&rdquo;);
+GridStore store=GridStoreFactory.getInstance().getGridStore(props);</p>
+
+<p>Parameters of GridDB connection are as follows.</p>
+
+<p>L.24: <code>host</code> specifies the destination host name or IP address (IPV4 only).<br />
+L.25: <code>port</code> specifies the destination port number.<br />
+L.26: <code>clusterName</code> specifies the destination cluster name.<br />
+L.27: <code>database</code> specifies the database name of the destination. This value is the default can be omitted is the &ldquo;public&rdquo;.<br />
+L.28: <code>user</code> Specifies the user name of GridDB server.<br />
+L.29: <code>password</code> specifies the password of GridDB server.</p>
+
+<p>For more information on the parameters other than the above, refer to the <a href="../GridDB_API_Reference.html">GridDB API Reference</a>.</p>
+
+<h3 id="cut-from-griddb">Cut from GridDB</h3>
+
+<p>After the application&rsquo;s GridDB tasks have completed, the connection should be closed.</p>
+
+<p><strong>List.2 cut from GridDB</strong>(CollectionCreate.java)</p>
+
+<p>GridStore store=null;
+try {
+    // Processing to GridDB
+    (Snip)
+} finally {
+    // Close Connection
+    if (store!=null) {
+        store.close ();
+    }
+}</p>
+
+<p>L.8: Using close() within a try/finally block.</p>
+
+<p>The following classes have a <code>close()</code> method that can terminate the connection with GridDB.</p>
+
+<ul>
+<li><code>GridStoreFactory</code></li>
+<li><code>GridStore</code></li>
+<li><code>Container</code></li>
+<li><code>Query</code></li>
+<li><code>RowSet</code>
+
+<br /></li>
+</ul>
+
+<h3 id="source-code">Source code</h3>
+
+<p>Complete source code used in this sample can be downloaded here:</p>
+
+<p>Download: <a href="img/container-create-drop.zip">container-create-drop.zip</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/sample-applications/basics/5-1-4_prepare-client/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/sample-applications/basics/5-1-6_container-schema/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -613,7 +699,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/sample%20applications/basics/5-1-5_connection.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>
