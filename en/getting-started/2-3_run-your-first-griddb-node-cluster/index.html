@@ -605,16 +605,18 @@
 
 <h3 id="start-a-server">Start a Server</h3>
 
-<p>$ export GS_HOME=$PWD
-$ export GS_LOG=$PWD/log</p>
+<pre><code>$ export GS_HOME=$PWD
+$ export GS_LOG=$PWD/log
+</code></pre>
 
-<p>$ bin/gs_passwd admin
+<pre><code>$ bin/gs_passwd admin
 #input your_password
 $ vi conf/gs_cluster.json
-#&ldquo;clusterName&rdquo;:&ldquo;your_clustername&rdquo; #&lt;&ndash; input your_clustername
+#&quot;clusterName&quot;:&quot;your\_clustername&quot; #&lt;-- input your\_clustername
 $ export no_proxy=127.0.0.1
 $ bin/gs_startnode
-$ bin/gs_joincluster -c your_clustername -u admin/your_password</p>
+$ bin/gs\_joincluster -c your\_clustername -u admin/your_password
+</code></pre>
 
 
     
