@@ -623,12 +623,11 @@
 
 <p>Containers can be made easily by defining the data as a class.</p>
 
-<p><code>
-// Create Collection
+<pre><code>// Create Collection
 Collection weatherStationCol =
-        store.putCollection(&quot;weather_station&quot;, WeatherStation.class);
+    store.putCollection(&quot;weather_station&quot;, WeatherStation.class);
 return weatherStationCol; 
-</code></p>
+</code></pre>
 
 <p>34-35 line: create the collection by using the GridStore.putCollection (String, Class) method. The String Specifies the name of the container. The Class specifies the WeatherStation class that was created in the schema definition.</p>
 
@@ -636,26 +635,25 @@ return weatherStationCol;
 
 <p>Ready access to GridDB in the above process is now ready. Let&rsquo;s try to register the data in GridDB.</p>
 
-<p>``
-// Set the value to Row data
+<pre><code>// Set the value to Row data
 WeatherStation weatherStation1 = new WeatherStation ();
-weatherStation1.id = &ldquo;1&rdquo;;
-weatherStation1.name = &ldquo;WeatherStation 01&rdquo;;
+weatherStation1.id = &quot;1&quot;;
+weatherStation1.name = &quot;WeatherStation 01&quot;;
 weatherStation1.latitude = 35.68944;
 weatherStation1.longitude = 139.69167;
-weatherStation1.hasCamera = true;</p>
+weatherStation1.hasCamera = true;
 
-<p>WeatherStation weatherStation2 = new WeatherStation ();
-weatherStation2.id = &ldquo;2&rdquo;;
-weatherStation2.name = &ldquo;WeatherStation 02&rdquo;;
+WeatherStation weatherStation2 = new WeatherStation ();
+weatherStation2.id = &quot;2&quot;;
+weatherStation2.name = &quot;WeatherStation 02&quot;;
 weatherStation2.latitude = 35.02139;
 weatherStation2.longitude = 135.75556;
-weatherStation2.hasCamera = false;</p>
+weatherStation2.hasCamera = false;
 
-<p>// Register Collection
+// Register Collection
 weatherStationCol.put (weatherStation1);
 weatherStationCol.put (weatherStation2);
-``</p>
+</code></pre>
 
 <p>* 30-42 line: Set the values of the data to be registered.<br />
 * 45-46 line: Pack data and register it in the container</p>
@@ -666,19 +664,18 @@ weatherStationCol.put (weatherStation2);
 
 <p><strong>List.6 data acquisition process</strong> (FirstGridDB.java)</p>
 
-<p>``
-// Retrieve Collection
-System.out.println(&ldquo;get by key&rdquo;);
-System.out.println(&ldquo;ID\tName\t\t\tLongitude\tLatitude\tCamera&rdquo;);
-weatherStationCol = store.getCollection(&ldquo;weather_station&rdquo;, WeatherStation.class);</p>
+<pre><code>// Retrieve Collection
+System.out.println(&quot;get by key&quot;);
+System.out.println(&quot;ID\\tName\\t\\t\\tLongitude\\tLatitude\\tCamera&quot;);
+weatherStationCol = store.getCollection(&quot;weather_station&quot;, WeatherStation.class);
 
-<p>for (int i = 0; i &lt;2; i ++) {
+for (int i = 0; i &lt;2; i ++) {
     WeatherStation weatherStation = weatherStationCol.get (String.valueOf (i + 1));
-    System.out.println (String.format(&ldquo;% - 3s\t% -20s\t% s\t% s\t% -5s&rdquo;, weatherStation.id,
+    System.out.println (String.format(&quot;% - 3s\\t% -20s\\t% s\\t% s\\t% -5s&quot;, weatherStation.id,
             weatherStation.name, weatherStation.latitude, weatherStation.longitude,
             weatherStation.hasCamera));
 }
-``</p>
+</code></pre>
 
 <p>* 51 line: First get the container by specifying the container name and class.<br />
 * 54 line: Then get row data by specifying the key.<br />
@@ -686,20 +683,18 @@ Here is the output:</p>
 
 <p><strong>List.7 data acquisition result</strong></p>
 
-<p><code>
-get by key
+<pre><code>get by key
 ID Name Longitude Latitude Camera
 1 WeatherStation 01 35.68944 139.69167 true
 2 WeatherStation 02 35.02139 135.75556 false
-</code></p>
+</code></pre>
 
 <p><strong>Deleting A Container</strong></p>
 
 <p>The command to delete a container looks like this:</p>
 
-<p><code>
-Container.dropCollection (String)
-</code></p>
+<pre><code>Container.dropCollection (String)
+</code></pre>
 
 <h3 id="tql">TQL</h3>
 
@@ -714,12 +709,11 @@ Container.dropCollection (String)
 
 <p><strong>Container Creation</strong></p>
 
-<p><code>
-Container (collection)  
+<pre><code>Container (collection)  
 createcollection    Container name Column name Type \[Column name Type …\]
 Container (time series container)   
 createtimeseries    Container name Compression method Column name type \[Column name Type …\]
-</code></p>
+</code></pre>
 
 <ul>
 <li>Description of each argument
