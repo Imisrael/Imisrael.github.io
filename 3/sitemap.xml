@@ -3,6 +3,20 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/3/introduction/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/introduction/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/introduction/"
+                />
+  </url>
+  
+  <url>
     <loc>/3/introduction/1-1_what-is-griddb/</loc>
     <xhtml:link
                 rel="alternate"
@@ -28,21 +42,6 @@
                 rel="alternate"
                 hreflang="3"
                 href="/3/categories/"
-                />
-  </url>
-  
-  <url>
-    <loc>/3/introduction/</loc>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="latest"
-                href="/latest/introduction/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="3"
-                href="/3/introduction/"
                 />
   </url>
   

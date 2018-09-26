@@ -1,5 +1,12 @@
 [
 {
+	"uri": "/3/introduction/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": " Chapter 1 Introduction Introduction to GridDB\n"
+},
+{
 	"uri": "/3/introduction/1-1_what-is-griddb/",
 	"title": "",
 	"tags": [],
@@ -9,13 +16,6 @@
 {
 	"uri": "/3/categories/",
 	"title": "Categories",
-	"tags": [],
-	"description": "",
-	"content": ""
-},
-{
-	"uri": "/3/introduction/",
-	"title": "Introductions",
 	"tags": [],
 	"description": "",
 	"content": ""
