@@ -11,6 +11,17 @@
     
     
     <item>
+      <title>System Requirements</title>
+      <link>/3/getting-started/2-1_system-requirements/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/3/getting-started/2-1_system-requirements/</guid>
+      <description>Checking the Required Resources GridDB is a scale-out database that &amp;ndash; unlike a conventional database &amp;ndash; pre-planning of the system design and sizing is not required in order to achieve non-stop operation. However, the following points should be considered as guidelines in the initial system design:
+ Memory usage Number of nodes in a cluster Disk usage  The estimation method is explained in sequence below.
+Functions to increase the capacity by using external storage devices such as SSDs, etc.</description>
+    </item>
+    
+    <item>
       <title>What is GridDB</title>
       <link>/3/introduction/1-1_what-is-griddb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -29,6 +40,17 @@ Organizations should focus more on creating value from data that will enhance th
       <description>There are currently two distinct versions of GridDB available. The information below is designed to help distinguish between the editions and help users arrive to the correct choice for their situation.
 GridDB Community Edition (GridDB CE) GridDB CE is available under the AGPLv3 as a high-performant, open-source NoSQL database built with scalability and fault tolerance in-mind. This is the only edition of GridDB that is open-source.
 GridDB Standard Edition (GridDB SE) A high-performant commerical NoSQL database.</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>/3/getting-started/2-2_installation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/3/getting-started/2-2_installation/</guid>
+      <description>The following instructions are for the Standard Edition of GridDB. Instructions for the Community Edition can be found below
+Setup This chapter explains the installation of a node onto a single machine. See the chapter on operations for the cluster configuration.
+// The lsb_release command prints certain LSB (Linux Standard Base) and Distribution information. $ lsb_release -id Distributor ID: CentOS Description: CentOS release 6.3 (Final)   Installing a Node</description>
     </item>
     
   </channel>

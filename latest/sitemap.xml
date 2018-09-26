@@ -34,6 +34,16 @@
   
   <url>
     <loc>/latest/getting-started/2-1_system-requirements/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/getting-started/2-1_system-requirements/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/getting-started/2-1_system-requirements/"
+                />
   </url>
   
   <url>
@@ -56,6 +66,16 @@
   
   <url>
     <loc>/latest/getting-started/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/getting-started/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/getting-started/"
+                />
   </url>
   
   <url>
@@ -74,6 +94,16 @@
   
   <url>
     <loc>/latest/getting-started/2-2_installation/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/getting-started/2-2_installation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/getting-started/2-2_installation/"
+                />
   </url>
   
   <url>
