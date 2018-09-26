@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.48" />
-<title>Version 3.0 :: Version 3.0</title>
+<title>GridDB Editions :: Version 3.0</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/3/">
+  <body data-url="/3/introduction/1-2_griddb-edition/">
     
       <header>
   <div class="logo">
@@ -93,13 +93,14 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/3/introduction/" class="dd-item haschildren
+    <li data-nav-id="/3/introduction/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/3/introduction/"><b>1. </b>Introduction</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/3/introduction/"><b>1. </b>Introduction</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/3/introduction/1-2_griddb-edition/" class="dd-item">
+      <li data-nav-id="/3/introduction/1-2_griddb-edition/" class="dd-item active">
         <div>
           <a href="/3/introduction/1-2_griddb-edition/">
             GridDB Editions
@@ -128,7 +129,7 @@
 	  
 	    
 	      
-	        <option id="latest" value="/latest/">Latest</option>
+	        <option id="latest" value="/latest/introduction/1-2_griddb-edition/">Latest</option>
 	      
 	    
 	  
@@ -141,7 +142,7 @@
 	  
 	    
 	      
-	        <option id="3" value="/3/" selected>V. 3.0</option>
+	        <option id="3" value="/3/introduction/1-2_griddb-edition/" selected>V. 3.0</option>
 	      
 	    
 	  
@@ -157,7 +158,10 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/3/introduction/" >
-   Introduction</option>
+   Introduction</option> 
+      <option value="/3/introduction/1-2_griddb-edition/"  selected>- GridDB Editions</option>
+      <option value="/3/introduction/1-1_what-is-griddb/" >- </option>
+  
 
 
 
@@ -180,33 +184,67 @@
       </div>
     
 
+    <h1>GridDB Editions</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-           
-	
-		<h1>Customize your own home page</h1>
-		<p>
-		  The site is working. Don't forget to customize this homepage with your own. You typically have 2 choices :
-		</p>
-		<ul>
-		  <li><b>1. </b> Create an _index.md document in the content folder</li>
-		  <li><b>2. </b> Configure your server to automatically redirect this home page to one of your documentation pages</li>
-		</ul>
-	
-	<p><i class="fa fa-heart fa-4x"></i></p>
 
+<p>There are currently two distinct versions of GridDB available. The information below is designed to help distinguish between the editions and help users arrive to the correct choice for their situation.</p>
+
+<h5 id="griddb-community-edition-griddb-ce">GridDB Community Edition (GridDB CE)</h5>
+
+<p>GridDB CE is available under the AGPLv3 as a high-performant, open-source NoSQL database built with scalability and fault tolerance in-mind. This is the only edition of GridDB that is open-source.</p>
+
+<h5 id="griddb-standard-edition-griddb-se">GridDB Standard Edition (GridDB SE)</h5>
+
+<p>A high-performant <em>commerical</em> NoSQL database. Included with the commercial license are tools, features, and the software support needed for critical big data applications.</p>
+
+<p>Comparison of each edition are as follows:</p>
+
+<p> 
+|                              | GridDB Community Edition | GridDB Standard Edition |
+|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-|
+| SOFTWARE SUPPORT             |                          |                         |
+| Maintenance Releases         |             X            |            O            |
+| Bug fixes/Patches            |             X            |            O            |
+| Updates                      |             X            |            O            |
+| BASIC                        |                          |                         |
+| Distributed Data Management  |             O            |            O            |
+| Transaction Management       |             O            |            O            |
+| DATA TYPE SUPPORT            |                          |                         |
+| Key-value data               |             O            |            O            |
+| Time-series data             |             O            |            O            |
+| Geometry data                |             X            |            O            |
+| QUERY LANGUAGE               |                          |                         |
+| SQL Subset (TQL)             |             O            |            O            |
+| SCALABILITY                  |                          |                         |
+| Offline expansion            |             O            |            O            |
+| Online expansion             |             X            |            O            |
+| PERSISTENCY                  |                          |                         |
+| In-Memory and Disk           |             O            |            O            |
+| API                          |                          |                         |
+| Java                         |             O            |            O            |
+| C                            |             O            |            O            |
+| ADMINISTRATIVE TOOL          |                          |                         |
+| Offline backup               |             O            |            O            |
+| Online backup                |             X            |            O            |
+| Export/import                |             X            |            O            |
+| Differential backup function |             X            |            O            |
+| Management GUI               |             X            |            O            |
+| Status Acquisition           |             O            |            O            |</p>
+
+<p>License Types</p>
+
+<p>Subscription License: A license that can only be used during the contract period service</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/3/introduction/" title="Introduction" style="margin-right: 0px;"><label>Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/3/introduction/" title="Introduction"> <i class="fa fa-chevron-left"></i><label>Introduction</label></a>
+    <a class="nav nav-next" href="/3/introduction/1-1_what-is-griddb/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -222,7 +260,7 @@
   
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/introduction/1-2_griddb-edition.3.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
   </div>

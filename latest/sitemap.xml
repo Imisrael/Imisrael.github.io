@@ -60,6 +60,16 @@
   
   <url>
     <loc>/latest/introduction/1-2_griddb-edition/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/introduction/1-2_griddb-edition/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/introduction/1-2_griddb-edition/"
+                />
   </url>
   
   <url>

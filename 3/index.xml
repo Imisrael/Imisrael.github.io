@@ -11,6 +11,17 @@
     
     
     <item>
+      <title>GridDB Editions</title>
+      <link>/3/introduction/1-2_griddb-edition/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/3/introduction/1-2_griddb-edition/</guid>
+      <description>There are currently two distinct versions of GridDB available. The information below is designed to help distinguish between the editions and help users arrive to the correct choice for their situation.
+GridDB Community Edition (GridDB CE) GridDB CE is available under the AGPLv3 as a high-performant, open-source NoSQL database built with scalability and fault tolerance in-mind. This is the only edition of GridDB that is open-source.
+GridDB Standard Edition (GridDB SE) A high-performant commerical NoSQL database.</description>
+    </item>
+    
+    <item>
       <title></title>
       <link>/3/introduction/1-1_what-is-griddb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
