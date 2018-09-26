@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/3/categories/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>/3/tags/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>/3/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/"
+                />
+  </url>
+  
+</urlset>
