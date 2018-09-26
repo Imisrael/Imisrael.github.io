@@ -12,10 +12,10 @@
     
     <item>
       <title></title>
-      <link>/3/3/introduction/1-1_what-is-griddb/</link>
+      <link>/3/introduction/1-1_what-is-griddb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/3/3/introduction/1-1_what-is-griddb/</guid>
+      <guid>/3/introduction/1-1_what-is-griddb/</guid>
       <description>Four Pillars of GridDB  Optimized for IoT High Performance High Scalability High Reliability/Availability  1. Optimized for IoT GridDB’s Key Container data model and Time Series functions are built for IoT The Key Container data model of GridDB extends the typical NoSQL Key-Value store. The Key Container model represents data in the form of collections that are referenced by keys. The key and container are rough equivalents of the table name and table data in Relational Databases (RDB).</description>
     </item>
     

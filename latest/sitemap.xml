@@ -12,6 +12,16 @@
   
   <url>
     <loc>/latest/introduction/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/introduction/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/introduction/"
+                />
   </url>
   
   <url>
@@ -28,6 +38,16 @@
   
   <url>
     <loc>/latest/introduction/1-1_what-is-griddb/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/introduction/1-1_what-is-griddb/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/introduction/1-1_what-is-griddb/"
+                />
   </url>
   
   <url>

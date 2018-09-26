@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>3s on Version 3.0</title>
-    <link>/3/3/</link>
-    <description>Recent content in 3s on Version 3.0</description>
+    <title>Introductions on Version 3.0</title>
+    <link>/3/introduction/</link>
+    <description>Recent content in Introductions on Version 3.0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/3/3/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/3/introduction/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>/3/3/introduction/1-1_what-is-griddb/</link>
+      <link>/3/introduction/1-1_what-is-griddb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/3/3/introduction/1-1_what-is-griddb/</guid>
+      <guid>/3/introduction/1-1_what-is-griddb/</guid>
       <description>Four Pillars of GridDB  Optimized for IoT High Performance High Scalability High Reliability/Availability  1. Optimized for IoT GridDB’s Key Container data model and Time Series functions are built for IoT The Key Container data model of GridDB extends the typical NoSQL Key-Value store. The Key Container model represents data in the form of collections that are referenced by keys. The key and container are rough equivalents of the table name and table data in Relational Databases (RDB).</description>
     </item>
     
