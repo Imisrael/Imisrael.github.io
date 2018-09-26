@@ -648,25 +648,36 @@
 
 <p><strong>Table.1 Trigger settings (REST)</strong></p>
 
-<p>Item</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>Description</p>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Trigger name.</td>
+</tr>
 
-<p>Name</p>
+<tr>
+<td>Trigger type</td>
+<td><code>TriggerInfo.Type.REST</code></td>
+</tr>
 
-<p>Trigger name.</p>
+<tr>
+<td>Notification condition</td>
+<td><code>TriggerInfo.EventType.PUT</code> or <code>TriggerInfo.EventType.DELETE</code></td>
+</tr>
 
-<p>Trigger type</p>
-
-<p><code>TriggerInfo.Type.REST</code></p>
-
-<p>Notification condition</p>
-
-<p><code>TriggerInfo.EventType.PUT</code> or <code>TriggerInfo.EventType.DELETE</code></p>
-
-<p>Notification destination URI</p>
-
-<p>It should be described in the following format. (method name)://(host name):(port number)/(path)</p>
+<tr>
+<td>Notification destination URI</td>
+<td>It should be described in the following format. (method name)://(host name):(port number)/(path)</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>List.1 Setting the Trigger</strong> (TriggerRest.java)</p>
 

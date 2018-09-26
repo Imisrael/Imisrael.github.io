@@ -718,53 +718,64 @@ Container (time series container)<br />
 createtimeseries    Container name Compression method Column name type [Column name Type …]</p>
 
 <ul>
-<li><p>Description of each argument</p>
-
-<p>Argument</p>
-
-<p>Description</p>
-
-<p>Container name</p>
-
-<p>Specify the name of the container to be created. If the name is omitted in the createcontainer command, a container with the name given in the container data file will be created.</p>
-
-<p>Column name</p>
-
-<p>Specify the column name.</p>
-
-<p>Type</p>
-
-<p>Specify the column type.</p>
-
-<p>Compression method</p>
-
-<p>For TimeSeries data, specify the data compression method.</p>
-
-<p>Container definition file</p>
-
-<p>Specify the file storing the container data in JSON format.</p>
-
-<p><strong>Detailed version</strong></p>
-
-<p>Specify the container definition data in the json file to create a container.</p>
-
-<ul>
-<li>The container definition data has the same definition as the metadata file output by the export tool. See <a href="#impexp_metadata">Metadata files</a> with <a href="#container_dataform">the container data file format</a> for the column type and data compression method, container definition format, etc. However, the following data will be invalid in this command even though it is defined in the metadata file of the export command.
-
-<ul>
-<li>version Export tool version</li>
-<li>database Database name</li>
-<li>containerFileType Export data file type</li>
-<li>containerFile Export file name</li>
-<li>partitionNo Partition no.</li>
-</ul></li>
-<li>Describe a single container definition in a single container definition file.</li>
-<li>If the container name is omitted in the argument, create the container with the name described in the container definition file.</li>
-<li>If the container name is omitted in the argument, ignore the container name in the container definition file and create the container with the name described in the argument.</li>
-<li>An error will not result even if the database name is described in the container definition file but the name will be ignored and the container will be created in the database currently being connected.</li>
-<li>When using the container definition file, <a href="#impexp_export">the metadata file will be output when the &ndash;out option is specified in the export function</a>. The output metadata file can be edited and used as a container definition file.</li>
-</ul></li>
+<li>Description of each argument
+<br />
+<br />
+<br /></li>
 </ul>
+
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Container name</td>
+<td>Specify the name of the container to be created. If the name is omitted in the createcontainer command, a container with the name given in the container data file will be created.</td>
+</tr>
+
+<tr>
+<td>Column name</td>
+<td>Specify the column name.</td>
+</tr>
+
+<tr>
+<td>Type</td>
+<td>Specify the column type.</td>
+</tr>
+
+<tr>
+<td>Compression method</td>
+<td>For TimeSeries data, specify the data compression method.</td>
+</tr>
+
+<tr>
+<td>Container definition file</td>
+<td>Specify the file storing the container data in JSON format.</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code>**Detailed version**
+
+Specify the container definition data in the json file to create a container.
+
+*   The container definition data has the same definition as the metadata file output by the export tool. See [Metadata files](#impexp_metadata) with [the container data file format](#container_dataform) for the column type and data compression method, container definition format, etc. However, the following data will be invalid in this command even though it is defined in the metadata file of the export command.
+    *   version Export tool version
+    *   database Database name
+    *   containerFileType Export data file type
+    *   containerFile Export file name
+    *   partitionNo Partition no.
+*   Describe a single container definition in a single container definition file.
+*   If the container name is omitted in the argument, create the container with the name described in the container definition file.
+*   If the container name is omitted in the argument, ignore the container name in the container definition file and create the container with the name described in the argument.
+*   An error will not result even if the database name is described in the container definition file but the name will be ignored and the container will be created in the database currently being connected.
+*   When using the container definition file, [the metadata file will be output when the --out option is specified in the export function](#impexp_export). The output metadata file can be edited and used as a container definition file.
+</code></pre>
 
 <p>　　Example: When using the output metadata file as a container definition file</p>
 
@@ -821,16 +832,26 @@ createtimeseries    Container name Compression method Column name type [Column n
 
 <p>Container name</p></li>
 
-<li><p>Description of each argument</p>
+<li><p>Description of each argument</p></li>
+</ul>
 
-<p>Argument</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>Description</p>
+<tbody>
+<tr>
+<td>Container name</td>
+<td>Specify the container name to be displayed. Display a list of all containers if omitted.</td>
+</tr>
+</tbody>
+</table>
 
-<p>Container name</p>
-
-<p>Specify the container name to be displayed. Display a list of all containers if omitted.</p></li>
-
+<ul>
 <li><p>Example:</p>
 
 <p>// display container list

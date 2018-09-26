@@ -698,25 +698,36 @@ Sat Jul 02 15:00:00 EDT 2016 weather_station_1 75.0</p>
 
 <p><strong>Table 1 TimeOperator Enum</strong></p>
 
-<p>Acquisition method</p>
+<table>
+<thead>
+<tr>
+<th>Acquisition method</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>Description</p>
+<tbody>
+<tr>
+<td>TimeOperator.NEXT</td>
+<td>Returns the oldest among the Rows whose timestamp are identical with or later than the specified time.</td>
+</tr>
 
-<p>TimeOperator.NEXT</p>
+<tr>
+<td>TimeOperator.NEXT_ONLY</td>
+<td>Returns the oldest among the Rows whose timestamp are later than the specified time.</td>
+</tr>
 
-<p>Returns the oldest among the Rows whose timestamp are identical with or later than the specified time.</p>
+<tr>
+<td>TimeOperator.PREVIOUS</td>
+<td>Returns the newest among the Rows whose timestamp are identical with or earlier than the specified time.</td>
+</tr>
 
-<p>TimeOperator.NEXT_ONLY</p>
-
-<p>Returns the oldest among the Rows whose timestamp are later than the specified time.</p>
-
-<p>TimeOperator.PREVIOUS</p>
-
-<p>Returns the newest among the Rows whose timestamp are identical with or earlier than the specified time.</p>
-
-<p>TimeOperator.PREVIOUS_ONLY</p>
-
-<p>Returns the newest among the Rows whose timestamp are earlier than the specified time.</p>
+<tr>
+<td>TimeOperator.PREVIOUS_ONLY</td>
+<td>Returns the newest among the Rows whose timestamp are earlier than the specified time.</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>Fetching Rows with a Relative Time stamp</strong> (TimeSeriesRetrieve.java)</p>
 
@@ -793,41 +804,56 @@ System.out.println(&ldquo;Average Temperature:&rdquo; + aggrResult.getDouble() +
 
 <p><strong>Table 2 Aggregation types</strong></p>
 
-<p>Aggregation method</p>
+<table>
+<thead>
+<tr>
+<th>Aggregation method</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>Description</p>
+<tbody>
+<tr>
+<td>Aggregation.AVERAGE</td>
+<td>Obtain the average value.</td>
+</tr>
 
-<p>Aggregation.AVERAGE</p>
+<tr>
+<td>Aggregation.COUNT</td>
+<td>Obtain the number of samples.</td>
+</tr>
 
-<p>Obtain the average value.</p>
+<tr>
+<td>Aggregation.MAXIMUM</td>
+<td>Obtain the maximum value.</td>
+</tr>
 
-<p>Aggregation.COUNT</p>
+<tr>
+<td>Aggregation.MINIMUM</td>
+<td>Obtain the minimum value.</td>
+</tr>
 
-<p>Obtain the number of samples.</p>
+<tr>
+<td>Aggregation.STANDARD_DEVIATION</td>
+<td>Obtain the standard deviation.</td>
+</tr>
 
-<p>Aggregation.MAXIMUM</p>
+<tr>
+<td>Aggregation.TOTAL</td>
+<td>Obtain the total value (sum).</td>
+</tr>
 
-<p>Obtain the maximum value.</p>
+<tr>
+<td>Aggregation.VARIANCE</td>
+<td>Obtain the variance within the rows.</td>
+</tr>
 
-<p>Aggregation.MINIMUM</p>
-
-<p>Obtain the minimum value.</p>
-
-<p>Aggregation.STANDARD_DEVIATION</p>
-
-<p>Obtain the standard deviation.</p>
-
-<p>Aggregation.TOTAL</p>
-
-<p>Obtain the total value (sum).</p>
-
-<p>Aggregation.VARIANCE</p>
-
-<p>Obtain the variance within the rows.</p>
-
-<p>Aggregation.WEIGHTED_AVERAGE</p>
-
-<p>Obtain the weighted average.</p>
+<tr>
+<td>Aggregation.WEIGHTED_AVERAGE</td>
+<td>Obtain the weighted average.</td>
+</tr>
+</tbody>
+</table>
 
 <p>For more information, please refer to the <a href="/en/docs/GridDB_API_Reference.html">GridDB API Reference</a></p>
 

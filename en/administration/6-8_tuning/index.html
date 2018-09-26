@@ -711,35 +711,41 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Node definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
+<tbody>
+<tr>
+<td>/transaction/serviceAddress</td>
+<td>string</td>
+<td>Reception address of transaction process</td>
+</tr>
 
-<p>Meaning</p>
+<tr>
+<td>/transaction/servicePort</td>
+<td>string</td>
+<td>Reception port of transaction process</td>
+</tr>
 
-<p>/transaction/serviceAddress</p>
+<tr>
+<td>/system/serviceAddress</td>
+<td>string</td>
+<td>Connection address of operation command</td>
+</tr>
 
-<p>string</p>
-
-<p>Reception address of transaction process</p>
-
-<p>/transaction/servicePort</p>
-
-<p>string</p>
-
-<p>Reception port of transaction process</p>
-
-<p>/system/serviceAddress</p>
-
-<p>string</p>
-
-<p>Connection address of operation command</p>
-
-<p>/system/servicePort</p>
-
-<p>string</p>
-
-<p>Connection port of operation command</p>
+<tr>
+<td>/system/servicePort</td>
+<td>string</td>
+<td>Connection port of operation command</td>
+</tr>
+</tbody>
+</table>
 
 <p>The reception address and port of transaction processes are used to connect individual client to the nodes in the cluster, and to request for the transaction process from the cluster. This address is used when configuring a cluster with a single node, but in the case where multiple nodes are present through API, the address is not used explicitly.</p>
 
@@ -749,23 +755,29 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Cluster definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
+<tbody>
+<tr>
+<td>/transaction/notificationAddress</td>
+<td>string</td>
+<td>Interface address between client and cluster</td>
+</tr>
 
-<p>Meaning</p>
-
-<p>/transaction/notificationAddress</p>
-
-<p>string</p>
-
-<p>Interface address between client and cluster</p>
-
-<p>/transaction/notificationPort</p>
-
-<p>string</p>
-
-<p>Interface port between client and cluster</p>
+<tr>
+<td>/transaction/notificationPort</td>
+<td>string</td>
+<td>Interface port between client and cluster</td>
+</tr>
+</tbody>
+</table>
 
 <p>A multi-cast address and port are specified in the interface address between a client and cluster. This is used by a GridDB cluster to send cluster information to its clients and for the clients to send processing requests via the API to the cluster. See the description of GridStoreFactory class/method in “GridDB API reference” (<a href="/en/docs/manuals/v3.1/GridDB_API_Reference.html">GridDB_API_Reference.html</a>) for details.</p>
 
@@ -777,43 +789,55 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Node definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
+<tbody>
+<tr>
+<td>/cluster/serviceAddress</td>
+<td>string</td>
+<td>Reception address used for cluster administration</td>
+</tr>
 
-<p>Meaning</p>
-
-<p>/cluster/serviceAddress</p>
-
-<p>string</p>
-
-<p>Reception address used for cluster administration</p>
-
-<p>/cluster/servicePort</p>
-
-<p>string</p>
-
-<p>Reception port used for cluster administration</p>
+<tr>
+<td>/cluster/servicePort</td>
+<td>string</td>
+<td>Reception port used for cluster administration</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>Cluster definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
+<tbody>
+<tr>
+<td>/cluster/notificationAddress</td>
+<td>string</td>
+<td>Multicast address for cluster administration</td>
+</tr>
 
-<p>Meaning</p>
-
-<p>/cluster/notificationAddress</p>
-
-<p>string</p>
-
-<p>Multicast address for cluster administration</p>
-
-<p>/cluster/notificationPort</p>
-
-<p>string</p>
-
-<p>Multicast port for cluster administration</p>
+<tr>
+<td>/cluster/notificationPort</td>
+<td>string</td>
+<td>Multicast port for cluster administration</td>
+</tr>
+</tbody>
+</table>
 
 <ul>
 <li>Although a synchronization process is carried out with a replica when the cluster configuration is changed, a timeout time can be set for the process.
@@ -838,45 +862,57 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Node definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
+<tbody>
+<tr>
+<td>/sql/serviceAddress</td>
+<td>string</td>
+<td>Reception address for JDBC/ODBC client connection</td>
+</tr>
 
-<p>Meaning</p>
-
-<p>/sql/serviceAddress</p>
-
-<p>string</p>
-
-<p>Reception address for JDBC/ODBC client connection</p>
-
-<p>/sql/servicePort</p>
-
-<p>int</p>
-
-<p>Reception port for JDBC/ODBC client connection</p>
+<tr>
+<td>/sql/servicePort</td>
+<td>int</td>
+<td>Reception port for JDBC/ODBC client connection</td>
+</tr>
+</tbody>
+</table>
 
 <p>The reception address and port of JDBC/ODBC client connection are used to connect JDBC/ODBC individual client to the nodes in the cluster, and to access the cluster data in SQL. This address is used when configuring a cluster with a single node, but in the case where multiple nodes are present through API, the address is not used explicitly.</p>
 
 <p><strong>Cluster definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
+<tbody>
+<tr>
+<td>/sql/notificationAddress</td>
+<td>string</td>
+<td>Address for multi-cast distribution to JDBC/ODBC client</td>
+</tr>
 
-<p>Meaning</p>
-
-<p>/sql/notificationAddress</p>
-
-<p>string</p>
-
-<p>Address for multi-cast distribution to JDBC/ODBC client</p>
-
-<p>/sql/notificationPort</p>
-
-<p>int</p>
-
-<p>Multicast port to JDBC/ODBC client</p>
+<tr>
+<td>/sql/notificationPort</td>
+<td>int</td>
+<td>Multicast port to JDBC/ODBC client</td>
+</tr>
+</tbody>
+</table>
 
 <p>The address and port used for multicast distribution to a JDBC/ODBC client are used for the GridDB cluster to notify the JDBC/ODBC client of cluster data, and to access the cluster data in SQL with the JDBC/ODBC client.</p>
 
@@ -890,17 +926,23 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Cluster definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
-
-<p>Meaning</p>
-
-<p>/cluster/clusterName</p>
-
-<p>string</p>
-
-<p>Name of cluster to create</p>
+<tbody>
+<tr>
+<td>/cluster/clusterName</td>
+<td>string</td>
+<td>Name of cluster to create</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>[Points to note]</strong></p>
 
@@ -924,17 +966,23 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Cluster definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
-
-<p>Meaning</p>
-
-<p>/cluster/notificationMember</p>
-
-<p>string</p>
-
-<p>Specify the address list when using the fixed list method as the cluster configuration method.</p>
+<tbody>
+<tr>
+<td>/cluster/notificationMember</td>
+<td>string</td>
+<td>Specify the address list when using the fixed list method as the cluster configuration method.</td>
+</tr>
+</tbody>
+</table>
 
 <p>A configuration example of a cluster definition file is shown below.</p>
 
@@ -982,23 +1030,29 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Cluster definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
+<tbody>
+<tr>
+<td>/cluster/notificationProvider/url</td>
+<td>string</td>
+<td>Specify the URL of the address provider when using the provider method as the cluster configuration method.</td>
+</tr>
 
-<p>Meaning</p>
-
-<p>/cluster/notificationProvider/url</p>
-
-<p>string</p>
-
-<p>Specify the URL of the address provider when using the provider method as the cluster configuration method.</p>
-
-<p>/cluster/notificationProvider/updateInterval</p>
-
-<p>string</p>
-
-<p>Specify the interval to get the list from the address provider. Specify a value that is 1s or higher and less than 2^31s.</p>
+<tr>
+<td>/cluster/notificationProvider/updateInterval</td>
+<td>string</td>
+<td>Specify the interval to get the list from the address provider. Specify a value that is 1s or higher and less than 2^31s.</td>
+</tr>
+</tbody>
+</table>
 
 <p>A configuration example of a cluster definition file is shown below.</p>
 
@@ -1079,23 +1133,29 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Node definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
+<tbody>
+<tr>
+<td>/dataStore/persistencyMode</td>
+<td>string</td>
+<td>Persistency mode</td>
+</tr>
 
-<p>Meaning</p>
-
-<p>/dataStore/persistencyMode</p>
-
-<p>string</p>
-
-<p>Persistency mode</p>
-
-<p>/dataStore/logWriteMode</p>
-
-<p>int</p>
-
-<p>Log write mode</p>
+<tr>
+<td>/dataStore/logWriteMode</td>
+<td>int</td>
+<td>Log write mode</td>
+</tr>
+</tbody>
+</table>
 
 <p>The persistency mode specifies whether to write data to a file during a data update. The log write mode specifies the timing to write data to the transaction log file.</p>
 
@@ -1131,17 +1191,23 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Cluster definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
-
-<p>Meaning</p>
-
-<p>/transaction/replicationMode</p>
-
-<p>int</p>
-
-<p>Replication mode</p>
+<tbody>
+<tr>
+<td>/transaction/replicationMode</td>
+<td>int</td>
+<td>Replication mode</td>
+</tr>
+</tbody>
+</table>
 
 <p>The replication mode specifies how to create a replica. The replication method has to be same for all nodes in the cluster .</p>
 
@@ -1160,17 +1226,23 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Node definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
-
-<p>Meaning</p>
-
-<p>/dataStore/storeWarmStart</p>
-
-<p>boolean</p>
-
-<p>Start processing mode</p>
+<tbody>
+<tr>
+<td>/dataStore/storeWarmStart</td>
+<td>boolean</td>
+<td>Start processing mode</td>
+</tr>
+</tbody>
+</table>
 
 <ul>
 <li>false: non-warm start mode</li>
@@ -1185,65 +1257,71 @@ $ ip route | grep eth0 | cut -f 12 -d &ldquo; &rdquo; | tr -d &ldquo;\n&rdquo;
 
 <p><strong>Node definition file</strong></p>
 
-<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Data type</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Data type</p>
+<tbody>
+<tr>
+<td>/dataStore/dbPath</td>
+<td>string</td>
+<td>Database file directory</td>
+</tr>
 
-<p>Meaning</p>
+<tr>
+<td>/dataStore/backupPath</td>
+<td>string</td>
+<td>Backup file directory</td>
+</tr>
 
-<p>/dataStore/dbPath</p>
+<tr>
+<td>/dataStore/storeMemoryLimit</td>
+<td>string</td>
+<td>Memory buffer size</td>
+</tr>
 
-<p>string</p>
+<tr>
+<td>/dataStore/concurrency</td>
+<td>int</td>
+<td>Processing parallelism</td>
+</tr>
 
-<p>Database file directory</p>
+<tr>
+<td>/dataStore/affinityGroupSize</td>
+<td>int</td>
+<td>No. of data affinity groups</td>
+</tr>
 
-<p>/dataStore/backupPath</p>
+<tr>
+<td>/checkpoint/checkpointInterval</td>
+<td>int</td>
+<td>Checkpoint execution interval (unit: sec)</td>
+</tr>
 
-<p>string</p>
+<tr>
+<td>/system/eventLogPath</td>
+<td>string</td>
+<td>Output directory of event log file</td>
+</tr>
 
-<p>Backup file directory</p>
+<tr>
+<td>/transaction/connectionLimit</td>
+<td>int</td>
+<td>No. of connections upper limit value</td>
+</tr>
 
-<p>/dataStore/storeMemoryLimit</p>
-
-<p>string</p>
-
-<p>Memory buffer size</p>
-
-<p>/dataStore/concurrency</p>
-
-<p>int</p>
-
-<p>Processing parallelism</p>
-
-<p>/dataStore/affinityGroupSize</p>
-
-<p>int</p>
-
-<p>No. of data affinity groups</p>
-
-<p>/checkpoint/checkpointInterval</p>
-
-<p>int</p>
-
-<p>Checkpoint execution interval (unit: sec)</p>
-
-<p>/system/eventLogPath</p>
-
-<p>string</p>
-
-<p>Output directory of event log file</p>
-
-<p>/transaction/connectionLimit</p>
-
-<p>int</p>
-
-<p>No. of connections upper limit value</p>
-
-<p>/trace/category</p>
-
-<p>string</p>
-
-<p>Event log output level</p>
+<tr>
+<td>/trace/category</td>
+<td>string</td>
+<td>Event log output level</td>
+</tr>
+</tbody>
+</table>
 
 <ul>
 <li>A database file directory is created when the data registered in the in-memory is perpetuated. In this directory, the transaction log file and checkpoint files are created.</li>

@@ -723,17 +723,26 @@ weatherStationCol.createIndex(&ldquo;name&rdquo;, IndexType.TREE);</p>
 
 <p><strong>Table.1 Index types</strong></p>
 
-<p>Index type</p>
+<table>
+<thead>
+<tr>
+<th>Index type</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>Description</p>
+<tbody>
+<tr>
+<td>HASH</td>
+<td>High speed retrieval, but not suitable for the operation of reading Row sequentially and impossible to set in the TimeSeries container.</td>
+</tr>
 
-<p>HASH</p>
-
-<p>High speed retrieval, but not suitable for the operation of reading Row sequentially and impossible to set in the TimeSeries container.</p>
-
-<p>TREE</p>
-
-<p>It is suitable for a retrival specifying that whether the value is larger or smaller than a retrieval vulue to a retrieval range.</p>
+<tr>
+<td>TREE</td>
+<td>It is suitable for a retrival specifying that whether the value is larger or smaller than a retrieval vulue to a retrieval range.</td>
+</tr>
+</tbody>
+</table>
 
 <p>There are index types which can not be specified owing to the container type or the column type. Please refer to <a href="../GridDB_API_Reference.html">GridDB API Reference</a> and <a href="../GridDB_TechnicalReference.pdf">GridDB Technical Reference</a> for more information.</p>
 

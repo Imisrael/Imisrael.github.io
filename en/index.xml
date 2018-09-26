@@ -157,15 +157,7 @@ QuickStart Preparations Build a GridDB Java client and place the created gridsto
       <guid>/en/administration/6-3_installing/</guid>
       <description>The following chapter will discuss how to install GridDB (Standard Edition). Instructions for installing on the cloud can be found below
 On Premises The following 3 RPM packages are needed when installing a GridDB node. Place these packages anywhere in the machine.
-Package name
-File name
-Description
-griddb-server
-griddb-server-X.X.X-linux.x86_64.rpm
-The start and other commands for the GridDB node module and server are included.
-griddb-client
-griddb-client-X.X.X-linux.x86_64.rpm
-One set of operating commands except start node is included.</description>
+   Package name File name Description     griddb-server griddb-server-X.X.X-linux.x86_64.rpm The start and other commands for the GridDB node module and server are included.</description>
     </item>
     
     <item>
@@ -540,15 +532,7 @@ Application Workflow The basic workflow of a GridDB application is as follows:</
 Components The environment will be configured as follows:
 Figure 1 block diagram
 Table 2 middleware version
-middleware
-version
-GridDB Community Edition
-2.8.0
-Docker
-1.12.0
-Docker Compose
-1.8.0
-The environment in which you run GridDB will be built in a container using Docker but you can apply the same concepts to other VMs or a native OS to suit your environment.</description>
+   middleware version     GridDB Community Edition 2.8.0   Docker 1.12.0   Docker Compose 1.8.0    The environment in which you run GridDB will be built in a container using Docker but you can apply the same concepts to other VMs or a native OS to suit your environment.</description>
     </item>
     
     <item>
@@ -584,22 +568,7 @@ List.1 Connecting to a GridDB server (GridDBLogic.</description>
 5.1.6 Schema definition Overview This chapter describes the schema definition and data types.
 Schema definition Data of the measuring instruments and instrument log that will be handled in this sample application are defined in the container as follows.
 Table.1 Container Information
-Data
-Container type
-Quantity
-Container name
-Row key
-Measuring instrument
-Collection
-1
-weather_station
-Instrument ID
-Instrument log
-TimeSeries Container
-1 per instrument
-weather_station_
-(Example:weather_station_1)
-Logging date and time</description>
+   Data Container type Quantity Container name Row key     Measuring instrument Collection 1 weather_station Instrument ID   Instrument log TimeSeries Container 1 per instrument weatherstation (Example:weather_station_1) Logging date and time    One collection will be created with rows corresponding to different measuring instruments.</description>
     </item>
     
     <item>

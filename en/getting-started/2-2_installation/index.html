@@ -614,34 +614,38 @@ Description: CentOS release 6.3 (Final)
 <ul>
 <li><p><strong>Installing a Node</strong></p>
 
-<p>The following 3 RPM packages are needed when installing a GridDB node. Place these packages anywhere in the machine.</p>
-
-<p>TODO: Table</p>
-
-<p>Package name</p>
-
-<p>File name</p>
-
-<p>Description</p>
-
-<p>griddb-server</p>
-
-<p>griddb-server-X.X.X-linux.x86_64.rpm</p>
-
-<p>The start and other commands for the GridDB node module and server are included.</p>
-
-<p>griddb-client</p>
-
-<p>griddb-client-X.X.X-linux.x86_64.rpm</p>
-
-<p>One set of operating commands except start node is included.</p>
-
-<p>griddb-docs</p>
-
-<p>griddb-docs-X.X.X-linux.x86_64.rpm</p>
-
-<p>GridDB manual and program samples are included.</p></li>
+<p>The following 3 RPM packages are needed when installing a GridDB node. Place these packages anywhere in the machine.</p></li>
 </ul>
+
+<table>
+<thead>
+<tr>
+<th>Package name</th>
+<th>File name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>griddb-server</td>
+<td>griddb-server-X.X.X-linux.x86_64.rpm</td>
+<td>The start and other commands for the GridDB node module and server are included.</td>
+</tr>
+
+<tr>
+<td>griddb-client</td>
+<td>griddb-client-X.X.X-linux.x86_64.rpm</td>
+<td>One set of operating commands except start node is included.</td>
+</tr>
+
+<tr>
+<td>griddb-docs</td>
+<td>griddb-docs-X.X.X-linux.x86_64.rpm</td>
+<td>GridDB manual and program samples are included.</td>
+</tr>
+</tbody>
+</table>
 
 <p>*X.X.X is the GridDB version</p>
 
@@ -665,39 +669,49 @@ Under preparation...           ########################################### \[100
 
 <p>When you install the package, the following group and user are created in the OS. This OS user is set as the operator of GridDB.</p>
 
-<p>TODO: Table<br />
-Group</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>User</th>
+<th>Home directory</th>
+</tr>
+</thead>
 
-<p>User</p>
-
-<p>Home directory</p>
-
-<p>gridstore</p>
-
-<p>gsadm</p>
-
-<p>/var/lib/gridstore</p>
+<tbody>
+<tr>
+<td>gridstore</td>
+<td>gsadm</td>
+<td>/var/lib/gridstore</td>
+</tr>
+</tbody>
+</table>
 
 <p>The following environment variables are defined in this gsadm user.</p>
 
-<p>TODO: Table
-Environment variables</p>
+<table>
+<thead>
+<tr>
+<th>Environment variables</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
 
-<p>Value</p>
+<tbody>
+<tr>
+<td>GS_HOME</td>
+<td>/var/lib/gridstore</td>
+<td>gsadm/GridDB home directory</td>
+</tr>
 
-<p>Meaning</p>
-
-<p>GS_HOME</p>
-
-<p>/var/lib/gridstore</p>
-
-<p>gsadm/GridDB home directory</p>
-
-<p>GS_LOG</p>
-
-<p>/var/lib/gridstore/log</p>
-
-<p>Event log file output directory</p>
+<tr>
+<td>GS_LOG</td>
+<td>/var/lib/gridstore/log</td>
+<td>Event log file output directory</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>[Points to note]</strong></p>
 
@@ -712,14 +726,21 @@ Environment variables</p>
 
 <p>In addition, when the GridDB node module is installed, services that are executed automatically upon startup of the OS will be registered.</p>
 
-<p>TODO: Table
-Service Name</p>
+<table>
+<thead>
+<tr>
+<th>Service Name</th>
+<th>Run Level</th>
+</tr>
+</thead>
 
-<p>Run Level</p>
-
-<p>gridstore</p>
-
-<p>3, 4, 5</p>
+<tbody>
+<tr>
+<td>gridstore</td>
+<td>3, 4, 5</td>
+</tr>
+</tbody>
+</table>
 
 <p>The service registration data can be checked with the following command.</p>
 
@@ -839,43 +860,57 @@ GridDB version X.X.X build XXXXX
 
 <p>The default user below exists immediately after installation.</p>
 
-<p>TODO: Table
-User</p>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Password</th>
+<th>Example of proper use</th>
+</tr>
+</thead>
 
-<p>Password</p>
+<tbody>
+<tr>
+<td>admin</td>
+<td>admin</td>
+<td>For authentication of operation administrator user, operation commands</td>
+</tr>
 
-<p>Example of proper use</p>
-
-<p>admin</p>
-
-<p>admin</p>
-
-<p>For authentication of operation administrator user, operation commands</p>
-
-<p>system</p>
-
-<p>manager</p>
-
-<p>For authentication of application user, client execution</p>
+<tr>
+<td>system</td>
+<td>manager</td>
+<td>For authentication of application user, client execution</td>
+</tr>
+</tbody>
+</table>
 
 <p>Administrator user information including the above-mentioned default users can be changed using the user administration command in the operating commands.</p>
 
-<p>TODO: Table
-Command</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
 
-<p>Function</p>
+<tbody>
+<tr>
+<td>gs_adduser</td>
+<td>Add an administrator user</td>
+</tr>
 
-<p>gs_adduser</p>
+<tr>
+<td>gs_deluser</td>
+<td>Delete an administrator user</td>
+</tr>
 
-<p>Add an administrator user</p>
-
-<p>gs_deluser</p>
-
-<p>Delete an administrator user</p>
-
-<p>gs_passwd</p>
-
-<p>Change the password of administrator user</p>
+<tr>
+<td>gs_passwd</td>
+<td>Change the password of administrator user</td>
+</tr>
+</tbody>
+</table>
 
 <p>Change the password as shown below when using a default user. The password is encrypted during registration.</p>
 
@@ -980,23 +1015,11 @@ After all of this, you must create an administrator user to use GridDB. The admi
 After installation a default user called “admin” will be created. The operating commands used to change the default users’ information are shown below.
 
   
-TODO: Table
-
-Command
-
-Function
-
-gs\_adduser
-
-Add an administrator user
-
-gs\_deluser
-
-Delete an administrator user
-
-gs\_passwd
-
-Change the password of an administrator user
+| Command    | Function                                     |
+|------------|----------------------------------------------|
+| gs_adduser | Add an administrator user                    |
+| gs_deluser | Delete an administrator user                 |
+| gs_passwd  | Change the password of an administrator user |
 
 It is recommended that you add a password to the user “admin” as one is not set upon creation.
 

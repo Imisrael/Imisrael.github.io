@@ -1402,17 +1402,26 @@ userDB container_0_db COLLECTION userDB.container_0_db.csv</p>
 
 <p>　Configure the RDB connection data serving as the collection source (address, port no., etc.), JDBC driver data, and GridDB recovery destination connection data.</p>
 
-<p>Path of JDBC driver　　　　　　　</p>
+<table>
+<thead>
+<tr>
+<th>Path of JDBC driver　　　　　　　</th>
+<th>Property file</th>
+</tr>
+</thead>
 
-<p>Property file</p>
+<tbody>
+<tr>
+<td>RDB connection data of collection source</td>
+<td>Property file or resource definition file</td>
+</tr>
 
-<p>RDB connection data of collection source　　　　　　</p>
-
-<p>Property file or resource definition file</p>
-
-<p>GridDB connection data of recovery destination　　　</p>
-
-<p>Property file or resource definition file</p>
+<tr>
+<td>GridDB connection data of recovery destination</td>
+<td>Property file or resource definition file</td>
+</tr>
+</tbody>
+</table>
 
 <p>　<strong>[Memo]</strong></p>
 
@@ -1493,29 +1502,41 @@ select id, name, data from customer　→　id, name, data column</p>
 
 <p>[Default rules]</p>
 
-<p>Item</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
 
-<p>Description</p>
+<tbody>
+<tr>
+<td>Container name</td>
+<td>Specified table name if the table name is specified Specified container name if the SQL is specified</td>
+<td></td>
+</tr>
 
-<p>Remarks</p>
+<tr>
+<td>Container type</td>
+<td>Collection</td>
+<td></td>
+</tr>
 
-<p>Container name</p>
+<tr>
+<td>Column</td>
+<td>Name by column in SQL execution results. Specify the column name if names by column do not exist.</td>
+<td></td>
+</tr>
 
-<p>Specified table name if the table name is specified</p>
-
-<p>Specified container name if the SQL is specified</p>
-
-<p>Container type</p>
-
-<p>Collection</p>
-
-<p>Column</p>
-
-<p>Name by column in SQL execution results. Specify the column name if names by column do not exist.</p>
-
-<p>Column data type</p>
-
-<p>Data type associated with the RDB column data type.</p>
+<tr>
+<td>Column data type</td>
+<td>Data type associated with the RDB column data type.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 <ul>
 <li>An error will occur if the Oracle table name and column name do not satisfy the GridDB naming rules (see below).
@@ -1533,65 +1554,60 @@ select id, name, data from customer　→　id, name, data column</p>
 
 <p>Perform association between Oracle data type and GridDB data type as shown below.</p>
 
-<p>Data type</p>
+<table>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Oracle</th>
+<th>GridDB</th>
+<th>Remarks</th>
+</tr>
+</thead>
 
-<p>Oracle</p>
+<tbody>
+<tr>
+<td>Text data type</td>
+<td>CHAR VARCHAR2</td>
+<td>STRING STRING</td>
+<td></td>
+</tr>
 
-<p>GridDB</p>
+<tr>
+<td>Numerical value data type</td>
+<td>NUMBER (maximum accuracy, digit) NUMBER (maximum accuracy)</td>
+<td>DOUBLE LONG</td>
+<td></td>
+</tr>
 
-<p>Remarks</p>
+<tr>
+<td>Date data type</td>
+<td>DATE TIMESTAMP</td>
+<td>TIMESTAMP TIMESTAMP</td>
+<td></td>
+</tr>
 
-<p>Text data type</p>
+<tr>
+<td>LOB data type</td>
+<td>CLOB BLOB</td>
+<td>STRING BLOB</td>
+<td></td>
+</tr>
 
-<p>CHAR</p>
+<tr>
+<td>RAW type</td>
+<td>RAW</td>
+<td>STRING</td>
+<td></td>
+</tr>
 
-<p>STRING</p>
-
-<p>VARCHAR2</p>
-
-<p>STRING</p>
-
-<p>Numerical value data type</p>
-
-<p>NUMBER (maximum accuracy, digit)</p>
-
-<p>DOUBLE</p>
-
-<p>NUMBER (maximum accuracy)</p>
-
-<p>LONG</p>
-
-<p>Date data type</p>
-
-<p>DATE</p>
-
-<p>TIMESTAMP</p>
-
-<p>TIMESTAMP</p>
-
-<p>TIMESTAMP</p>
-
-<p>LOB data type</p>
-
-<p>CLOB</p>
-
-<p>STRING</p>
-
-<p>BLOB</p>
-
-<p>BLOB</p>
-
-<p>RAW type</p>
-
-<p>RAW</p>
-
-<p>STRING</p>
-
-<p>ROWID type</p>
-
-<p>ROWID</p>
-
-<p>STRING</p>
+<tr>
+<td>ROWID type</td>
+<td>ROWID</td>
+<td>STRING</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>[Memo]</strong></p>
 
@@ -1618,73 +1634,60 @@ select id, name, data from customer　→　id, name, data column</p>
 
 <p>The following association can be specified for the data type.</p>
 
-<p>Data type</p>
+<table>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Oracle</th>
+<th>GridDB</th>
+<th>Remarks</th>
+</tr>
+</thead>
 
-<p>Oracle</p>
+<tbody>
+<tr>
+<td>Text data type</td>
+<td>CHAR VARCHAR2</td>
+<td>STRING, INTEGER STRING, INTEGER</td>
+<td>An error will occur if conversion to an INTEGER conversion failed. An error will occur if conversion to an INTEGER conversion failed.</td>
+</tr>
 
-<p>GridDB</p>
+<tr>
+<td>Numerical value data type</td>
+<td>NUMBER (maximum accuracy, digit) NUMBER (maximum accuracy)</td>
+<td>BYTE, SHORT, INTEGER, LONG, FLOAT, DOUBLE BYTE, SHORT, INTEGER, LONG, FLOAT, DOUBLE</td>
+<td>Digits may be dropped if the correct data type is not selected. Digits may be dropped if the correct data type is not selected.</td>
+</tr>
 
-<p>Remarks</p>
+<tr>
+<td>Date data type</td>
+<td>DATE TIMESTAMP</td>
+<td>TIMESTAMP TIMESTAMP</td>
+<td></td>
+</tr>
 
-<p>Text data type</p>
+<tr>
+<td>LOB data type</td>
+<td>CLOB BLOB</td>
+<td>STRING BLOB</td>
+<td></td>
+</tr>
 
-<p>CHAR</p>
+<tr>
+<td>RAW type</td>
+<td>RAW</td>
+<td>STRING</td>
+<td></td>
+</tr>
 
-<p>STRING, INTEGER</p>
-
-<p>An error will occur if conversion to an INTEGER conversion failed.</p>
-
-<p>VARCHAR2</p>
-
-<p>STRING, INTEGER</p>
-
-<p>An error will occur if conversion to an INTEGER conversion failed.</p>
-
-<p>Numerical value data type</p>
-
-<p>NUMBER (maximum accuracy, digit)</p>
-
-<p>BYTE, SHORT, INTEGER, LONG, FLOAT, DOUBLE</p>
-
-<p>Digits may be dropped if the correct data type is not selected.</p>
-
-<p>NUMBER (maximum accuracy)</p>
-
-<p>BYTE, SHORT, INTEGER, LONG, FLOAT, DOUBLE</p>
-
-<p>Digits may be dropped if the correct data type is not selected.</p>
-
-<p>Date data type</p>
-
-<p>DATE</p>
-
-<p>TIMESTAMP</p>
-
-<p>TIMESTAMP</p>
-
-<p>TIMESTAMP</p>
-
-<p>LOB data type</p>
-
-<p>CLOB</p>
-
-<p>STRING</p>
-
-<p>BLOB</p>
-
-<p>BLOB</p>
-
-<p>RAW type</p>
-
-<p>RAW</p>
-
-<p>STRING</p>
-
-<p>ROWID type</p>
-
-<p>ROWID</p>
-
-<p>STRING</p>
+<tr>
+<td>ROWID type</td>
+<td>ROWID</td>
+<td>STRING</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>[Memo]</strong></p>
 
@@ -1775,187 +1778,256 @@ select id, name, data from customer　→　id, name, data column</p>
 
 <p>The settings required to connect and import data, to and from RDB (Oracle) are as follows.</p>
 
-<p>Parameters</p>
-
-<p>Description</p>
-
-<p>/inputSource</p>
-
-<p>　　/type</p>
-
-<p>Specify &ldquo;rdb&rdquo; when using a RDB link</p>
-
-<p>　　/server</p>
-
-<p>Can be omitted. RDB connection destination of the property file is used by default. *1</p>
-
-<p>　　　　/kind</p>
-
-<p>Specify the type of RDB. Specify &ldquo;oracle&rdquo;</p>
-
-<p>　　　　/host</p>
-
-<p>Specify the address used to access RDB.</p>
-
-<p>　　　　/port</p>
-
-<p>Specify the port of the address used to access RDB.</p>
-
-<p>　　　　/database</p>
-
-<p>Specify the database name (SID)</p>
-
-<p>　　　　/url</p>
-
-<p>Specify the connection character string when accessing the RDB. (Specify the host, port, database or url.</p>
-
-<p>　　　　/user</p>
-
-<p>Specify the user to access the database.</p>
-
-<p>　　　　/password</p>
-
-<p>Specify the user password to access the database.</p>
-
-<p>/outputSource</p>
-
-<p>Can be omitted. GridDB connection destination of the property file is used by default</p>
-
-<p>　　/type</p>
-
-<p>Specify &ldquo;gridstore&rdquo; when registering in GridDB</p>
-
-<p>　　/server</p>
-
-<p>*1</p>
-
-<p>　　　　/host</p>
-
-<p>Specify the address used to access GridDB.</p>
-
-<p>　　　　/port</p>
-
-<p>Specify the port of the address used to access GridDB.</p>
-
-<p>　　　　/clusterName</p>
-
-<p>　　　　/user</p>
-
-<p>Specify the user to access the database.</p>
-
-<p>　　　　/password</p>
-
-<p>Specify the user password to access the database.</p>
-
-<p>/targetList</p>
-
-<p>The following can be specified repeatedly in an array</p>
-
-<p>　　/rdb</p>
-
-<p>Specify the RDB collection targets. Either &ldquo;table&rdquo; or &ldquo;sql&rdquo; is required</p>
-
-<p>　　　　/table</p>
-
-<p>Specify the table name.</p>
-
-<p>　　　　/sql</p>
-
-<p>Specify a SQL command</p>
-
-<p>　　　　/select</p>
-
-<p>Specify column if the table name is specified</p>
-
-<p>　　　　/where</p>
-
-<p>Filter the columns by conditions if the table name is specified</p>
-
-<p>　　　　/orderby</p>
-
-<p>Sort the specified columns if the table name is specified.</p>
-
-<p>　　　　/partitionTable</p>
-
-<p>Specify true when accessing partition tables in parallel</p>
-
-<p>　　/gridstore</p>
-
-<p>Specify a GridDB container at the registration destination.</p>
-
-<p>　　　　/database</p>
-
-<p>Specify the database name. Registered in the public database &ldquo;public&rdquo; by default.</p>
-
-<p>　　　　/name</p>
-
-<p>Specify the container name.</p>
-
-<p>Container name may be omitted if the RDB collection target specifies the table name The table name will become the container name.</p>
-
-<p>Container name is required when specifying a SQL command</p>
-
-<p>　　　　/type</p>
-
-<p>Specify the container type (COLLECTION/TIME_SERIES)</p>
-
-<p>Container type is a collection by default..</p>
-
-<p>　　　　/rowKeyAssigned</p>
-
-<p>Specify whether there is any row key (true/false/omit. *2</p>
-
-<p>　　　　/dataAffinity</p>
-
-<p>Specify the data affinity name. Maximum 8 characters</p>
-
-<p>　　　　/indexSet</p>
-
-<p>Specify the index. *3</p>
-
-<p>　　　　/triggerInfoSet</p>
-
-<p>Specify a trigger. *3</p>
-
-<p>　　　　/compressionInfoSet</p>
-
-<p>The compression method (NO/SS) can be specified for time series containers only *3</p>
-
-<p>　　/mapping</p>
-
-<p>Can be omitted, and the following can be specified repeatedly.</p>
-
-<p>　　　　/column</p>
-
-<p>　The following can be specified repeatedly</p>
-
-<p>　　　　　　/rdb</p>
-
-<p>Specify the RDB column name.</p>
-
-<p>　　　　　　/gridstore</p>
-
-<p>Specify the GridDB column name</p>
-
-<p>　　　　　　/type</p>
-
-<p>Specify the GridDB column type</p>
-
-<p>　　　　/containerSplit</p>
-
-<p>Specify the container split method.</p>
-
-<p>　　　　　　/type</p>
-
-<p>Specify the column value split &ldquo;columnValue&rdquo; or record number split &ldquo;dataNumber&rdquo;.</p>
-
-<p>　　　　　　/column</p>
-
-<p>For column value split, specify the column value to split.</p>
-
-<p>　　　　　　/number</p>
-
-<p>For record number split, specify the number of records to split.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/inputSource</td>
+<td></td>
+</tr>
+
+<tr>
+<td>　　/type</td>
+<td>Specify &ldquo;rdb&rdquo; when using a RDB link</td>
+</tr>
+
+<tr>
+<td>　　/server</td>
+<td>Can be omitted. RDB connection destination of the property file is used by default. *1</td>
+</tr>
+
+<tr>
+<td>　　　　/kind</td>
+<td>Specify the type of RDB. Specify &ldquo;oracle&rdquo;</td>
+</tr>
+
+<tr>
+<td>　　　　/host</td>
+<td>Specify the address used to access RDB.</td>
+</tr>
+
+<tr>
+<td>　　　　/port</td>
+<td>Specify the port of the address used to access RDB.</td>
+</tr>
+
+<tr>
+<td>　　　　/database</td>
+<td>Specify the database name (SID)</td>
+</tr>
+
+<tr>
+<td>　　　　/url</td>
+<td>Specify the connection character string when accessing the RDB. (Specify the host, port, database or url.</td>
+</tr>
+
+<tr>
+<td>　　　　/user</td>
+<td>Specify the user to access the database.</td>
+</tr>
+
+<tr>
+<td>　　　　/password</td>
+<td>Specify the user password to access the database.</td>
+</tr>
+
+<tr>
+<td>/outputSource</td>
+<td>Can be omitted. GridDB connection destination of the property file is used by default</td>
+</tr>
+
+<tr>
+<td>　　/type</td>
+<td>Specify &ldquo;gridstore&rdquo; when registering in GridDB</td>
+</tr>
+
+<tr>
+<td>　　/server</td>
+<td>*1</td>
+</tr>
+
+<tr>
+<td>　　　　/host</td>
+<td>Specify the address used to access GridDB.</td>
+</tr>
+
+<tr>
+<td>　　　　/port</td>
+<td>Specify the port of the address used to access GridDB.</td>
+</tr>
+
+<tr>
+<td>　　　　/clusterName</td>
+<td></td>
+</tr>
+
+<tr>
+<td>　　　　/user</td>
+<td>Specify the user to access the database.</td>
+</tr>
+
+<tr>
+<td>　　　　/password</td>
+<td>Specify the user password to access the database.</td>
+</tr>
+
+<tr>
+<td>/targetList</td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td>The following can be specified repeatedly in an array</td>
+</tr>
+
+<tr>
+<td>　　/rdb</td>
+<td>Specify the RDB collection targets. Either &ldquo;table&rdquo; or &ldquo;sql&rdquo; is required</td>
+</tr>
+
+<tr>
+<td>　　　　/table</td>
+<td>Specify the table name.</td>
+</tr>
+
+<tr>
+<td>　　　　/sql</td>
+<td>Specify a SQL command</td>
+</tr>
+
+<tr>
+<td>　　　　/select</td>
+<td>Specify column if the table name is specified</td>
+</tr>
+
+<tr>
+<td>　　　　/where</td>
+<td>Filter the columns by conditions if the table name is specified</td>
+</tr>
+
+<tr>
+<td>　　　　/orderby</td>
+<td>Sort the specified columns if the table name is specified.</td>
+</tr>
+
+<tr>
+<td>　　　　/partitionTable</td>
+<td>Specify true when accessing partition tables in parallel</td>
+</tr>
+
+<tr>
+<td>　　/gridstore</td>
+<td>Specify a GridDB container at the registration destination.</td>
+</tr>
+
+<tr>
+<td>　　　　/database</td>
+<td>Specify the database name. Registered in the public database &ldquo;public&rdquo; by default.</td>
+</tr>
+
+<tr>
+<td>　　　　/name</td>
+<td>Specify the container name.</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Container name may be omitted if the RDB collection target specifies the table name The table name will become the container name.</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Container name is required when specifying a SQL command</td>
+</tr>
+
+<tr>
+<td>　　　　/type</td>
+<td>Specify the container type (COLLECTION/TIME_SERIES)</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Container type is a collection by default..</td>
+</tr>
+
+<tr>
+<td>　　　　/rowKeyAssigned</td>
+<td>Specify whether there is any row key (true/false/omit. *2</td>
+</tr>
+
+<tr>
+<td>　　　　/dataAffinity</td>
+<td>Specify the data affinity name. Maximum 8 characters</td>
+</tr>
+
+<tr>
+<td>　　　　/indexSet</td>
+<td>Specify the index. *3</td>
+</tr>
+
+<tr>
+<td>　　　　/triggerInfoSet</td>
+<td>Specify a trigger. *3</td>
+</tr>
+
+<tr>
+<td>　　　　/compressionInfoSet</td>
+<td>The compression method (NO/SS) can be specified for time series containers only *3</td>
+</tr>
+
+<tr>
+<td>　　/mapping</td>
+<td>Can be omitted, and the following can be specified repeatedly.</td>
+</tr>
+
+<tr>
+<td>　　　　/column</td>
+<td>The following can be specified repeatedly</td>
+</tr>
+
+<tr>
+<td>　　　　　　/rdb</td>
+<td>Specify the RDB column name.</td>
+</tr>
+
+<tr>
+<td>　　　　　　/gridstore</td>
+<td>Specify the GridDB column name</td>
+</tr>
+
+<tr>
+<td>　　　　　　/type</td>
+<td>Specify the GridDB column type</td>
+</tr>
+
+<tr>
+<td>　　　　/containerSplit</td>
+<td>Specify the container split method.</td>
+</tr>
+
+<tr>
+<td>　　　　　　/type</td>
+<td>Specify the column value split &ldquo;columnValue&rdquo; or record number split &ldquo;dataNumber&rdquo;.</td>
+</tr>
+
+<tr>
+<td>　　　　　　/column</td>
+<td>For column value split, specify the column value to split.</td>
+</tr>
+
+<tr>
+<td>　　　　　　/number</td>
+<td>For record number split, specify the number of records to split.</td>
+</tr>
+</tbody>
+</table>
 
 <p>*1:/inputSource/server/type,host,port,database,user,password<br />
 　　Set whether to configure all settings or not for the groups in /inputSource/server.</p>
@@ -2101,55 +2173,46 @@ load.output.threadNum=16</p></li>
 
 <p><Example></p>
 
-<p>Command line</p>
+<table>
+<thead>
+<tr>
+<th>Command line</th>
+<th>Property file</th>
+<th>No. of collected threads</th>
+<th>No. of registered threads</th>
+</tr>
+</thead>
 
-<p>Property file</p>
+<tbody>
+<tr>
+<td>gs_import</td>
+<td>-</td>
+<td>→ 1</td>
+<td>1</td>
+</tr>
 
-<p>No. of collected threads</p>
+<tr>
+<td>gs_import &ndash;parallel 3</td>
+<td>-</td>
+<td>→</td>
+<td>3</td>
+</tr>
 
-<p>No. of registered threads</p>
+<tr>
+<td>gs_import &ndash;parallel</td>
+<td>input.threadNum=16  output.threadNum=3</td>
+<td>→ 16</td>
+<td>3</td>
+</tr>
 
-<p>gs_import</p>
-
-<p>-</p>
-
-<p>→</p>
-
-<p>1</p>
-
-<p>1</p>
-
-<p>gs_import &ndash;parallel 3</p>
-
-<p>-</p>
-
-<p>→</p>
-
-<p>3</p>
-
-<p>3</p>
-
-<p>gs_import &ndash;parallel</p>
-
-<p>input.threadNum=16</p>
-
-<p>→</p>
-
-<p>16</p>
-
-<p>3</p>
-
-<p>output.threadNum=3</p>
-
-<p>gs_import &ndash;parallel</p>
-
-<p>Not specified　</p>
-
-<p>→</p>
-
-<p>No. of GridDB nodes</p>
-
-<p>No. of GridDB nodes</p>
+<tr>
+<td>gs_import &ndash;parallel</td>
+<td>Not specified　</td>
+<td>→ No. of GridDB nodes</td>
+<td>No. of GridDB nodes</td>
+</tr>
+</tbody>
+</table>
 
 <p>Preliminary checks and test run</p>
 
@@ -2216,35 +2279,53 @@ D00C0C: A non-existent column has been specified in the mapping definition. : sq
 <ul>
 <li>Data can be registered and updated in an existing container by specifying the &ndash;append option</li>
 <li>Data can be added, registered or updated only if the schema, index and trigger setting data of the container that you are trying to register are the same as the existing container.</li>
-
-<li><p>The registration procedure according to the type of container is as follows.</p>
-
-<p>Type of container</p>
-
-<p>Rowkey designation</p>
-
-<p>Operation</p>
-
-<p>Collection</p>
-
-<p>Yes</p>
-
-<p>Columns with the same key will be updated while data with different keys will be added.</p>
-
-<p>None</p>
-
-<p>All row data will be added and registered.</p>
-
-<p>Time series container</p>
-
-<p>Yes</p>
-
-<p>If compression is not specified, the time will be added and registered if it is newer than the existing registration data.</p>
-
-<p>If the time is the same as the existing data, the column data will be updated.</p>
-
-<p>If compression is specified, only rows newer than the existing data can be added.</p></li>
+<li>The registration procedure according to the type of container is as follows.
+<br />
+<br />
+<br /></li>
 </ul>
+
+<table>
+<thead>
+<tr>
+<th>Type of container</th>
+<th>Rowkey designation</th>
+<th>Operation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Collection</td>
+<td>Yes</td>
+<td>Columns with the same key will be updated while data with different keys will be added.</td>
+</tr>
+
+<tr>
+<td></td>
+<td>None</td>
+<td>All row data will be added and registered.</td>
+</tr>
+
+<tr>
+<td>Time series container</td>
+<td>Yes</td>
+<td>If compression is not specified, the time will be added and registered if it is newer than the existing registration data.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td>If the time is the same as the existing data, the column data will be updated.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td>If compression is specified, only rows newer than the existing data can be added.</td>
+</tr>
+</tbody>
+</table>
 
 <p>　Replace container</p>
 
@@ -2357,98 +2438,116 @@ Import completed</p>
 
 <p>[-h｜&ndash;help]</p></li>
 
-<li><p>Optional specifications</p>
-
-<p>Optional</p>
-
-<p>Essential</p>
-
-<p>Description</p>
-
-<p>-u｜&ndash;user user/password</p>
-
-<p>〇</p>
-
-<p>Specify the user and password used for authentication purposes.</p>
-
-<p>&ndash;all</p>
-
-<p>〇</p>
-
-<p>All containers of the cluster shall be exported. Either &ndash;all, &ndash;container or &ndash;db option needs to be specified.</p>
-
-<p>-c｜&ndash;container container name …</p>
-
-<p>〇</p>
-
-<p>Specify the container to be exported. Multiple specifications are allowed by separating them with blanks. When using a regular expression, enclose it within double quotations to specify it. Either &ndash;all, &ndash;container or &ndash;db option needs to be specified.</p>
-
-<p>&ndash;db</p>
-
-<p>〇</p>
-
-<p>All containers in the specified database shall be exported. Either &ndash;all, &ndash;container, &ndash;db option needs to be specified.</p>
-
-<p>-d｜&ndash;directory output destination directory path</p>
-
-<p>Specify the directory path of the export destination. Default is the current directory.</p>
-
-<p>&ndash;out [file identifier]</p>
-
-<p>Specify this when using the multi-container format for the file format of the output data. The single container format will be used by default.</p>
-
-<p>If the file identifier is specified, the file identifier will be used as the file name, and if it is omitted, the output start date and time will be used as the file name.</p>
-
-<p>&ndash;binary [file size]</p>
-
-<p>Specify this when using the binary format for the output format of the row data file. The CSV format will be used by default.</p>
-
-<p>Specify the output file size in MB. Default is 100MB. A range from 1 to 1000 (1GB) can be specified.</p>
-
-<p>&ndash;filterfile definition file name</p>
-
-<p>Specify the definition file in which the search query used to export rows is described. All rows are exported by default.</p>
-
-<p>&ndash;count Acquisition count</p>
-
-<p>Specify the number of data to be acquired each time when acquiring data from a container. The value of gs_expimp.properties will be valid by default.</p>
-
-<p>&ndash;parallel No. of parallel executions</p>
-
-<p>Execute in parallel for the specified number. When executed in parallel, the export data will be divided by the same number as the number of parallel executions. This can be specified only for the multi-container format (when the &ndash;out option is specified). A range from 2 to 32 can be specified.</p>
-
-<p>&ndash;acl</p>
-
-<p>Data on the database, user, access rights will also be exported. This can be specified only if the user is an administrator user and &ndash;all option is specified.</p>
-
-<p>&ndash;prefixdb database name</p>
-
-<p>&ndash;If a container option is specified, specify the database name of the container. The containers in the default database will be processed if they are omitted.</p>
-
-<p>&ndash;force</p>
-
-<p>Processing is forced to continue even if an error occurs. Error descriptions are displayed in a list after processing ends.</p>
-
-<p>-t｜&ndash;test</p>
-
-<p>Execute the tool in the test mode.</p>
-
-<p>-v｜&ndash;verbose</p>
-
-<p>Output the operating display details.</p>
-
-<p>&ndash;silent</p>
-
-<p>Operating display is not output.</p>
-
-<p>&ndash;version</p>
-
-<p>Display the version of the tool.</p>
-
-<p>-h｜&ndash;help</p>
-
-<p>Display the command list as a help message. 　</p></li>
+<li><p>Optional specifications</p></li>
 </ul>
+
+<table>
+<thead>
+<tr>
+<th>Optional</th>
+<th>Essential</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>-u｜&ndash;user user/password</td>
+<td>〇</td>
+<td>Specify the user and password used for authentication purposes.</td>
+</tr>
+
+<tr>
+<td>&ndash;all</td>
+<td>〇</td>
+<td>All containers in the import source file shall be imported. Either &ndash;all, &ndash;container or &ndash;db option needs to be specified.</td>
+</tr>
+
+<tr>
+<td>-c｜&ndash;container container name …</td>
+<td>〇</td>
+<td>Specify the container subject to import. Multiple specifications are allowed by separating them with blanks. When using a regular expression, enclose it within double quotations to specify it. Either &ndash;all, &ndash;container or &ndash;db option needs to be specified.</td>
+</tr>
+
+<tr>
+<td>&ndash;db</td>
+<td>〇</td>
+<td>All containers in the specified database shall be imported. Either &ndash;all, &ndash;container, &ndash;db option needs to be specified.</td>
+</tr>
+
+<tr>
+<td>-d｜&ndash;directory directory path</td>
+<td></td>
+<td>Specify the directory path of the import source. Default is the current directory.</td>
+</tr>
+
+<tr>
+<td>-f｜&ndash;file [file name]</td>
+<td></td>
+<td>Specify the container data file to be imported. Multiple specifications allowed. All container data files of the current directory or directory specified in d (&ndash;directory) will be applicable by default.</td>
+</tr>
+
+<tr>
+<td>&ndash;count no. of commit</td>
+<td></td>
+<td>Specify the number of input cases until the input data is committed together.</td>
+</tr>
+
+<tr>
+<td>&ndash;acl</td>
+<td></td>
+<td>Data on the database, user, access rights will also be imported. This can be specified only if the user is an administrator user and the &ndash;all option is specified for data exported by specifying the &ndash;acl option.</td>
+</tr>
+
+<tr>
+<td>&ndash;prefixdb database name</td>
+<td></td>
+<td>&ndash;If a container option is specified, specify the database name of the container. The containers in the default database will be processed if they are omitted.</td>
+</tr>
+
+<tr>
+<td>&ndash;force</td>
+<td></td>
+<td>Processing is forced to continue even if an error occurs. Error descriptions are displayed in a list after processing ends.</td>
+</tr>
+
+<tr>
+<td>-v｜&ndash;verbose</td>
+<td></td>
+<td>Output the operating display details.</td>
+</tr>
+
+<tr>
+<td>&ndash;silent</td>
+<td></td>
+<td>Operating display is not output.</td>
+</tr>
+
+<tr>
+<td>&ndash;srcfile resource definition file path</td>
+<td></td>
+<td>Set up the path of the resource definition file. Specify when importing from RDB.</td>
+</tr>
+
+<tr>
+<td>-l｜&ndash;list</td>
+<td></td>
+<td>Display a list of the specified containers to be imported.</td>
+</tr>
+
+<tr>
+<td>&ndash;version</td>
+<td></td>
+<td>Display the version of the tool.</td>
+</tr>
+
+<tr>
+<td>-h｜&ndash;help</td>
+<td></td>
+<td>Display the command list as a help message.</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>[Memo]</strong></p>
 
@@ -2508,86 +2607,116 @@ Import completed</p>
 
 <p>[-h｜&ndash;help]</p></li>
 
-<li><p>Optional specifications</p>
-
-<p>Optional</p>
-
-<p>Essential</p>
-
-<p>Description</p>
-
-<p>-u｜&ndash;user user/password</p>
-
-<p>〇</p>
-
-<p>Specify the user and password used for authentication purposes.</p>
-
-<p>&ndash;all</p>
-
-<p>〇</p>
-
-<p>All containers in the import source file shall be imported. Either &ndash;all, &ndash;container or &ndash;db option needs to be specified.</p>
-
-<p>-c｜&ndash;container container name …</p>
-
-<p>〇</p>
-
-<p>Specify the container subject to import. Multiple specifications are allowed by separating them with blanks. When using a regular expression, enclose it within double quotations to specify it. Either &ndash;all, &ndash;container or &ndash;db option needs to be specified.</p>
-
-<p>&ndash;db</p>
-
-<p>〇</p>
-
-<p>All containers in the specified database shall be imported. Either &ndash;all, &ndash;container, &ndash;db option needs to be specified.</p>
-
-<p>-d｜&ndash;directory directory path</p>
-
-<p>Specify the directory path of the import source. Default is the current directory.</p>
-
-<p>-f｜&ndash;file [file name]</p>
-
-<p>Specify the container data file to be imported. Multiple specifications allowed. All container data files of the current directory or directory specified in d (&ndash;directory) will be applicable by default.</p>
-
-<p>&ndash;count no. of commit</p>
-
-<p>Specify the number of input cases until the input data is committed together.</p>
-
-<p>&ndash;acl</p>
-
-<p>Data on the database, user, access rights will also be imported. This can be specified only if the user is an administrator user and the &ndash;all option is specified for data exported by specifying the &ndash;acl option.</p>
-
-<p>&ndash;prefixdb database name</p>
-
-<p>&ndash;If a container option is specified, specify the database name of the container. The containers in the default database will be processed if they are omitted.</p>
-
-<p>&ndash;force</p>
-
-<p>Processing is forced to continue even if an error occurs. Error descriptions are displayed in a list after processing ends.</p>
-
-<p>-v｜&ndash;verbose</p>
-
-<p>Output the operating display details.</p>
-
-<p>&ndash;silent</p>
-
-<p>Operating display is not output.</p>
-
-<p>&ndash;srcfile resource definition file path</p>
-
-<p>Set up the path of the resource definition file. Specify when importing from RDB.</p>
-
-<p>-l｜&ndash;list</p>
-
-<p>Display a list of the specified containers to be imported.</p>
-
-<p>&ndash;version</p>
-
-<p>Display the version of the tool.</p>
-
-<p>-h｜&ndash;help</p>
-
-<p>Display the command list as a help message.</p></li>
+<li><p>Optional specifications</p></li>
 </ul>
+
+<table>
+<thead>
+<tr>
+<th>Optional</th>
+<th>Essential</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>-u｜&ndash;user user/password</td>
+<td>〇</td>
+<td>Specify the user and password used for authentication purposes.</td>
+</tr>
+
+<tr>
+<td>&ndash;all</td>
+<td>〇</td>
+<td>All containers in the import source file shall be imported. Either &ndash;all, &ndash;container or &ndash;db option needs to be specified.</td>
+</tr>
+
+<tr>
+<td>-c｜&ndash;container container name …</td>
+<td>〇</td>
+<td>Specify the container subject to import. Multiple specifications are allowed by separating them with blanks. When using a regular expression, enclose it within double quotations to specify it. Either &ndash;all, &ndash;container or &ndash;db option needs to be specified.</td>
+</tr>
+
+<tr>
+<td>&ndash;db</td>
+<td>〇</td>
+<td>All containers in the specified database shall be imported. Either &ndash;all, &ndash;container, &ndash;db option needs to be specified.</td>
+</tr>
+
+<tr>
+<td>-d｜&ndash;directory directory path</td>
+<td></td>
+<td>Specify the directory path of the import source. Default is the current directory.</td>
+</tr>
+
+<tr>
+<td>-f｜&ndash;file [file name]</td>
+<td></td>
+<td>Specify the container data file to be imported. Multiple specifications allowed. All container data files of the current directory or directory specified in d (&ndash;directory) will be applicable by default.</td>
+</tr>
+
+<tr>
+<td>&ndash;count no. of commit</td>
+<td></td>
+<td>Specify the number of input cases until the input data is committed together.</td>
+</tr>
+
+<tr>
+<td>&ndash;acl</td>
+<td></td>
+<td>Data on the database, user, access rights will also be imported. This can be specified only if the user is an administrator user and the &ndash;all option is specified for data exported by specifying the &ndash;acl option.</td>
+</tr>
+
+<tr>
+<td>&ndash;prefixdb database name</td>
+<td></td>
+<td>&ndash;If a container option is specified, specify the database name of the container. The containers in the default database will be processed if they are omitted.</td>
+</tr>
+
+<tr>
+<td>&ndash;force</td>
+<td></td>
+<td>Processing is forced to continue even if an error occurs. Error descriptions are displayed in a list after processing ends.</td>
+</tr>
+
+<tr>
+<td>-v｜&ndash;verbose</td>
+<td></td>
+<td>Output the operating display details.</td>
+</tr>
+
+<tr>
+<td>&ndash;silent</td>
+<td></td>
+<td>Operating display is not output.</td>
+</tr>
+
+<tr>
+<td>&ndash;srcfile resource definition file path</td>
+<td></td>
+<td>Set up the path of the resource definition file. Specify when importing from RDB.</td>
+</tr>
+
+<tr>
+<td>-l｜&ndash;list</td>
+<td></td>
+<td>Display a list of the specified containers to be imported.</td>
+</tr>
+
+<tr>
+<td>&ndash;version</td>
+<td></td>
+<td>Display the version of the tool.</td>
+</tr>
+
+<tr>
+<td>-h｜&ndash;help</td>
+<td></td>
+<td>Display the command list as a help message.</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>[Memo]</strong></p>
 
@@ -2613,325 +2742,332 @@ Import completed</p>
 
 <p>Container data to be stored is shown below.</p>
 
-<p>Item</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>Description</p>
+<tbody>
+<tr>
+<td>Container name</td>
+<td>Name of the container.</td>
+</tr>
 
-<p>Container name</p>
+<tr>
+<td>Container type</td>
+<td>Refers to a collection or time series container.</td>
+</tr>
 
-<p>Name of the container.</p>
+<tr>
+<td>Schema data</td>
+<td>Data of a group of columns constituting a row. A column name is combined with a data type to form a group.</td>
+</tr>
 
-<p>Container type</p>
+<tr>
+<td>Compression configuration data</td>
+<td>Compression type data to be configured in a Time series data. Set up thinning compression with error, thinning compression without error, or no compression.</td>
+</tr>
 
-<p>Refers to a collection or time series container.</p>
+<tr>
+<td>Index setting data</td>
+<td>Index type data set in a container. Availability of index settings. Specify the type of index e.g. hash index, spatial index, tree index, etc.</td>
+</tr>
 
-<p>Schema data</p>
+<tr>
+<td>Trigger (event notification) data</td>
+<td>Notification is triggered when a container is updated (PUT/DELETE) by the JMS or REST interface.</td>
+</tr>
 
-<p>Data of a group of columns constituting a row. A column name is combined with a data type to form a group.</p>
-
-<p>Compression configuration data</p>
-
-<p>Compression type data to be configured in a Time series data. Set up thinning compression with error, thinning compression without error, or no compression.</p>
-
-<p>Index setting data</p>
-
-<p>Index type data set in a container. Availability of index settings. Specify the type of index e.g. hash index, spatial index, tree index, etc.</p>
-
-<p>Trigger (event notification) data</p>
-
-<p>Notification is triggered when a container is updated (PUT/DELETE) by the JMS or REST interface.</p>
-
-<p>Row key setting data</p>
-
-<p>Set up a row key when collection container is used. For time series containers, either there is no row key set or the default value, if set, will be valid.</p>
+<tr>
+<td>Row key setting data</td>
+<td>Set up a row key when collection container is used. For time series containers, either there is no row key set or the default value, if set, will be valid.</td>
+</tr>
+</tbody>
+</table>
 
 <p>The tag and data items of the metadata in the JSON format are shown below. Tags that are essential for new creations by the user are also listed (tag setting condition).</p>
 
-<p>Tag name　　　　　　</p>
-
-<p>Item　　　　　　</p>
-
-<p>Description　　　　　　　　　　　　　　</p>
-
-<p>Setting conditions　　　　　　　　　</p>
-
-<p>Common parameters</p>
-
-<p>　</p>
-
-<p>　</p>
-
-<p>　</p>
-
-<p>container</p>
-
-<p>Container name</p>
-
-<p>Container name</p>
-
-<p>Essential</p>
-
-<p>containerType</p>
-
-<p>Container type</p>
-
-<p>Specify either COLLECTION or TIME_SERIES</p>
-
-<p>Essential</p>
-
-<p>containerFileType</p>
-
-<p>Container file type</p>
-
-<p>Specify either csv or binary</p>
-
-<p>Essential</p>
-
-<p>containerFile</p>
-
-<p>Container file name</p>
-
-<p>File name</p>
-
-<p>Essential</p>
-
-<p>dataAffinity</p>
-
-<p>Data affinity name</p>
-
-<p>Specify the data affinity name. Maximum length of 8 characters. (Valid for TIME_SERIES data only)</p>
-
-<p>Any</p>
-
-<p>rowKeyAssigned</p>
-
-<p>Row key setting</p>
-
-<p>Specify either true/false</p>
-
-<p>True if there is no arbitrary key word</p>
-
-<p>partitionNo</p>
-
-<p>Partition</p>
-
-<p>Empty character string that has not been set yet</p>
-
-<p>Arbitrary, output during export. (Need not be specified during import. Value is not used even if it is specified.)</p>
-
-<p>columnSet</p>
-
-<p>Column data set, (schema data)</p>
-
-<p>Column data needs to match when adding data to an existing container</p>
-
-<p>Essential</p>
-
-<p>　　columnName</p>
-
-<p>Column name</p>
-
-<p>Essential</p>
-
-<p>　　type</p>
-
-<p>Data type</p>
-
-<p>BOOLEAN/ STRING/ BYTE/ SHORT/ INTEGER/ LONG/ FLOAT/ DOUBLE/ TIMESTAMP/ GEOMETRY/ BLOB/ BOOLEAN[]/ STRING[]/ BYTE[]/ SHORT[]/ INTEGER[]/ LONG[]/ FLOAT[]/ DOUBLE[]/ TIMESTAMP[]</p>
-
-<p>Essential</p>
-
-<p>indexSet</p>
-
-<p>Index data set</p>
-
-<p>Can be set for each column. Non-existent column name will be ignored or an error will be output</p>
-
-<p>Any</p>
-
-<p>　　columnName</p>
-
-<p>Column name</p>
-
-<p>Arbitrary (essential when indexSet is specified)</p>
-
-<p>　　IndexType</p>
-
-<p>Index type</p>
-
-<p>HASH ( STRING/ BOOLEAN/ BYTE/ SHORT/ INTEGER/ LONG/ FLOAT/ DOUBLE/ TIMESTAMP ) SPATIAL ( GEOMETRY ) , TREE ( STRING/ BOOLEAN/ BYTE/ SHORT/ INTEGER/ LONG/ FLOAT/ DOUBLE/ TIMESTAMP )</p>
-
-<p>Arbitrary (essential when indexSet is specified)</p>
-
-<p>triggerInfoSet</p>
-
-<p>Trigger setting</p>
-
-<p>Any</p>
-
-<p>　　eventName</p>
-
-<p>Trigger name</p>
-
-<p>Trigger name</p>
-
-<p>Arbitrary (essential when triggerInfoSet is specified))</p>
-
-<p>　　notificationType</p>
-
-<p>Notification method</p>
-
-<p>JMS/REST</p>
-
-<p>Arbitrary (essential when triggerInfoSet is specified))</p>
-
-<p>　　targetEvents</p>
-
-<p>Operations subject to monitoring</p>
-
-<p>PUT/DELETE</p>
-
-<p>Arbitrary (essential when triggerInfoSet is specified</p>
-
-<p>　　targetColumnNames</p>
-
-<p>Column name</p>
-
-<p>Arbitrary column subject to notification (multiple columns can be specified using commas to separate them), BLOB/GEOMETRY/ARRAY data types can be set but these will not work. The “,” (comma) separator is used, and an error will occur if a non-existent column name is specified.</p>
-
-<p>　　Notification URI</p>
-
-<p>Notification destination URI</p>
-
-<p>Arbitrary (essential when triggerInfoSet is specified</p>
-
-<p>　　JmsDestinationType</p>
-
-<p>Destination type</p>
-
-<p>Specify either “topic” or “queue”</p>
-
-<p>Valid for JMS only</p>
-
-<p>　　JmsDestinationName</p>
-
-<p>Destination name</p>
-
-<p>Arbitrary (essential when notificationType is JMS) Specify for JMS only</p>
-
-<p>　　user</p>
-
-<p>User name</p>
-
-<p>Arbitrary (essential when notificationType is JMS) Specify for JMS only</p>
-
-<p>　　password</p>
-
-<p>Password</p>
-
-<p>Arbitrary (essential when notificationType is JMS) Specify for JMS only</p>
-
-<p>TIME_SERIES only parameter</p>
-
-<p>timeSeriesProperties</p>
-
-<p>Compression data setting</p>
-
-<p>Only data whose containerType is TIME_SERIES can be specified</p>
-
-<p>Any</p>
-
-<p>compressionMethod</p>
-
-<p>NO, SS, HI</p>
-
-<p>Any</p>
-
-<p>compressionWindowSize</p>
-
-<p>Maximum period of a row</p>
-
-<p>Specify an integer value</p>
-
-<p>Any</p>
-
-<p>compressionWindowSizeUnit</p>
-
-<p>Time data ENUM</p>
-
-<p>DAY/ HOUR/ MILLISECOND/ MINUTE/ MONTH/ SECOND/ YEAR</p>
-
-<p>Any</p>
-
-<p>expirationDivisionCount</p>
-
-<p>Division count of period release</p>
-
-<p>Specify the division count of period release</p>
-
-<p>Any</p>
-
-<p>rowExpirationElapsedTime</p>
-
-<p>Elapsed period</p>
-
-<p>Specify an integer value</p>
-
-<p>Any</p>
-
-<p>rowExpirationTimeUnit</p>
-
-<p>Time data ENUM</p>
-
-<p>DAY/ HOUR/ MILLISECOND/ MINUTE/ MONTH/ SECOND/ YEAR</p>
-
-<p>Any</p>
-
-<p>compressionInfoSet</p>
-
-<p>Settings for each column</p>
-
-<p>Only Hi can be specified for the compressionMethod</p>
-
-<p>Any</p>
-
-<p>　　columnName</p>
-
-<p>Column name</p>
-
-<p>Any</p>
-
-<p>　　compressionType</p>
-
-<p>Absolute value/relative value</p>
-
-<p>RELATIVE: Relative value, ABSOLUTE: Absolute value</p>
-
-<p>Any</p>
-
-<p>　　Width</p>
-
-<p>Absolute error exists. Thinning and compression parameters</p>
-
-<p>Can be specified by a floating-point number</p>
-
-<p>Any Essential for specified column Error when specified at the same time as Rate/Span</p>
-
-<p>　　Rate</p>
-
-<p>Relative error exists. Thinning and compression parameters</p>
-
-<p>Can be specified by a floating-point number</p>
-
-<p>Any can be set only when compressionMethod is set to HI. In SS/NO, error is ignored/output. Error occurs if width is specified at the same time</p>
-
-<p>　　Span</p>
-
-<p>Relative error exists. Thinning and compression parameters</p>
-
-<p>Can be specified by a floating-point number</p>
-
-<p>Any can be set only when compressionMethod is set to HI. In SS/NO, error is ignored/output. Error occurs if width is specified at the same time</p>
+<table>
+<thead>
+<tr>
+<th>Tag name</th>
+<th>Item</th>
+<th>Description</th>
+<th>Setting conditions</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Common parameters</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>container</td>
+<td>Container name</td>
+<td>Container name</td>
+<td>Essential</td>
+</tr>
+
+<tr>
+<td>containerType</td>
+<td>Container type</td>
+<td>Specify either COLLECTION or TIME_SERIES</td>
+<td>Essential</td>
+</tr>
+
+<tr>
+<td>containerFileType</td>
+<td>Container file type</td>
+<td>Specify either csv or binary</td>
+<td>Essential</td>
+</tr>
+
+<tr>
+<td>containerFile</td>
+<td>Container file name</td>
+<td>File name</td>
+<td>Essential</td>
+</tr>
+
+<tr>
+<td>dataAffinity</td>
+<td>Data affinity name</td>
+<td>Specify the data affinity name. Maximum length of 8 characters. (Valid for TIME_SERIES data only)</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>rowKeyAssigned</td>
+<td>Row key setting</td>
+<td>Specify either true/false</td>
+<td>True if there is no arbitrary key word</td>
+</tr>
+
+<tr>
+<td>partitionNo</td>
+<td>Partition</td>
+<td>Empty character string that has not been set yet</td>
+<td>Arbitrary, output during export. (Need not be specified during import. Value is not used even if it is specified.)</td>
+</tr>
+
+<tr>
+<td>columnSet</td>
+<td>Column data set, (schema data)</td>
+<td>Column data needs to match when adding data to an existing container</td>
+<td>Essential</td>
+</tr>
+
+<tr>
+<td>columnName</td>
+<td>Column name</td>
+<td></td>
+<td>Essential</td>
+</tr>
+
+<tr>
+<td>type</td>
+<td>Data type</td>
+<td>BOOLEAN/ STRING/ BYTE/ SHORT/ INTEGER/ LONG/ FLOAT/ DOUBLE/ TIMESTAMP/ GEOMETRY/ BLOB/ BOOLEAN[]/ STRING[]/ BYTE[]/ SHORT[]/ INTEGER[]/ LONG[]/ FLOAT[]/ DOUBLE[]/ TIMESTAMP[]</td>
+<td>Essential</td>
+</tr>
+
+<tr>
+<td>indexSet</td>
+<td>Index data set</td>
+<td>Can be set for each column. Non-existent column name will be ignored or an error will be output</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>　　columnName</td>
+<td>Column name</td>
+<td></td>
+<td>Arbitrary (essential when indexSet is specified)</td>
+</tr>
+
+<tr>
+<td>　　IndexType</td>
+<td>Index type</td>
+<td>HASH ( STRING/ BOOLEAN/ BYTE/ SHORT/ INTEGER/ LONG/ FLOAT/ DOUBLE/ TIMESTAMP ) SPATIAL ( GEOMETRY ) , TREE ( STRING/ BOOLEAN/ BYTE/ SHORT/ INTEGER/ LONG/ FLOAT/ DOUBLE/ TIMESTAMP )</td>
+<td>Arbitrary (essential when indexSet is specified)</td>
+</tr>
+
+<tr>
+<td>triggerInfoSet</td>
+<td>Trigger setting</td>
+<td></td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>　　eventName</td>
+<td>Trigger name</td>
+<td>Trigger name</td>
+<td>Arbitrary (essential when triggerInfoSet is specified))</td>
+</tr>
+
+<tr>
+<td>　　notificationType</td>
+<td>Notification method</td>
+<td>JMS/REST</td>
+<td>Arbitrary (essential when triggerInfoSet is specified))</td>
+</tr>
+
+<tr>
+<td>targetEvents</td>
+<td>Operations subject to monitoring</td>
+<td>PUT/DELETE</td>
+<td>Arbitrary (essential when triggerInfoSet is specified))</td>
+</tr>
+
+<tr>
+<td>　　targetColumnNames</td>
+<td>Column name</td>
+<td></td>
+<td>Arbitrary column subject to notification (multiple columns can be specified using commas to separate them), BLOB/GEOMETRY/ARRAY data types can be set but these will not work. The “,” (comma) separator is used, and an error will occur if a non-existent column name is specified.</td>
+</tr>
+
+<tr>
+<td>　　Notification URI</td>
+<td>Notification destination URI</td>
+<td></td>
+<td>Arbitrary (essential when triggerInfoSet is specified</td>
+</tr>
+
+<tr>
+<td>　　JmsDestinationType</td>
+<td>Destination type</td>
+<td>Specify either “topic” or “queue”</td>
+<td>Valid for JMS only</td>
+</tr>
+
+<tr>
+<td>　　JmsDestinationName</td>
+<td>Destination name</td>
+<td></td>
+<td>Arbitrary (essential when notificationType is JMS) Specify for JMS only</td>
+</tr>
+
+<tr>
+<td>　　user</td>
+<td>User name</td>
+<td></td>
+<td>Arbitrary (essential when notificationType is JMS) Specify for JMS only</td>
+</tr>
+
+<tr>
+<td>　　password</td>
+<td>Password</td>
+<td></td>
+<td>Arbitrary (essential when notificationType is JMS) Specify for JMS only</td>
+</tr>
+
+<tr>
+<td>TIME_SERIES only parameter</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>timeSeriesProperties</td>
+<td>Compression data setting</td>
+<td>Only data whose containerType is TIME_SERIES can be specified</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>compressionMethod</td>
+<td></td>
+<td>NO, SS, HI</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>compressionWindowSize</td>
+<td>Maximum period of a row</td>
+<td>Specify an integer value</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>compressionWindowSizeUnit</td>
+<td>Time data ENUM</td>
+<td>DAY/ HOUR/ MILLISECOND/ MINUTE/ MONTH/ SECOND/ YEAR</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>expirationDivisionCount</td>
+<td>Division count of period release</td>
+<td>Specify the division count of period release</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>rowExpirationElapsedTime</td>
+<td>Elapsed period</td>
+<td>Specify an integer value</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>rowExpirationTimeUnit</td>
+<td>Time data ENUM</td>
+<td>DAY/ HOUR/ MILLISECOND/ MINUTE/ MONTH/ SECOND/ YEAR</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>compressionInfoSet</td>
+<td>Settings for each column</td>
+<td>Only Hi can be specified for the compressionMethod</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>　　columnName</td>
+<td>Column name</td>
+<td></td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>　　compressionType</td>
+<td>Absolute value/relative value</td>
+<td>RELATIVE: Relative value, ABSOLUTE: Absolute value</td>
+<td>Any</td>
+</tr>
+
+<tr>
+<td>　　Width</td>
+<td>Absolute error exists. Thinning and compression parameters</td>
+<td>Can be specified by a floating-point number</td>
+<td>Any Essential for specified column Error when specified at the same time as Rate/Span</td>
+</tr>
+
+<tr>
+<td>　　Rate</td>
+<td>Relative error exists. Thinning and compression parameters</td>
+<td>Can be specified by a floating-point number</td>
+<td>Any can be set only when compressionMethod is set to HI. In SS/NO, error is ignored/output. Error occurs if width is specified at the same time</td>
+</tr>
+
+<tr>
+<td>　　Span</td>
+<td>Relative error exists. Thinning and compression parameters</td>
+<td>Can be specified by a floating-point number</td>
+<td>Any can be set only when compressionMethod is set to HI. In SS/NO, error is ignored/output. Error occurs if width is specified at the same time</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>[Memo]</strong></p>
 

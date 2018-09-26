@@ -635,36 +635,35 @@
 
 <p><strong>Table.1 Container Information</strong></p>
 
-<p>Data</p>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Container type</th>
+<th>Quantity</th>
+<th>Container name</th>
+<th>Row key</th>
+</tr>
+</thead>
 
-<p>Container type</p>
+<tbody>
+<tr>
+<td>Measuring instrument</td>
+<td>Collection</td>
+<td>1</td>
+<td>weather_station</td>
+<td>Instrument ID</td>
+</tr>
 
-<p>Quantity</p>
-
-<p>Container name</p>
-
-<p>Row key</p>
-
-<p>Measuring instrument</p>
-
-<p>Collection</p>
-
-<p>1</p>
-
-<p>weather_station</p>
-
-<p>Instrument ID</p>
-
-<p>Instrument log</p>
-
-<p>TimeSeries Container</p>
-
-<p>1 per instrument</p>
-
-<p>weather_station_<br />
-(Example:weather_station_1)</p>
-
-<p>Logging date and time</p>
+<tr>
+<td>Instrument log</td>
+<td>TimeSeries Container</td>
+<td>1 per instrument</td>
+<td>weather<em>station</em>  (Example:weather_station_1)</td>
+<td>Logging date and time</td>
+</tr>
+</tbody>
+</table>
 
 <p>One collection will be created with rows corresponding to different measuring instruments..<br />
 One TimeSeries container will be created as the instrument log for each measuring instrument.<br />
@@ -769,71 +768,77 @@ public Blob liveImage;
 
 <p><strong>Table.2 Available column type</strong></p>
 
-<p>Column Type</p>
+<table>
+<thead>
+<tr>
+<th>Column Type</th>
+<th>Type in Program</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>Type in Program</p>
+<tbody>
+<tr>
+<td>BOOL</td>
+<td>boolean or Boolean</td>
+<td>TRUE or FALSE.</td>
+</tr>
 
-<p>Description</p>
+<tr>
+<td>STRING</td>
+<td>String</td>
+<td>Zero or more Unicode characters excluding the NULL character (U+0000).</td>
+</tr>
 
-<p>BOOL</p>
+<tr>
+<td>BYTE</td>
+<td>Byte or byte</td>
+<td>Integer value in the following range.(-2^7 to 2^7-1)</td>
+</tr>
 
-<p>boolean or Boolean</p>
+<tr>
+<td>SHORT</td>
+<td>Short or short</td>
+<td>Integer value in the following range.(-2^15 to 2^15-1)</td>
+</tr>
 
-<p>TRUE or FALSE.</p>
+<tr>
+<td>INTEGER</td>
+<td>Integer or int</td>
+<td>Integer value in the following range.(-2^31 to 2^31-1)</td>
+</tr>
 
-<p>STRING</p>
+<tr>
+<td>LONG</td>
+<td>Long or long</td>
+<td>Integer value in the following range.(-2^63 to 2^63-1)</td>
+</tr>
 
-<p>String</p>
+<tr>
+<td>FLOAT</td>
+<td>Float or float</td>
+<td>Single-precision floating point number.</td>
+</tr>
 
-<p>Zero or more Unicode characters excluding the NULL character (U+0000).</p>
+<tr>
+<td>DOUBLE</td>
+<td>Double or double</td>
+<td>Double-precision floating point number.</td>
+</tr>
 
-<p>BYTE</p>
+<tr>
+<td>TIMESTAMP</td>
+<td>java.util.Date</td>
+<td>Combination of a date and time consisting of year, month, day, hour, minute and second.</td>
+</tr>
 
-<p>Byte or byte</p>
-
-<p>Integer value in the following range.(-27 to 27-1)</p>
-
-<p>SHORT</p>
-
-<p>Short or short</p>
-
-<p>Integer value in the following range.(-215 to 215-1)</p>
-
-<p>INTEGER</p>
-
-<p>Integer or int</p>
-
-<p>Integer value in the following range.(-231 to 231-1)</p>
-
-<p>LONG</p>
-
-<p>Long or long</p>
-
-<p>Integer value in the following range.(-263 to 263-1)</p>
-
-<p>FLOAT</p>
-
-<p>Float or float</p>
-
-<p>Single-precision floating point number.</p>
-
-<p>DOUBLE</p>
-
-<p>Double or double</p>
-
-<p>Double-precision floating point number.</p>
-
-<p>TIMESTAMP</p>
-
-<p>java.util.Date</p>
-
-<p>Combination of a date and time consisting of year, month, day, hour, minute and second.</p>
-
-<p>BLOB</p>
-
-<p>java.sql.Blob</p>
-
-<p>Binary data.</p>
+<tr>
+<td>BLOB</td>
+<td>java.sql.Blob</td>
+<td>Binary data.</td>
+</tr>
+</tbody>
+</table>
 
 <p>All types except <code>BLOB</code> can be stored as an array.</p>
 
