@@ -17,20 +17,6 @@
   </url>
   
   <url>
-    <loc>/3/introduction/1-2_griddb-edition/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="latest"
-                href="/latest/introduction/1-2_griddb-edition/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="3"
-                href="/3/introduction/1-2_griddb-edition/"
-                />
-  </url>
-  
-  <url>
     <loc>/3/introduction/1-1_what-is-griddb/</loc>
     <xhtml:link
                 rel="alternate"
@@ -41,6 +27,20 @@
                 rel="alternate"
                 hreflang="3"
                 href="/3/introduction/1-1_what-is-griddb/"
+                />
+  </url>
+  
+  <url>
+    <loc>/3/introduction/1-2_griddb-edition/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="latest"
+                href="/latest/introduction/1-2_griddb-edition/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="3"
+                href="/3/introduction/1-2_griddb-edition/"
                 />
   </url>
   
